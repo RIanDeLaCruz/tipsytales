@@ -4,22 +4,62 @@ html, body {
   padding: 0;
 }
 
-/*.room {*/
-  /*position: relative;*/
-/*}*/
+map {
+  z-index: -1;
+}
+
+area {
+  display: block;
+}
 
 img {
   width: 100%;
 }
 
-#shelf {
+.overlay {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
-  z-index: 5;
-  filter: sepia(50%);
+  left: 0;
   display: none;
+  pointer-events: none;
 }
 
-/*#shelf:hover {*/
-  /*filter: sepia(50%);*/
-/*}*/
+#shelf_overlay {
+  background: url('../images/bookshelf+shadow.png') top left;
+  background-size: contain;
+  filter: sepia(50%);
+}
+
+#portrait_overlay {
+  background: url('../images/portrait.png') top left;
+  background-size: contain;
+  filter: sepia(50%);
+}
+
+#chair_overlay {
+  background: url('../images/chair+shadow.png') top left;
+  background-size: contain;
+  filter: sepia(50%);
+}
+
+#frames_overlay {
+  background: url('../images/frames.png') top left;
+  background-size: contain;
+  filter: sepia(50%);
+}
+
+#table_overlay {
+  background: url('../images/table.png') top left;
+  background-size: contain;
+  filter: sepia(50%);
+}
+
+#shelf:hover ~ #shelf_overlay,
+#portrait:hover ~ #portrait_overlay,
+#chair:hover ~ #chair_overlay,
+#frames:hover ~ #frames_overlay,
+#table:hover ~ #table_overlay {
+  display: block;
+}
