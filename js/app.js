@@ -56,8 +56,25 @@ let map_init = function() {
   document.querySelector('#table').setAttribute('coords', table_coordinates)
 }
 
+class RoomOne {
+  constructor() {
+    this.map_object = document.querySelector('[name="room_1"]')
+    for(let area of this.map_object.querySelectorAll('area')) {
+      area.addEventListener('click', function(evt) {
+        evt.preventDefault()
+        //document.querySelector('[name="room_2"]').scrollIntoView({behavior: 'smooth'})
+        document.querySelector('#bg').classList.add('mask')
+        document.querySelector('#bg').addEventListener('animationend', function() {
+          document.querySelector('#bg').classList.add('final_mask')
+        })
+      })
+    }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   map_init()
+  let room_1 = new RoomOne()
 })
 
 window.addEventListener('resize', function() {

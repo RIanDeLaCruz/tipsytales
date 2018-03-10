@@ -8,6 +8,20 @@ map {
   z-index: -1;
 }
 
+#sala {
+  background-color: black;
+}
+
+.black {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
 area {
   display: block;
 }
@@ -62,4 +76,28 @@ img {
 #frames:hover ~ #frames_overlay,
 #table:hover ~ #table_overlay {
   display: block;
+}
+
+.mask {
+  animation-duration: 3s;
+  animation-name: pinhole;
+  animation-iteration-count: 1;
+}
+
+@keyframes pinhole {
+  0% {
+    mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 100%);
+  }
+  50% {
+    mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 50%);
+  }
+  100% {
+    mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%);
+  }
+}
+.final_mask {
+    mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%);
+}
+#bg {
+  will-change: mask;
 }
