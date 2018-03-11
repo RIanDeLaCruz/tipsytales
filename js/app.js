@@ -75,12 +75,18 @@ class RoomOne {
           document.querySelector('#bg').classList.add('mask')
           document.querySelector('#bg').addEventListener('animationend', function() {
             document.querySelector('#bg').classList.add('final_mask')
+            document.querySelector('.transition_1').classList.toggle('show')
           })
         } else {
           document.querySelector('.black').classList.toggle('animate')
           document.querySelector('.black').addEventListener('transitionend', function() {
+            document.querySelector('.transition_1').classList.toggle('show')
           })
         }
+        document.querySelector('.transition_1').addEventListener('transitionend', function() {
+          document.querySelector('.transition_1').classList.toggle('show')
+          document.querySelector('[name="room_2"]').scrollIntoView({behavior: 'smooth'})
+        })
       })
     }
   }
