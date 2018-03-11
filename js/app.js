@@ -59,14 +59,28 @@ let map_init = function() {
 class RoomOne {
   constructor() {
     this.map_object = document.querySelector('[name="room_1"]')
+    if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
+      document.querySelector('.black').classList.toggle('pinhole')
+    }
     for(let area of this.map_object.querySelectorAll('area')) {
-      area.addEventListener('click', function(evt) {
+      area.addEventListener('click', (evt) => {
         evt.preventDefault()
         //document.querySelector('[name="room_2"]').scrollIntoView({behavior: 'smooth'})
-        document.querySelector('#bg').classList.add('mask')
-        document.querySelector('#bg').addEventListener('animationend', function() {
-          document.querySelector('#bg').classList.add('final_mask')
-        })
+        //
+
+        document.querySelector('#bg').classList.toggle('up')
+
+        if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
+          document.querySelector('.black').classList.toggle('block')
+          document.querySelector('#bg').classList.add('mask')
+          document.querySelector('#bg').addEventListener('animationend', function() {
+            document.querySelector('#bg').classList.add('final_mask')
+          })
+        } else {
+          document.querySelector('.black').classList.toggle('animate')
+          document.querySelector('.black').addEventListener('transitionend', function() {
+          })
+        }
       })
     }
   }

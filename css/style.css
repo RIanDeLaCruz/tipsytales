@@ -20,6 +20,21 @@ map {
   top: 0;
   left: 0;
   opacity: 0;
+  transition: all 1s ease-in-out 0.4s;
+  visibility: hidden;
+}
+
+.black.animate {
+  visibility: visible;
+  opacity: 1;
+  z-index: 5;
+}
+.black.pinhole {
+  transition: all 1s ease-in-out;
+}
+.black.block {
+  visibility: visible;
+  z-index: 5;
 }
 
 area {
@@ -38,6 +53,7 @@ img {
   left: 0;
   display: none;
   pointer-events: none;
+  z-index: 1;
 }
 
 #shelf_overlay {
@@ -79,7 +95,7 @@ img {
 }
 
 .mask {
-  animation-duration: 3s;
+  animation-duration: 1.6s;
   animation-name: pinhole;
   animation-iteration-count: 1;
 }
@@ -98,6 +114,12 @@ img {
 .final_mask {
     mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%);
 }
+
 #bg {
   will-change: mask;
+  transition: transform 1s ease-in-out;
+}
+
+.up {
+  transform: translateY(-5%);
 }
