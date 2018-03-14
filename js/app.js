@@ -74,8 +74,8 @@ class RoomOne {
   resize_clickables() {
     let overlays = document.querySelectorAll('.overlay')
     for(let overlay of overlays) {
-      console.log(overlay)
       overlay.style.top = document.querySelector('#bg').y+'px'
+      overlay.style.height = document.querySelector('#bg').height+'px'
     }
     for(let id of this.clickable_ids) {
       set_point_values(id, this.ClickMap.get(id).x, this.ClickMap.get(id).y)

@@ -63,30 +63,35 @@ img {
 #shelf_overlay {
   background: url('../images/bookshelf+shadow.png') top left;
   background-size: contain;
+  background-repeat: no-repeat;
   filter: sepia(50%);
 }
 
 #portrait_overlay {
   background: url('../images/portrait.png') top left;
   background-size: contain;
+  background-repeat: no-repeat;
   filter: sepia(50%);
 }
 
 #chair_overlay {
   background: url('../images/chair+shadow.png') top left;
   background-size: contain;
+  background-repeat: no-repeat;
   filter: sepia(50%);
 }
 
 #frames_overlay {
   background: url('../images/frames.png') top left;
   background-size: contain;
+  background-repeat: no-repeat;
   filter: sepia(50%);
 }
 
 #table_overlay {
   background: url('../images/table.png') top left;
   background-size: contain;
+  background-repeat: no-repeat;
   filter: sepia(50%);
 }
 
