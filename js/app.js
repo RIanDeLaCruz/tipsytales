@@ -35,55 +35,29 @@ let set_point_values = function(selector, x_ratio, y_ratio) {
   document.querySelector(selector).setAttribute('coords', area_coordinates)
 }
 
-class RoomOne {
-  constructor() {
+class Room {
+  constructor(config) {
+    this.config = config
     this.ClickMap = new Map()
-    this.map_object = document.querySelector('[name="room_1"]')
-    this.clickable_ids = [ '#shelf', '#portrait', '#chair', '#frames', '#table' ]
-    let shelf_coordinates = coordinate_init(
-      [560, 1010],
-      [60,  650]
-    )
-    this.ClickMap.set('#shelf', {...shelf_coordinates})
-    let portrait_coordinates = coordinate_init([1070, 1425], [0, 190])
-    this.ClickMap.set('#portrait', {...portrait_coordinates})
-    let chair_coordinates = coordinate_init(
-      [1010, 1150, 1210, 1360, 1388, 1370, 1270, 1075, 870, 870, 1010],
-      [475,  475,  300,  295,  300,  680,  795,  795,  740, 680, 650]
-    )
-    this.ClickMap.set('#chair', {...chair_coordinates})
-    let frames_coordinates = coordinate_init(
-      [1110, 1425, 1425, 1388, 1388, 1360, 1210, 1180, 1110],
-      [275,  260,  385,  385,  300,  295,  300,  380,  380]
-    )
-    this.ClickMap.set('#frames', {...frames_coordinates})
-    let table_coordinates = coordinate_init([150, 400], [275, 540])
-    this.ClickMap.set('#table', {...table_coordinates})
+    this.map_object = document.querySelector(`[name="${config.name}"]`)
+    this.map_image_id = this.config.map_image_id
+    this.root = document.querySelector(`#${ this.config.wrapper_id }`)
+    for(let area of this.config.areas) {
+      let area_coordinates = coordinate_init(area.x_points, area.y_points)
+      this.ClickMap.set(`#${area.name}`, {...area_coordinates})
+    }
     this._attachListeners()
-
-  }
-
-  resize_clickables() {
-    let overlays = document.querySelectorAll('.overlay')
-    for(let overlay of overlays) {
-      overlay.style.top = document.querySelector('#bg').y+'px'
-      overlay.style.height = document.querySelector('#bg').height+'px'
-    }
-    for(let id of this.clickable_ids) {
-      set_point_values(id, this.ClickMap.get(id).x, this.ClickMap.get(id).y)
-    }
   }
 
   _attachListeners() {
     if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
-      document.querySelector('.black').classList.toggle('pinhole')
+      this.root.querySelector('.black').classList.toggle('pinhole')
     }
-    let areas = document.querySelectorAll('area')
+    let areas = this.root.querySelectorAll('area')
     for(let area of areas) {
-      area.addEventListener('click', function(evt) {
+      area.addEventListener('click', (evt) => {
         evt.preventDefault()
-        console.log(evt.target)
-        document.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
+        this.root.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
         window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
       })
     }
@@ -112,43 +86,12 @@ class RoomOne {
       //})
     //})
   }
-}
-
-class Room {
-  constructor(config) {
-    this.config = config
-    this.ClickMap = new Map()
-    this.map_object = document.querySelector(`[name="${config.name}"]`)
-    this.map_image_id = this.config.map_image_id
-    this.root = document.querySelector(`#${ this.config.wrapper_id }`)
-    for(let area of this.config.areas) {
-      console.log(area.name)
-      let area_coordinates = coordinate_init(area.x_points, area.y_points)
-      this.ClickMap.set(`#${area.name}`, {...area_coordinates})
-    }
-    this._attachListeners()
-  }
-
-  _attachListeners() {
-    if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
-      this.root.querySelector('.black').classList.toggle('pinhole')
-    }
-    let areas = this.root.querySelectorAll('area')
-    for(let area of areas) {
-      area.addEventListener('click', function(evt) {
-        evt.preventDefault()
-        this.root.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
-        window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
-      })
-    }
-  }
 
   resize_clickables() {
-    let root = document.querySelector(`#${ this.config.wrapper_id }`)
-    let overlays = root.querySelectorAll('.overlay')
+    let overlays = this.root.querySelectorAll('.overlay')
     for(let overlay of overlays) {
-      overlay.style.top = root.querySelector(`#${this.map_image_id}`).y+'px'
-      overlay.style.height = root.querySelector(`#${this.map_image_id}`).height+'px'
+      overlay.style.top = this.root.querySelector(`#${this.map_image_id}`).y+'px'
+      overlay.style.height = this.root.querySelector(`#${this.map_image_id}`).height+'px'
     }
     for(let area of this.config.areas) {
       let id = `#${area.name}`
