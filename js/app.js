@@ -42,10 +42,12 @@ class Room {
     this.map_object = document.querySelector(`[name="${config.name}"]`)
     this.map_image_id = this.config.map_image_id
     this.root = document.querySelector(`#${ this.config.wrapper_id }`)
+
     for(let area of this.config.areas) {
       let area_coordinates = coordinate_init(area.x_points, area.y_points)
       this.ClickMap.set(`#${area.name}`, {...area_coordinates})
     }
+
     this._attachListeners()
   }
 
@@ -53,6 +55,7 @@ class Room {
     if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
       this.root.querySelector('.black').classList.toggle('pinhole')
     }
+
     let areas = this.root.querySelectorAll('area')
     for(let area of areas) {
       area.addEventListener('click', (evt) => {
@@ -93,6 +96,7 @@ class Room {
       overlay.style.top = this.root.querySelector(`#${this.map_image_id}`).y+'px'
       overlay.style.height = this.root.querySelector(`#${this.map_image_id}`).height+'px'
     }
+
     for(let area of this.config.areas) {
       let id = `#${area.name}`
       set_point_values(id, this.ClickMap.get(id).x, this.ClickMap.get(id).y)
@@ -243,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     ]
   })
+
 })
 
 window.addEventListener('load', function() {
