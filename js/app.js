@@ -1,6 +1,6 @@
 let get_ratio = function(values, axis) {
   let ratio = []
-  let divisor = (axis == 'x' ) ?  1425 : 800
+  let divisor = (axis == 'x' ) ?  1425 : 790
   for(let value of values) {
     ratio.push(value/divisor)
   }
@@ -41,26 +41,23 @@ class RoomOne {
     this.map_object = document.querySelector('[name="room_1"]')
     this.clickable_ids = [ '#shelf', '#portrait', '#chair', '#frames', '#table' ]
     let shelf_coordinates = coordinate_init(
-      [564, 987],
-      [72,  648]
+      [560, 1010],
+      [60,  650]
     )
     this.ClickMap.set('#shelf', {...shelf_coordinates})
-    let portrait_coordinates = coordinate_init([1067,1410], [0,214])
+    let portrait_coordinates = coordinate_init([1070, 1425], [0, 190])
     this.ClickMap.set('#portrait', {...portrait_coordinates})
     let chair_coordinates = coordinate_init(
-      [890,900,1100,1180,1380,1360,1210,840],
-      [610,570, 500, 300, 310, 690, 800,750]
+      [1010, 1150, 1210, 1360, 1388, 1370, 1270, 1075, 870, 870, 1010],
+      [475,  475,  300,  295,  300,  680,  795,  795,  740, 680, 650]
     )
     this.ClickMap.set('#chair', {...chair_coordinates})
     let frames_coordinates = coordinate_init(
-      [1100,1380,1420,1380,1380,1180,1150,1100],
-      [270, 230, 380, 380, 300, 300, 390, 390 ]
+      [1110, 1425, 1425, 1388, 1388, 1360, 1210, 1180, 1110],
+      [275,  260,  385,  385,  300,  295,  300,  380,  380]
     )
     this.ClickMap.set('#frames', {...frames_coordinates})
-    let table_coordinates = coordinate_init(
-      [165, 380],
-      [320, 530]
-    )
+    let table_coordinates = coordinate_init([150, 400], [275, 540])
     this.ClickMap.set('#table', {...table_coordinates})
     this._attachListeners()
 
