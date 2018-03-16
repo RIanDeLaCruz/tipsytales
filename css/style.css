@@ -171,7 +171,6 @@ img {
   box-shadow: 1em 1em 2.4em black;
   border-radius: 1em;
   padding: 2.4em;
-  overflow-y: scroll;
   overflow-x: hidden;
 }
 
