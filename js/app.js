@@ -84,7 +84,7 @@ class RoomOne {
         evt.preventDefault()
         console.log(evt.target)
         document.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
-        window.modal.modal_open(`#${evt.target.getAttribute('name')}_overlay`)
+        window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
       })
     }
     //let area = document.querySelector('#shelf')
@@ -115,7 +115,8 @@ class RoomOne {
 }
 
 class Modal {
-  constructor() {
+  constructor(config = {}) {
+    this.config = config
     this.modal_content = ''
     this.modal = this._init_modal()
 
@@ -147,14 +148,26 @@ class Modal {
     return modal_wrapper
   }
   modal_open(id) {
-    this.modal.firstChild.nextElementSibling.innerHTML = document.querySelector(id).dataset.content
+    let content = document.querySelector(`#${ id }`).dataset.content
+    if(content === 'config') {
+      this.modal.firstChild.nextElementSibling.innerHTML = this.config[id]
+    } else {
+      this.modal.firstChild.nextElementSibling.innerHTML = content
+    }
     this.modal.classList.toggle('modal_open')
   }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   window.room_1 = new RoomOne()
-  window.modal = new Modal()
+  window.modal = new Modal({
+    shelf_overlay: `
+      <h1>HELLO WORLD</h1>
+      <p>WTH</p>
+    `
+  })
+  // TO ADD HTML EMBED: add id and HTML content to the configuration object
+  // IN the HTML, put 'config' in the data-content attribute
 })
 
 window.addEventListener('load', function() {
