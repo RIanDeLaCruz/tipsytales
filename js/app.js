@@ -1,9 +1,6 @@
 let get_ratio = function(values, axis) {
   let ratio = []
-  let height = document.querySelector('#bg').height
-  let divisor = (axis == 'x' ) ?
-                document.documentElement.clientWidth :
-                height
+  let divisor = (axis == 'x' ) ?  1425 : 800
   for(let value of values) {
     ratio.push(value/divisor)
   }
@@ -18,8 +15,9 @@ let coordinate_init = function(x_coordinates, y_coordinates) {
 
 
 let set_point_values = function(selector, x_ratio, y_ratio) {
+  let image_width = document.querySelector('#bg').width
   let x_values = x_ratio.map((val, idx) => {
-    return val*document.documentElement.clientWidth
+    return val*image_width
   })
   let image_height = document.querySelector('#bg').height
   let y_values = y_ratio.map((val, idx) => {
@@ -35,9 +33,6 @@ let set_point_values = function(selector, x_ratio, y_ratio) {
     }
   }
   document.querySelector(selector).setAttribute('coords', area_coordinates)
-}
-
-let resize_clickables = function() {
 }
 
 class RoomOne {
@@ -117,6 +112,9 @@ class RoomOne {
 
 document.addEventListener('DOMContentLoaded', function() {
   window.room_1 = new RoomOne()
+})
+
+window.addEventListener('load', function() {
   room_1.resize_clickables()
 })
 
