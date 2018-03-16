@@ -8,7 +8,7 @@ map {
   /*z-index: -1;*/
 }
 
-#sala {
+.room {
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -58,36 +58,28 @@ img {
   display: none;
   pointer-events: none;
   z-index: 1;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
 }
 
 #shelf_overlay {
   background: url('../images/031618 Room 1 shelf.png') top left;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 #portrait_overlay {
   background: url('../images/031618 Room 1 portrait.png') top left;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 #chair_overlay {
   background: url('../images/031618 Room 1chair.png') top left;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 #frames_overlay {
   background: url('../images/031618 Room 1 frames.png') top left;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 #table_overlay {
   background: url('../images/031618 Room 1 table.png') top left;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 #shelf:hover ~ #shelf_overlay,
@@ -95,6 +87,22 @@ img {
 #chair:hover ~ #chair_overlay,
 #frames:hover ~ #frames_overlay,
 #table:hover ~ #table_overlay {
+  display: block;
+}
+
+#burrow_overlay { background: url('../images/Room2/031618 Room 2 Burrow.png') top left; }
+#flower_overlay { background: url('../images/Room2/031618 Room 2 Flower.png') top left; }
+#note_overlay { background: url('../images/Room2/031618 Room 2 Note.png') top left; }
+#shoe_overlay { background: url('../images/Room2/031618 Room 2 Shoe.png') top left; }
+#sign_overlay { background: url('../images/Room2/031618 Room 2 Sign.png') top left; }
+#tree_overlay { background: url('../images/Room2/031618 Room 2 Tree.png') top left; }
+
+#burrow:hover ~ #burrow_overlay,
+#flower:hover ~ #flower_overlay,
+#note:hover ~ #note_overlay,
+#shoe:hover ~ #shoe_overlay,
+#sign:hover ~ #sign_overlay,
+#tree:hover ~ #tree_overlay {
   display: block;
 }
 

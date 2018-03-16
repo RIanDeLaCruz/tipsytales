@@ -15,11 +15,11 @@ let coordinate_init = function(x_coordinates, y_coordinates) {
 
 
 let set_point_values = function(selector, x_ratio, y_ratio) {
-  let image_width = document.querySelector('#bg').width
+  let image_width = document.querySelector('#room1_bg').width
   let x_values = x_ratio.map((val, idx) => {
     return val*image_width
   })
-  let image_height = document.querySelector('#bg').height
+  let image_height = document.querySelector('#room1_bg').height
   let y_values = y_ratio.map((val, idx) => {
     return (val*image_height)
   })
@@ -114,6 +114,49 @@ class RoomOne {
   }
 }
 
+class Room {
+  constructor(config) {
+    this.config = config
+    this.ClickMap = new Map()
+    this.map_object = document.querySelector(`[name="${config.name}"]`)
+    this.map_image_id = this.config.map_image_id
+    this.root = document.querySelector(`#${ this.config.wrapper_id }`)
+    for(let area of this.config.areas) {
+      console.log(area.name)
+      let area_coordinates = coordinate_init(area.x_points, area.y_points)
+      this.ClickMap.set(`#${area.name}`, {...area_coordinates})
+    }
+    this._attachListeners()
+  }
+
+  _attachListeners() {
+    if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
+      this.root.querySelector('.black').classList.toggle('pinhole')
+    }
+    let areas = this.root.querySelectorAll('area')
+    for(let area of areas) {
+      area.addEventListener('click', function(evt) {
+        evt.preventDefault()
+        this.root.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
+        window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
+      })
+    }
+  }
+
+  resize_clickables() {
+    let root = document.querySelector(`#${ this.config.wrapper_id }`)
+    let overlays = root.querySelectorAll('.overlay')
+    for(let overlay of overlays) {
+      overlay.style.top = root.querySelector(`#${this.map_image_id}`).y+'px'
+      overlay.style.height = root.querySelector(`#${this.map_image_id}`).height+'px'
+    }
+    for(let area of this.config.areas) {
+      let id = `#${area.name}`
+      set_point_values(id, this.ClickMap.get(id).x, this.ClickMap.get(id).y)
+    }
+  }
+}
+
 class Modal {
   constructor(config = {}) {
     this.config = config
@@ -159,7 +202,7 @@ class Modal {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-  window.room_1 = new RoomOne()
+  //window.room_1 = new RoomOne()
   window.modal = new Modal({
     shelf_overlay: `
       <h1>HELLO WORLD</h1>
@@ -168,12 +211,85 @@ document.addEventListener('DOMContentLoaded', function() {
   })
   // TO ADD HTML EMBED: add id and HTML content to the configuration object
   // IN the HTML, put 'config' in the data-content attribute
+  //
+  window.room_1 = new Room({
+    name: 'room_1',
+    wrapper_id: 'sala',
+    map_image_id: 'room1_bg',
+    areas: [
+      {
+        name: 'shelf',
+        x_points: [560, 1010],
+        y_points: [60,  650]
+      },
+      {
+        name: 'portrait',
+        x_points: [1070, 1425],
+        y_points: [0, 190]
+      },
+      {
+        name: 'chair',
+        x_points: [1010, 1150, 1210, 1360, 1388, 1370, 1270, 1075, 870, 870, 1010],
+        y_points: [475,  475,  300,  295,  300,  680,  795,  795,  740, 680, 650]
+      },
+      {
+        name: 'frames',
+        x_points: [1110, 1425, 1425, 1388, 1388, 1360, 1210, 1180, 1110],
+        y_points: [275,  260,  385,  385,  300,  295,  300,  380,  380]
+      },
+      {
+        name: 'table',
+        x_points: [150, 400],
+        y_points: [275, 540]
+      }
+    ]
+  })
+
+  window.room_2 = new Room({
+    name: 'room_2',
+    wrapper_id: 'forest',
+    map_image_id: 'room2_bg',
+    areas: [
+      {
+        name: 'burrow',
+        x_points: [530, 840],
+        y_points: [670, 740]
+      },
+      {
+        name: 'flower',
+        x_points: [950, 1050, 1290, 1400, 1220, 990],
+        y_points: [480, 290,  290,  475,  610,  550]
+      },
+      {
+        name: 'note',
+        x_points: [1185, 1240, 1210, 1150],
+        y_points: [160,  175,  250,  220]
+      },
+      {
+        name: 'shoe',
+        x_points: [70, 220],
+        y_points: [350, 460]
+      },
+      {
+        name: 'sign',
+        x_points: [755, 800, 885, 955, 955, 895],
+        y_points: [520, 420, 360, 360, 440, 580]
+      },
+      {
+        name: 'tree',
+        x_points: [825, 910, 1030, 1120, 985, 985, 920, 920, 840],
+        y_points: [210, 130, 130,  200,  265, 295, 310, 240, 240]
+      }
+    ]
+  })
 })
 
 window.addEventListener('load', function() {
   room_1.resize_clickables()
+  room_2.resize_clickables()
 })
 
 window.addEventListener('resize', function() {
   room_1.resize_clickables()
+  room_2.resize_clickables()
 })
