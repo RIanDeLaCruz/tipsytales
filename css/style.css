@@ -63,23 +63,23 @@ img {
 }
 
 #shelf_overlay {
-  background: url('../images/031618 Room 1 shelf.png') top left;
+  background: url('../images/Room1/031618 Room 1 shelf.png') top left;
 }
 
 #portrait_overlay {
-  background: url('../images/031618 Room 1 portrait.png') top left;
+  background: url('../images/Room1/031618 Room 1 portrait.png') top left;
 }
 
 #chair_overlay {
-  background: url('../images/031618 Room 1chair.png') top left;
+  background: url('../images/Room1/031618 Room 1chair.png') top left;
 }
 
 #frames_overlay {
-  background: url('../images/031618 Room 1 frames.png') top left;
+  background: url('../images/Room1/031618 Room 1 frames.png') top left;
 }
 
 #table_overlay {
-  background: url('../images/031618 Room 1 table.png') top left;
+  background: url('../images/Room1/031618 Room 1 table.png') top left;
 }
 
 #shelf:hover ~ #shelf_overlay,
@@ -103,6 +103,14 @@ img {
 #shoe:hover ~ #shoe_overlay,
 #sign:hover ~ #sign_overlay,
 #tree:hover ~ #tree_overlay {
+  display: block;
+}
+
+#floorsign_overlay { background: url('../images/Room3/031318 Room 3 Sign.png') top left; }
+#door_overlay { background: url('../images/Room3/031318 Room 3 Kapre Door.png') top left; }
+
+#floorsign:hover ~ #floorsign_overlay,
+#door:hover ~ #door_overlay {
   display: block;
 }
 

@@ -225,14 +225,34 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     ]
   })
+
+  window.room_3 = new Room({
+    name: 'room_3',
+    wrapper_id: 'floor',
+    map_image_id: 'room3_bg',
+    areas: [
+      {
+        name: 'door',
+        x_points: [630, 640, 690, 730, 800, 830, 840],
+        y_points: [640, 390, 300, 290, 315, 375, 630]
+      },
+      {
+        name: 'floorsign',
+        x_points: [1090, 1100, 1180, 1300, 1360, 1260, 1290, 1250, 1130],
+        y_points: [390,  300,  230,  230,  360,  415,  490,  490,  470]
+      }
+    ]
+  })
 })
 
 window.addEventListener('load', function() {
   room_1.resize_clickables()
   room_2.resize_clickables()
+  room_3.resize_clickables()
 })
 
 window.addEventListener('resize', function() {
   room_1.resize_clickables()
   room_2.resize_clickables()
+  room_3.resize_clickables()
 })
