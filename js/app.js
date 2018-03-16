@@ -84,7 +84,7 @@ class RoomOne {
         evt.preventDefault()
         console.log(evt.target)
         document.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
-        window.modal.modal_open()
+        window.modal.modal_open(`#${evt.target.getAttribute('name')}_overlay`)
       })
     }
     //let area = document.querySelector('#shelf')
@@ -115,30 +115,39 @@ class RoomOne {
 }
 
 class Modal {
-  constructor(content) {
-    this.modal_content = content
-    this.modal = this._init_modal(content)
+  constructor() {
+    this.modal_content = ''
+    this.modal = this._init_modal()
 
     document.body.appendChild(this.modal)
-    this.modal.addEventListener('click', function() {
-      this.classList.toggle('modal_open')
-      for(let overlay of document.querySelectorAll('.overlay')) {
-        overlay.classList.remove('hide')
+
+    this.modal.addEventListener('click', function(evt) {
+      if(evt.target == this || evt.target.nodeName === 'BUTTON') {
+        this.classList.toggle('modal_open')
+        for(let overlay of document.querySelectorAll('.overlay')) {
+          overlay.classList.remove('hide')
+        }
       }
     })
   }
-  _init_modal(content) {
+  _init_modal() {
     let modal_wrapper = document.createElement('div')
     modal_wrapper.classList.add('modal_wrapper')
 
     let modal = document.createElement('div')
     modal.classList.add('modal_body')
-    modal.innerHTML = content
+
+    let modal_close = document.createElement('button')
+    modal_close.classList.add('modal_close')
+    modal_close.innerHTML = 'x'
+
+    modal_wrapper.appendChild(modal_close)
 
     modal_wrapper.appendChild(modal)
     return modal_wrapper
   }
-  modal_open() {
+  modal_open(id) {
+    this.modal.firstChild.nextElementSibling.innerHTML = document.querySelector(id).dataset.content
     this.modal.classList.toggle('modal_open')
   }
 }
