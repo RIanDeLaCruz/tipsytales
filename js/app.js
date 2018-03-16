@@ -81,37 +81,74 @@ class RoomOne {
     if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
       document.querySelector('.black').classList.toggle('pinhole')
     }
-    let area = document.querySelector('#shelf')
-    area.addEventListener('click', (evt) => {
-      evt.preventDefault()
-      //document.querySelector('[name="room_2"]').scrollIntoView({behavior: 'smooth'})
-      //
-
-      document.querySelector('#bg').classList.toggle('up')
-
-      if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
-        document.querySelector('.black').classList.toggle('block')
-        document.querySelector('#bg').classList.add('mask')
-        document.querySelector('#bg').addEventListener('animationend', function() {
-          document.querySelector('#bg').classList.add('final_mask')
-          document.querySelector('.transition_1').classList.toggle('show')
-        })
-      } else {
-        document.querySelector('.black').classList.toggle('animate')
-        document.querySelector('.black').addEventListener('transitionend', function() {
-          document.querySelector('.transition_1').classList.toggle('show')
-        })
-      }
-      document.querySelector('.transition_1').addEventListener('transitionend', function() {
-        document.querySelector('.transition_1').classList.toggle('show')
-        document.querySelector('[name="room_2"]').scrollIntoView({behavior: 'smooth'})
+    let areas = document.querySelectorAll('area')
+    for(let area of areas) {
+      area.addEventListener('click', function(evt) {
+        evt.preventDefault()
+        console.log(evt.target)
+        document.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
+        window.modal.modal_open()
       })
+    }
+    //let area = document.querySelector('#shelf')
+    //area.addEventListener('click', (evt) => {
+      //evt.preventDefault()
+
+      //document.querySelector('#bg').classList.toggle('up')
+
+      //if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
+        //document.querySelector('.black').classList.toggle('block')
+        //document.querySelector('#bg').classList.add('mask')
+        //document.querySelector('#bg').addEventListener('animationend', function() {
+          //document.querySelector('#bg').classList.add('final_mask')
+          //document.querySelector('.transition_1').classList.toggle('show')
+        //})
+      //} else {
+        //document.querySelector('.black').classList.toggle('animate')
+        //document.querySelector('.black').addEventListener('transitionend', function() {
+          //document.querySelector('.transition_1').classList.toggle('show')
+        //})
+      //}
+      //document.querySelector('.transition_1').addEventListener('transitionend', function() {
+        //document.querySelector('.transition_1').classList.toggle('show')
+        //document.querySelector('[name="room_2"]').scrollIntoView({behavior: 'smooth'})
+      //})
+    //})
+  }
+}
+
+class Modal {
+  constructor(content) {
+    this.modal_content = content
+    this.modal = this._init_modal(content)
+
+    document.body.appendChild(this.modal)
+    this.modal.addEventListener('click', function() {
+      this.classList.toggle('modal_open')
+      for(let overlay of document.querySelectorAll('.overlay')) {
+        overlay.classList.remove('hide')
+      }
     })
+  }
+  _init_modal(content) {
+    let modal_wrapper = document.createElement('div')
+    modal_wrapper.classList.add('modal_wrapper')
+
+    let modal = document.createElement('div')
+    modal.classList.add('modal_body')
+    modal.innerHTML = content
+
+    modal_wrapper.appendChild(modal)
+    return modal_wrapper
+  }
+  modal_open() {
+    this.modal.classList.toggle('modal_open')
   }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
   window.room_1 = new RoomOne()
+  window.modal = new Modal()
 })
 
 window.addEventListener('load', function() {

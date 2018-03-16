@@ -103,6 +103,10 @@ img {
   display: block;
 }
 
+.hide {
+  display: none !important;
+}
+
 .mask {
   animation-duration: 1.6s;
   animation-name: pinhole;
@@ -147,4 +151,31 @@ img {
   opacity: 1;
   transition: opacity 1s ease-in-out;
   z-index: 6;
+}
+
+.modal_wrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal_wrapper.modal_open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_body {
+  width: 50%;
+  height: 75%;
+  background-color: white;
+  box-shadow: 1em 1em 2.4em black;
+  border-radius: 1em;
+  padding: 2.4em;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
