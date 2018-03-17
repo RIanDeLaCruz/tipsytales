@@ -162,8 +162,19 @@ document.addEventListener('DOMContentLoaded', function() {
   window.room_1 = new RoomOne()
   window.modal = new Modal({
     shelf_overlay: `
-      <h1>HELLO WORLD</h1>
-      <p>WTH</p>
+      <h1>Welcome!</h1>
+    `,
+    portrait_overlay: `
+      <h1>About Us</h1>
+    `,
+    frames_overlay: `
+      <h1>Gallery</h1>
+    `,
+    chair_overlay:  `
+      <h1>History</h1>
+    `,
+    table_overlay: `
+      <h1>What is the Show Like?</h1>
     `
   })
   // TO ADD HTML EMBED: add id and HTML content to the configuration object
