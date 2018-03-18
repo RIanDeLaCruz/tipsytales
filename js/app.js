@@ -140,7 +140,7 @@ class Modal {
 
     let modal_close = document.createElement('button')
     modal_close.classList.add('modal_close')
-    modal_close.innerHTML = 'x'
+    modal_close.innerHTML = '<i class="fas fa-times"></i>'
 
     modal_wrapper.appendChild(modal_close)
 

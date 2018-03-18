@@ -155,7 +155,7 @@ img {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.75);
 }
 
 .modal_wrapper.modal_open {
@@ -169,20 +169,24 @@ img {
   height: 75%;
   background-color: white;
   box-shadow: 1em 1em 2.4em black;
-  border-radius: 1em;
-  padding: 2.4em;
+  border-radius: 0;
+  padding: 1.6em 2.4em;
   overflow-x: hidden;
 }
 
 .modal_close {
   display: block;
   position: absolute;
-  top: 5%;
-  left: 75%;
+  color: #fff;
+  top: 50px;
+  right: 50px;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
   border: none;
-  background-color: gray;
-  font-size: 1em;
+  background: none;
+  font-size: 1.7em;
+}
+
+.modal_close:hover {
+  cursor: pointer;
 }
