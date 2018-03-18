@@ -166,15 +166,18 @@ document.addEventListener('DOMContentLoaded', function() {
     `,
     portrait_overlay: `
       <h1>About Us</h1>
+      <p>Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show.</p>
     `,
     frames_overlay: `
       <h1>Gallery</h1>
     `,
     chair_overlay:  `
       <h1>History</h1>
+      <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
     `,
     table_overlay: `
-      <h1>What is the Show Like?</h1>
+      <h1>What's Our Show Like</h1>
+      <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own.</p>
     `
   })
   // TO ADD HTML EMBED: add id and HTML content to the configuration object

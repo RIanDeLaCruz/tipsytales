@@ -166,11 +166,11 @@ img {
 
 .modal_body {
   width: 50%;
-  height: 75%;
+  min-height: 40%;
   background-color: white;
   box-shadow: 1em 1em 2.4em black;
   border-radius: 0;
-  padding: 1.6em 2.4em;
+  padding: 1em 2.4em;
   overflow-x: hidden;
 }
 
@@ -189,4 +189,24 @@ img {
 
 .modal_close:hover {
   cursor: pointer;
+}
+
+@font-face {
+  font-family: 'Belinda';
+  src: url('./fonts/belinda.otf');
+}
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+h1 {
+  font-family: 'Belinda', sans-serif;
+  font-size: 3.5em;
+  text-align: center;
+}
+h2, h3, h4, h5, h6, p {
+  font-family: 'Lato', sans-serif;
+}
+p {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  text-align: center;
 }
