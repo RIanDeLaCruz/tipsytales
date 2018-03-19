@@ -177,7 +177,8 @@ class Modal {
         indicatorContainer: 'ol',
         activeIndicatorClass: 'active',
         thumbnailProperty: 'thumbnail',
-        thumbnailIndicators: true
+        thumbnailIndicators: true,
+        slideClass: `slide ${this.config[id].slideClasses.join(' ')}`
       })
     } else {
       this.modal.firstChild.nextElementSibling.innerHTML = content
@@ -216,6 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own.</p>
     `,
     frames_overlay: {
+      slideClasses: ['class', 'slideImage'],
       links: [
         {
             title: 'Image 1',
