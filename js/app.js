@@ -171,6 +171,7 @@ class Modal {
       this.modal.firstChild.nextElementSibling.innerHTML = this.config[id]
       this.modal.firstChild.nextElementSibling.innerHTML = content
       this.is_open = true
+      this.modal.classList.toggle('modal_open')
     } else if( content == 'gallery') {
       blueimp.Gallery(this.config[id].links, {
         index: 0,
