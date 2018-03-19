@@ -119,18 +119,28 @@ class Modal {
     this.config = config
     this.modal_content = ''
     this.modal = this._init_modal()
+    this.is_open = false
 
     document.body.appendChild(this.modal)
 
     this.modal.addEventListener('click', function(evt) {
-      if(evt.target == this || evt.target.nodeName === 'BUTTON') {
+      if(evt.target == this) {
+        this.is_open = !this.is_open
         this.classList.toggle('modal_open')
         for(let overlay of document.querySelectorAll('.overlay')) {
           overlay.classList.remove('hide')
         }
       }
     })
-    this.modal.addEventListener('key')
+    document.addEventListener('keypress', (evt) => {
+      if(evt.key == 'Escape' && this.is_open) {
+        this.is_open = !this.is_open
+        this.modal.classList.toggle('modal_open')
+        for(let overlay of document.querySelectorAll('.overlay')) {
+          overlay.classList.remove('hide')
+        }
+      }
+    })
   }
   _init_modal() {
     let modal_wrapper = document.createElement('div')
@@ -142,6 +152,13 @@ class Modal {
     let modal_close = document.createElement('button')
     modal_close.classList.add('modal_close')
     modal_close.innerHTML = '<i class="fas fa-times"></i>'
+    modal_close.addEventListener('click', (evt) => {
+      this.is_open = !this.is_open
+      this.modal.classList.toggle('modal_open')
+      for(let overlay of document.querySelectorAll('.overlay')) {
+        overlay.classList.remove('hide')
+      }
+    })
 
     modal_wrapper.appendChild(modal_close)
 
@@ -155,6 +172,7 @@ class Modal {
     } else {
       this.modal.firstChild.nextElementSibling.innerHTML = content
     }
+    this.is_open = true
     this.modal.classList.toggle('modal_open')
   }
   modal_note() {
@@ -162,6 +180,7 @@ class Modal {
     <h1>This site works best in landscape</h1>
     <h3>Please rotate your phone for the best experience</h3>
     `
+    this.is_open = true
     this.modal.classList.toggle('modal_open')
   }
 }
