@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `,
     portrait_overlay: `
       <h1>About Us</h1>
+      <img src="./images/tt-logo.png" class="text-center tt-logo"/>
       <p>Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show.</p>
     `,
     chair_overlay:  `
@@ -217,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
       <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own.</p>
     `,
     frames_overlay: {
-      slideClasses: ['class', 'slideImage'],
+      slideClasses: ['notooltip', 'notooltip'],
       links: [
         {
             title: 'Image 1',
