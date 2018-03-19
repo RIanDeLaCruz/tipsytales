@@ -11,7 +11,6 @@
     <meta property="og:image"              content="./images/03918 og image.jpg" />
     <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
     <link href="./css/jquery-ui.css" rel="stylesheet">
-    <script src="./css/jquery-ui.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115928512-1"></script>
@@ -47,7 +46,8 @@
                 id="shelf"
                 href="facebook.com"
                 alt=""
-                name="shelf"/>
+                name="shelf"
+                title="test"/>
           <area shape="rect"
                 id="portrait"
                 href="facebook.com"
@@ -84,5 +84,20 @@
       <!--<img src="./images/030518 Room 2.jpg" alt="">-->
     <!--</div>-->
     <script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
+    <script
+      src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"
+      integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E="
+      crossorigin="anonymous">
+    </script>
+    <script>
+    $( function() {
+      $( document ).tooltip();
+    } );
+    </script>
   </body>
 </html>

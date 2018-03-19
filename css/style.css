@@ -240,3 +240,8 @@ p {
   line-height: 1.4em;
   text-align: center;
 }
+
+label {
+  display: inline-block;
+  width: 5em;
+}
