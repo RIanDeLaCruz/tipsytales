@@ -83,20 +83,8 @@ class RoomOne {
       area.addEventListener('click', function(evt) {
         evt.preventDefault()
         console.log(evt.target)
-        if(evt.target.getAttribute('name') == 'frames') {
-          console.log('here')
-          console.log(document.querySelector('#links'))
-          blueimp.Gallery(document.querySelectorAll('.image_links'), {
-            index: 0,
-            indicatorContainer: 'ol',
-            activeIndicatorClass: 'active',
-            thumbnailProperty: 'thumbnail',
-            thumbnailIndicators: true
-          })
-        } else {
-          document.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
-          window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
-        }
+        document.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
+        window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
       })
     }
     //let area = document.querySelector('#shelf')
@@ -181,11 +169,21 @@ class Modal {
     let content = document.querySelector(`#${ id }`).dataset.content
     if(content === 'config') {
       this.modal.firstChild.nextElementSibling.innerHTML = this.config[id]
+      this.modal.firstChild.nextElementSibling.innerHTML = content
+      this.is_open = true
+    } else if( content == 'gallery') {
+      blueimp.Gallery(this.config[id].links, {
+        index: 0,
+        indicatorContainer: 'ol',
+        activeIndicatorClass: 'active',
+        thumbnailProperty: 'thumbnail',
+        thumbnailIndicators: true
+      })
     } else {
       this.modal.firstChild.nextElementSibling.innerHTML = content
+      this.is_open = true
+      this.modal.classList.toggle('modal_open')
     }
-    this.is_open = true
-    this.modal.classList.toggle('modal_open')
   }
   modal_note() {
     this.modal.firstChild.nextElementSibling.innerHTML = `
@@ -207,9 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
       <h1>About Us</h1>
       <p>Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show.</p>
     `,
-    frames_overlay: `
-      <h1>Gallery</h1>
-    `,
     chair_overlay:  `
       <h1>History</h1>
       <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
@@ -217,7 +212,23 @@ document.addEventListener('DOMContentLoaded', function() {
     table_overlay: `
       <h1>What Our Show's Like</h1>
       <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own.</p>
-    `
+    `,
+    frames_overlay: {
+      links: [
+        {
+            title: 'Room 1',
+            href: './images/030818 Room 1.jpg',
+            type: 'image/jpeg',
+            thumbnail: './images/030818 Room 1.jpg'
+        },
+        {
+            title: 'Room 2',
+            href: './images/030518 Room 2.jpg',
+            type: 'image/jpeg',
+            thumbnail: './images/030518 Room 2.jpg'
+        }
+      ]
+    },
   })
   // TO ADD HTML EMBED: add id and HTML content to the configuration object
   // IN the HTML, put 'config' in the data-content attribute
