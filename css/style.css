@@ -255,6 +255,11 @@ p {
   margin-bottom: 2em;
 }
 
+a, a:active, a:visited, a:focus, area, area:active, area:visited, area:focus {
+  outline: none;
+  border: none;
+}
+
 .text-center {
   text-align: center;
 }
@@ -275,4 +280,10 @@ label {
   border: 1px solid rgba(47,11,5,1);
   background: rgba(47,11,5,1);
   color: #fff;
+}
+
+.tt-logo {
+  width: 35%;
+  text-align: center;
+  margin-left: 32.5%;
 }
