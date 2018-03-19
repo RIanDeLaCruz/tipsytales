@@ -246,10 +246,15 @@ h1 {
 h2, h3, h4, h5, h6, p {
   font-family: 'Lato', sans-serif;
 }
+
 p {
   color: #333;
   font-size: 1.2em;
   line-height: 1.4em;
+  text-align: center;
+}
+
+.text-center {
   text-align: center;
 }
 

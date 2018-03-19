@@ -187,8 +187,8 @@ class Modal {
   }
   modal_note() {
     this.modal.firstChild.nextElementSibling.innerHTML = `
-    <h1>This site works best in landscape</h1>
-    <h3>Please rotate your phone for the best experience</h3>
+    <h2 class="text-center">This site works best in landscape</h2>
+    <p>Please rotate your phone for the best experience.</p>
     `
     this.is_open = true
     this.modal.classList.toggle('modal_open')
