@@ -71,6 +71,17 @@ nav a svg:visited {
   z-index: 5;
 }
 
+.blueimp-gallery>.indicator>li {
+  width: calc(100vw * 0.1);
+  height: calc(100vh * 0.1);
+  background-size: contain;
+}
+
+.blueimp-gallery>.indicator>li:hover:after {
+  opacity: 0;
+  visibility: none;
+}
+
 area {
   display: block;
 }
@@ -250,6 +261,6 @@ label {
 .ui-tooltip.ui-widget-content {
   font-family: 'Lato', sans-serif;
   border: 1px solid rgba(47,11,5,1);
-	background: rgba(47,11,5,1);
-	color: #fff;
+  background: rgba(47,11,5,1);
+  color: #fff;
 }

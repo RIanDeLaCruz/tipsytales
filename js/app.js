@@ -83,8 +83,20 @@ class RoomOne {
       area.addEventListener('click', function(evt) {
         evt.preventDefault()
         console.log(evt.target)
-        document.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
-        window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
+        if(evt.target.getAttribute('name') == 'frames') {
+          console.log('here')
+          console.log(document.querySelector('#links'))
+          blueimp.Gallery(document.querySelectorAll('.image_links'), {
+            index: 0,
+            indicatorContainer: 'ol',
+            activeIndicatorClass: 'active',
+            thumbnailProperty: 'thumbnail',
+            thumbnailIndicators: true
+          })
+        } else {
+          document.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
+          window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
+        }
       })
     }
     //let area = document.querySelector('#shelf')
