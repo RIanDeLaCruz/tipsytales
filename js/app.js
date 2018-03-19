@@ -200,6 +200,8 @@ document.addEventListener('DOMContentLoaded', function() {
   window.modal = new Modal({
     shelf_overlay: `
       <h1>Welcome!</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis urna ac neque ornare scelerisque eget a risus. Mauris semper, neque vel gravida placerat, tellus tellus mollis magna, quis bibendum augue est luctus ligula. In ullamcorper feugiat massa ut pulvinar. Suspendisse at tristique dolor, pretium iaculis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis sem, et commodo urna. Quisque tincidunt leo eu purus lacinia pharetra.</p>
+      <p class="text-help text-align">Explore this room to read more about Tipsy Tales.</p>
     `,
     portrait_overlay: `
       <h1>About Us</h1>
