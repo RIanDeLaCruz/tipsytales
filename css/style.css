@@ -4,22 +4,185 @@ html, body {
   padding: 0;
 }
 
-/*.room {*/
-  /*position: relative;*/
-/*}*/
+map {
+  /*z-index: -1;*/
+}
+
+#sala {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.black {
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 1s ease-in-out 0.4s;
+  visibility: hidden;
+}
+
+.black.animate {
+  visibility: visible;
+  opacity: 1;
+  z-index: 5;
+}
+.black.pinhole {
+  transition: all 1s ease-in-out;
+}
+.black.block {
+  visibility: visible;
+  z-index: 5;
+}
+
+area {
+  display: block;
+}
 
 img {
   width: 100%;
 }
 
-#shelf {
+.overlay {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
-  z-index: 5;
-  filter: sepia(50%);
+  left: 0;
   display: none;
+  pointer-events: none;
+  z-index: 1;
 }
 
-/*#shelf:hover {*/
-  /*filter: sepia(50%);*/
-/*}*/
+#shelf_overlay {
+  background: url('../images/031618 Room 1 shelf.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#portrait_overlay {
+  background: url('../images/031618 Room 1 portrait.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#chair_overlay {
+  background: url('../images/031618 Room 1chair.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#frames_overlay {
+  background: url('../images/031618 Room 1 frames.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#table_overlay {
+  background: url('../images/031618 Room 1 table.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#shelf:hover ~ #shelf_overlay,
+#portrait:hover ~ #portrait_overlay,
+#chair:hover ~ #chair_overlay,
+#frames:hover ~ #frames_overlay,
+#table:hover ~ #table_overlay {
+  display: block;
+}
+
+.hide {
+  display: none !important;
+}
+
+.mask {
+  animation-duration: 1.6s;
+  animation-name: pinhole;
+  animation-iteration-count: 1;
+}
+
+@keyframes pinhole {
+  0% {
+    mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 100%);
+  }
+  50% {
+    mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 50%);
+  }
+  100% {
+    mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%);
+  }
+}
+.final_mask {
+    mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%);
+}
+
+#bg {
+  will-change: mask;
+  transition: transform 1s ease-in-out;
+}
+
+.up {
+  transform: translateY(-5%);
+}
+
+.transition_1{
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: none;
+  opacity: 0;
+  z-index: -1;
+}
+
+.transition_1.show {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+  z-index: 6;
+}
+
+.modal_wrapper {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal_wrapper.modal_open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal_body {
+  width: 50%;
+  height: 75%;
+  background-color: white;
+  box-shadow: 1em 1em 2.4em black;
+  border-radius: 1em;
+  padding: 2.4em;
+  overflow-x: hidden;
+}
+
+.modal_close {
+  display: block;
+  position: absolute;
+  top: 5%;
+  left: 75%;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  background-color: gray;
+  font-size: 1em;
+}

@@ -7,56 +7,48 @@
     <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
   </head>
   <body>
-    <map name="room_1">
-      <area shape="rect" coords="500,60,900,570" href="facebook.com" alt=""
-        name="book_shelf">
-    </map>
-    <!--<div class="room">-->
-    <img src="./images/bookshelf+shadow.png" alt="" id="shelf">
-    <img src="./images/030818 Room 1.jpg" alt="" usemap="#room_1">
+    <div class="room" id="sala">
+      <map name="room_1">
+          <area shape="rect"
+                id="shelf"
+                href="facebook.com"
+                alt=""
+                name="shelf"/>
+          <area shape="rect"
+                id="portrait"
+                href="facebook.com"
+                alt=""
+                name="portrait"/>
+          <area shape="poly"
+                id="chair"
+                href="facebook.com"
+                alt=""
+                name="chair"/>
+          <area shape="poly"
+                id="frames"
+                href="facebook.com"
+                alt=""
+                name="frames"/>
+          <area shape="rect"
+                id="table"
+                href="facebook.com"
+                alt=""
+                name="table"/>
+          <span id="shelf_overlay" class="overlay" data-content="config"></span>
+          <span id="portrait_overlay" class="overlay" data-content="PORTRAIT"></span>
+          <span id="frames_overlay" class="overlay" data-content="FRAMES"></span>
+          <span id="chair_overlay" class="overlay" data-content="CHAIR"></span>
+          <span id="table_overlay" class="overlay" data-content="TABLE"></span>
+      </map>
+      <div class="black"></div>
+      <img src="./images/031618 Room1 Colored.jpg" alt="" usemap="#room_1" id="bg">
+      <img src="./images/022218 Transition 1.jpg" alt="" class="transition_1">
+    </div>
+    <!--<div class="room" id="next_room">-->
+      <!--<map name="room_2">-->
+      <!--</map>-->
+      <!--<img src="./images/030518 Room 2.jpg" alt="">-->
     <!--</div>-->
     <script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
-    <script type="text/javascript" charset="utf-8">
-      var shelf = document.querySelector('[name="book_shelf"]')
-      shelf.addEventListener('mouseenter', function(evt) {
-        let coords = evt.target.coords.split(',')
-        let [ x1,y1,x2,y2 ] = [ ...coords ]
-
-        //if( x1 <= evt.clientX &&
-        //    evt.clientX >= x2 &&
-        //    y1 <= evt.clientY &&
-        //    evt.clientY >= y2
-        //) {
-          let stand = document.querySelector('#shelf')
-          stand.style.display = 'block';
-        //}
-      })
-      shelf.addEventListener('mousemove', function(evt) {
-        let coords = evt.target.coords.split(',')
-        let [ x1,y1,x2,y2 ] = [ ...coords ]
-        if( x1 <= evt.clientX &&
-            evt.clientX >= x2 &&
-            y1 <= evt.clientY &&
-            evt.clientY >= y2
-        ) {
-          console.log('YE')
-          let stand = document.querySelector('#shelf')
-          stand.style.display = 'block';
-        }
-      })
-      shelf.addEventListener('mouseout', function(evt) {
-        let coords = evt.target.coords.split(',')
-        let [ x1,y1,x2,y2 ] = [ ...coords ]
-        //if( x1 > evt.clientX &&
-        //    evt.clientX < x2 &&
-        //    y1 > evt.clientY &&
-        //    evt.clientY < y2
-        //) {
-          console.log('outside')
-          let stand = document.querySelector('#shelf')
-          stand.style.display = 'none';
-        //}
-      }, {passive: true})
-    </script>
   </body>
 </html>
