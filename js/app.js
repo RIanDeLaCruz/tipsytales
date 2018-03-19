@@ -204,9 +204,12 @@ document.addEventListener('DOMContentLoaded', function() {
   window.modal = new Modal({
     shelf_overlay: `
       <h1>Welcome!</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis urna ac neque ornare scelerisque eget a risus. Mauris semper, neque vel gravida placerat, tellus tellus mollis magna, quis bibendum augue est luctus ligula. In ullamcorper feugiat massa ut pulvinar. Suspendisse at tristique dolor, pretium iaculis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis sem, et commodo urna. Quisque tincidunt leo eu purus lacinia pharetra.</p>
+      <p class="text-help text-align">Explore this room to read more about Tipsy Tales.</p>
     `,
     portrait_overlay: `
       <h1>About Us</h1>
+      <img src="./images/tt-logo.png" class="text-center tt-logo"/>
       <p>Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show.</p>
     `,
     chair_overlay:  `
@@ -218,19 +221,19 @@ document.addEventListener('DOMContentLoaded', function() {
       <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own.</p>
     `,
     frames_overlay: {
-      slideClasses: ['class', 'slideImage'],
+      slideClasses: ['notooltip', 'notooltip'],
       links: [
         {
-            title: 'Room 1',
-            href: './images/030818 Room 1.jpg',
+            title: 'Image 1',
+            href: 'http://via.placeholder.com/1440x800',
             type: 'image/jpeg',
-            thumbnail: './images/030818 Room 1.jpg'
+            thumbnail: 'http://via.placeholder.com/1440x800'
         },
         {
-            title: 'Room 2',
-            href: './images/030518 Room 2.jpg',
+            title: 'Image 2',
+            href: 'http://via.placeholder.com/1440x800',
             type: 'image/jpeg',
-            thumbnail: './images/030518 Room 2.jpg'
+            thumbnail: 'http://via.placeholder.com/1440x800'
         }
       ]
     },
