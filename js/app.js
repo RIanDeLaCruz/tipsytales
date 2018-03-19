@@ -236,6 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 window.addEventListener('load', function() {
+  document.querySelector('#preloader').classList.toggle('open_loader')
   if(window.innerWidth < window.innerHeight) {
     modal.modal_note()
   }
