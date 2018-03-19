@@ -3,42 +3,85 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <title>Tipsy Tails</title>
+    <title>Tipsy Tales</title>
+    <meta property="og:url"                content="http:/www.tipsytales.ph" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="Tipsy Tales" />
+    <meta property="og:description"        content="Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show." />
+    <meta property="og:image"              content="./images/03918 og image.jpg" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="./css/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/blueimp-gallery.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./css/preloader.css" type="text/css" media="all" />
     <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-115928512-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-115928512-1');
+    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KT2M9ZJ');</script>
+    <!-- End Google Tag Manager -->
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT2M9ZJ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <nav>
+      <span style="display: float; float: left;">Tipsy Tales</span>
+      <a href="https://www.facebook.com/tipsytales.ph" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://twitter.com/TipsyTalesPH" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://www.instagram.com/tipsytales.ph/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=tipsytalesph@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+    </nav>
     <div class="room" id="sala">
       <map name="room_1">
           <area shape="rect"
                 id="shelf"
                 href="facebook.com"
                 alt=""
-                name="shelf"/>
+                name="shelf"
+                title="Hey! Click me!"/>
           <area shape="rect"
                 id="portrait"
                 href="facebook.com"
                 alt=""
-                name="portrait"/>
+                name="portrait"
+                title="About Us"/>
           <area shape="poly"
                 id="chair"
                 href="facebook.com"
                 alt=""
-                name="chair"/>
+                name="chair"
+                title="History"/>
           <area shape="poly"
                 id="frames"
                 href="facebook.com"
                 alt=""
-                name="frames"/>
+                name="frames"
+                title="Gallery"/>
           <area shape="rect"
                 id="table"
                 href="facebook.com"
                 alt=""
-                name="table"/>
+                name="table"
+                title="What Our Show's Like"/>
           <span id="shelf_overlay" class="overlay" data-content="config"></span>
-          <span id="portrait_overlay" class="overlay" data-content="PORTRAIT"></span>
-          <span id="frames_overlay" class="overlay" data-content="FRAMES"></span>
-          <span id="chair_overlay" class="overlay" data-content="CHAIR"></span>
-          <span id="table_overlay" class="overlay" data-content="TABLE"></span>
+          <span id="portrait_overlay" class="overlay" data-content="config"></span>
+          <span id="frames_overlay" class="overlay" data-content="gallery"></span>
+          <span id="chair_overlay" class="overlay" data-content="config"></span>
+          <span id="table_overlay" class="overlay" data-content="config"></span>
       </map>
       <div class="black"></div>
       <img src="./images/Room1/031618 Room1 Colored.jpg" alt="" usemap="#room_1" id="room1_bg">
@@ -106,6 +149,20 @@
       <div class="black"></div>
       <img src="./images/Room3/031318 Room 3.jpg" alt="" usemap="#room_3" id="room3_bg">
     </div>
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+      <div class="slides"></div>
+      <h3 class="title"></h3>
+      <a class="prev">‹</a>
+      <a class="next">›</a>
+      <a class="close">×</a>
+      <a class="play-pause"></a>
+      <ol class="indicator"></ol>
+    </div>
+    <div id="preloader" class="open_loader">
+      <img src="./images/tipsylogo.png" alt="">
+    </div>
+    <script src="https://unpkg.com/tippy.js@2.3.0/dist/tippy.all.min.js"></script>
+    <script src="./js/blueimp-gallery.min.js"></script>
     <script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>
