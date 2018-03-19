@@ -11,7 +11,7 @@ map {
 nav {
   box-sizing: border-box;
   display: block;
-  position: relative;
+  position: fixed;
   color: #fff;
   font-family: 'Lato', sans-serif;
   text-align: right;
