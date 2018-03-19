@@ -98,7 +98,7 @@ class Room {
   resize_clickables() {
     let overlays = this.root.querySelectorAll('.overlay')
     for(let overlay of overlays) {
-      overlay.style.top = this.root.querySelector(`#${this.map_image_id}`).y+'px'
+      overlay.style.top = (this.root.querySelector(`#${this.map_image_id}`).y+1)+'px'
       overlay.style.height = this.root.querySelector(`#${this.map_image_id}`).height+'px'
     }
 
