@@ -44,21 +44,21 @@ class RoomOne {
       [560, 1010],
       [60,  650]
     )
-    this.ClickMap.set('#shelf', {...shelf_coordinates})
+    this.ClickMap.set('#shelf', {x: shelf_coordinates.x, y: shelf_coordinates.y})
     let portrait_coordinates = coordinate_init([1070, 1425], [0, 190])
-    this.ClickMap.set('#portrait', {...portrait_coordinates})
+    this.ClickMap.set('#portrait', {x: portrait_coordinates.x, y: portrait_coordinates.y})
     let chair_coordinates = coordinate_init(
       [1010, 1150, 1210, 1360, 1388, 1370, 1270, 1075, 870, 870, 1010],
       [475,  475,  300,  295,  300,  680,  795,  795,  740, 680, 650]
     )
-    this.ClickMap.set('#chair', {...chair_coordinates})
+    this.ClickMap.set('#chair', {x: chair_coordinates.x, y: chair_coordinates.y})
     let frames_coordinates = coordinate_init(
       [1110, 1425, 1425, 1388, 1388, 1360, 1210, 1180, 1110],
       [275,  260,  385,  385,  300,  295,  300,  380,  380]
     )
-    this.ClickMap.set('#frames', {...frames_coordinates})
+    this.ClickMap.set('#frames', {x: frames_coordinates.x, y: frames_coordinates.y})
     let table_coordinates = coordinate_init([150, 400], [275, 540])
-    this.ClickMap.set('#table', {...table_coordinates})
+    this.ClickMap.set('#table', {x: table_coordinates.x, y: table_coordinates.y})
     this._attachListeners()
 
   }
