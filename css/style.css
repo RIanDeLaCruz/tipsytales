@@ -214,6 +214,14 @@ img {
   overflow-x: hidden;
 }
 
+@media(max-width: 768px) {
+  .modal_body {
+    height: 80%;
+    width: 50%;
+    overflow-y: scroll;
+  }
+}
+
 .modal_close {
   display: block;
   position: absolute;
