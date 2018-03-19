@@ -80,6 +80,9 @@ class RoomOne {
     }
     let areas = document.querySelectorAll('area')
     for(let area of areas) {
+      tippy(area, {
+        followCursor: true
+      })
       area.addEventListener('click', function(evt) {
         evt.preventDefault()
         console.log(evt.target)
