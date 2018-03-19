@@ -82,7 +82,8 @@ class RoomOne {
     for(let area of areas) {
       tippy(area, {
         followCursor: true,
-        appendTo: this.map_object
+        appendTo: this.map_object,
+        touchHold: true
       })
       area.addEventListener('click', function(evt) {
         evt.preventDefault()
