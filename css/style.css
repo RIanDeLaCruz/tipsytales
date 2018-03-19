@@ -8,6 +8,36 @@ map {
   /*z-index: -1;*/
 }
 
+nav {
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  text-align: right;
+  height: 35px;
+  width: 100%;
+  padding:8px 16px;
+  background: rgba(47,11,5,1);
+  z-index: 20;
+  -webkit-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.6);
+  -moz-box-shadow:    1px 1px 5px 1px rgba(0,0,0,0.6);
+  box-shadow:         1px 1px 5px 1px rgba(0,0,0,0.6);
+}
+
+nav svg {
+  margin-left: 5px;
+}
+
+nav a svg {
+  color: #fff;
+}
+
+nav a svg:hover,
+nav a svg:visited {
+  opacity: 0.8;
+}
+
 #sala {
   background-color: black;
   display: flex;
@@ -61,7 +91,7 @@ img {
 }
 
 #shelf_overlay {
-  background: url('../images/031618 Room 1 shelf.png') top left;
+  background: url('../images/031918 Room1 Shelf.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -155,7 +185,7 @@ img {
   left: 0;
   height: 100%;
   width: 100%;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.75);
 }
 
 .modal_wrapper.modal_open {
@@ -165,24 +195,48 @@ img {
 }
 
 .modal_body {
-  width: 50%;
-  height: 75%;
+  width: 40%;
   background-color: white;
   box-shadow: 1em 1em 2.4em black;
-  border-radius: 1em;
-  padding: 2.4em;
+  border-radius: 0;
+  padding: 1em 2.4em 2em 2.4em;
   overflow-x: hidden;
 }
 
 .modal_close {
   display: block;
   position: absolute;
-  top: 5%;
-  left: 75%;
+  color: #fff;
+  top: 50px;
+  right: 50px;
   width: 50px;
   height: 50px;
-  border-radius: 50%;
   border: none;
-  background-color: gray;
-  font-size: 1em;
+  background: none;
+  font-size: 1.7em;
+}
+
+.modal_close:hover {
+  cursor: pointer;
+}
+
+@font-face {
+  font-family: 'Belinda';
+  src: url('./fonts/belinda.otf');
+}
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+h1 {
+  color: rgba(47,11,5,1);
+  font-family: 'Belinda', sans-serif;
+  font-size: 3.5em;
+  text-align: center;
+}
+h2, h3, h4, h5, h6, p {
+  font-family: 'Lato', sans-serif;
+}
+p {
+  font-size: 1.2em;
+  line-height: 1.4em;
+  text-align: center;
 }
