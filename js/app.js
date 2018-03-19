@@ -216,16 +216,16 @@ document.addEventListener('DOMContentLoaded', function() {
     frames_overlay: {
       links: [
         {
-            title: 'Room 1',
-            href: './images/030818 Room 1.jpg',
+            title: 'Image 1',
+            href: 'http://via.placeholder.com/1440x800',
             type: 'image/jpeg',
-            thumbnail: './images/030818 Room 1.jpg'
+            thumbnail: 'http://via.placeholder.com/1440x800'
         },
         {
-            title: 'Room 2',
-            href: './images/030518 Room 2.jpg',
+            title: 'Image 2',
+            href: 'http://via.placeholder.com/1440x800',
             type: 'image/jpeg',
-            thumbnail: './images/030518 Room 2.jpg'
+            thumbnail: 'http://via.placeholder.com/1440x800'
         }
       ]
     },
