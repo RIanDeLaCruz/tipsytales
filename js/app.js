@@ -135,8 +135,8 @@ class Modal {
         }
       }
     })
-    document.addEventListener('keypress', (evt) => {
-      if(evt.key == 'Escape' && this.is_open) {
+    document.addEventListener('keyup', (evt) => {
+      if(evt.keyCode == 27 && this.is_open) {
         this.is_open = !this.is_open
         this.modal.classList.toggle('modal_open')
         for(let overlay of document.querySelectorAll('.overlay')) {
