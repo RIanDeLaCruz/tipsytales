@@ -275,10 +275,10 @@ label {
   width: 5em;
 }
 
-.ui-tooltip.ui-widget-content {
+.tippy-tooltip {
   font-family: 'Lato', sans-serif;
-  border: 1px solid rgba(47,11,5,1);
-  background: rgba(47,11,5,1);
+  /* border: 1px solid rgba(47,11,5,1); */
+  background-color: rgba(47,11,5,1);
   color: #fff;
 }
 
