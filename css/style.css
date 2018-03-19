@@ -236,6 +236,7 @@ h2, h3, h4, h5, h6, p {
   font-family: 'Lato', sans-serif;
 }
 p {
+  color: #333;
   font-size: 1.2em;
   line-height: 1.4em;
   text-align: center;
@@ -244,4 +245,11 @@ p {
 label {
   display: inline-block;
   width: 5em;
+}
+
+.ui-tooltip.ui-widget-content {
+  font-family: 'Lato', sans-serif;
+  border: 1px solid rgba(47,11,5,1);
+	background: rgba(47,11,5,1);
+	color: #fff;
 }
