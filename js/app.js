@@ -130,6 +130,7 @@ class Modal {
         }
       }
     })
+    this.modal.addEventListener('key')
   }
   _init_modal() {
     let modal_wrapper = document.createElement('div')
@@ -154,6 +155,13 @@ class Modal {
     } else {
       this.modal.firstChild.nextElementSibling.innerHTML = content
     }
+    this.modal.classList.toggle('modal_open')
+  }
+  modal_note() {
+    this.modal.firstChild.nextElementSibling.innerHTML = `
+    <h1>This site works best in landscape</h1>
+    <h3>Please rotate your phone for the best experience</h3>
+    `
     this.modal.classList.toggle('modal_open')
   }
 }
@@ -185,9 +193,15 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 window.addEventListener('load', function() {
+  if(window.innerWidth < window.innerHeight) {
+    modal.modal_note()
+  }
   room_1.resize_clickables()
 })
 
 window.addEventListener('resize', function() {
+  if(window.innerWidth < window.innerHeight) {
+    modal.modal_note()
+  }
   room_1.resize_clickables()
 })
