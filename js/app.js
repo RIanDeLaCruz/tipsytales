@@ -44,21 +44,21 @@ class RoomOne {
       [560, 1010],
       [60,  650]
     )
-    this.ClickMap.set('#shelf', {...shelf_coordinates})
+    this.ClickMap.set('#shelf', {x: shelf_coordinates.x, y: shelf_coordinates.y})
     let portrait_coordinates = coordinate_init([1070, 1425], [0, 190])
-    this.ClickMap.set('#portrait', {...portrait_coordinates})
+    this.ClickMap.set('#portrait', {x: portrait_coordinates.x, y: portrait_coordinates.y})
     let chair_coordinates = coordinate_init(
       [1010, 1150, 1210, 1360, 1388, 1370, 1270, 1075, 870, 870, 1010],
       [475,  475,  300,  295,  300,  680,  795,  795,  740, 680, 650]
     )
-    this.ClickMap.set('#chair', {...chair_coordinates})
+    this.ClickMap.set('#chair', {x: chair_coordinates.x, y: chair_coordinates.y})
     let frames_coordinates = coordinate_init(
       [1110, 1425, 1425, 1388, 1388, 1360, 1210, 1180, 1110],
       [275,  260,  385,  385,  300,  295,  300,  380,  380]
     )
-    this.ClickMap.set('#frames', {...frames_coordinates})
+    this.ClickMap.set('#frames', {x: frames_coordinates.x, y: frames_coordinates.y})
     let table_coordinates = coordinate_init([150, 400], [275, 540])
-    this.ClickMap.set('#table', {...table_coordinates})
+    this.ClickMap.set('#table', {x: table_coordinates.x, y: table_coordinates.y})
     this._attachListeners()
 
   }
@@ -80,6 +80,10 @@ class RoomOne {
     }
     let areas = document.querySelectorAll('area')
     for(let area of areas) {
+      tippy(area, {
+        followCursor: true,
+        appendTo: this.map_object
+      })
       area.addEventListener('click', function(evt) {
         evt.preventDefault()
         console.log(evt.target)
@@ -119,12 +123,23 @@ class Modal {
     this.config = config
     this.modal_content = ''
     this.modal = this._init_modal()
+    this.is_open = false
 
     document.body.appendChild(this.modal)
 
     this.modal.addEventListener('click', function(evt) {
-      if(evt.target == this || evt.target.nodeName === 'BUTTON') {
+      if(evt.target == this) {
+        this.is_open = !this.is_open
         this.classList.toggle('modal_open')
+        for(let overlay of document.querySelectorAll('.overlay')) {
+          overlay.classList.remove('hide')
+        }
+      }
+    })
+    document.addEventListener('keyup', (evt) => {
+      if(evt.keyCode == 27 && this.is_open) {
+        this.is_open = !this.is_open
+        this.modal.classList.toggle('modal_open')
         for(let overlay of document.querySelectorAll('.overlay')) {
           overlay.classList.remove('hide')
         }
@@ -140,7 +155,14 @@ class Modal {
 
     let modal_close = document.createElement('button')
     modal_close.classList.add('modal_close')
-    modal_close.innerHTML = 'x'
+    modal_close.innerHTML = '<i class="fas fa-times"></i>'
+    modal_close.addEventListener('click', (evt) => {
+      this.is_open = !this.is_open
+      this.modal.classList.toggle('modal_open')
+      for(let overlay of document.querySelectorAll('.overlay')) {
+        overlay.classList.remove('hide')
+      }
+    })
 
     modal_wrapper.appendChild(modal_close)
 
@@ -151,9 +173,29 @@ class Modal {
     let content = document.querySelector(`#${ id }`).dataset.content
     if(content === 'config') {
       this.modal.firstChild.nextElementSibling.innerHTML = this.config[id]
+      this.is_open = true
+      this.modal.classList.toggle('modal_open')
+    } else if( content == 'gallery') {
+      blueimp.Gallery(this.config[id].links, {
+        index: 0,
+        indicatorContainer: 'ol',
+        activeIndicatorClass: 'active',
+        thumbnailProperty: 'thumbnail',
+        thumbnailIndicators: true,
+        slideClass: `slide ${this.config[id].slideClasses.join(' ')}`
+      })
     } else {
       this.modal.firstChild.nextElementSibling.innerHTML = content
+      this.is_open = true
+      this.modal.classList.toggle('modal_open')
     }
+  }
+  modal_note() {
+    this.modal.firstChild.nextElementSibling.innerHTML = `
+    <h2 class="text-center">This site works best in landscape</h2>
+    <p>Please rotate your phone for the best experience.</p>
+    `
+    this.is_open = true
     this.modal.classList.toggle('modal_open')
   }
 }
@@ -162,18 +204,56 @@ document.addEventListener('DOMContentLoaded', function() {
   window.room_1 = new RoomOne()
   window.modal = new Modal({
     shelf_overlay: `
-      <h1>HELLO WORLD</h1>
-      <p>WTH</p>
-    `
+      <h1>Welcome!</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis urna ac neque ornare scelerisque eget a risus. Mauris semper, neque vel gravida placerat, tellus tellus mollis magna, quis bibendum augue est luctus ligula. In ullamcorper feugiat massa ut pulvinar. Suspendisse at tristique dolor, pretium iaculis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis sem, et commodo urna. Quisque tincidunt leo eu purus lacinia pharetra.</p>
+      <p class="text-help text-align">Explore this room to read more about Tipsy Tales.</p>
+    `,
+    portrait_overlay: `
+      <h1>About Us</h1>
+      <img src="./images/tt-logo.png" class="text-center tt-logo"/>
+      <p>Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show.</p>
+    `,
+    chair_overlay:  `
+      <h1>History</h1>
+      <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
+    `,
+    table_overlay: `
+      <h1>What Our Show's Like</h1>
+      <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own.</p>
+    `,
+    frames_overlay: {
+      slideClasses: ['notooltip', 'notooltip'],
+      links: [
+        {
+            title: 'Image 1',
+            href: 'http://via.placeholder.com/1440x800',
+            type: 'image/jpeg',
+            thumbnail: 'http://via.placeholder.com/1440x800'
+        },
+        {
+            title: 'Image 2',
+            href: 'http://via.placeholder.com/1440x800',
+            type: 'image/jpeg',
+            thumbnail: 'http://via.placeholder.com/1440x800'
+        }
+      ]
+    },
   })
   // TO ADD HTML EMBED: add id and HTML content to the configuration object
   // IN the HTML, put 'config' in the data-content attribute
 })
 
 window.addEventListener('load', function() {
+  document.querySelector('#preloader').classList.toggle('open_loader')
+  if(window.innerWidth < window.innerHeight) {
+    modal.modal_note()
+  }
   room_1.resize_clickables()
 })
 
 window.addEventListener('resize', function() {
+  if(window.innerWidth < window.innerHeight) {
+    modal.modal_note()
+  }
   room_1.resize_clickables()
 })
