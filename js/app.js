@@ -219,8 +219,8 @@ document.addEventListener('DOMContentLoaded', function() {
       <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
     `,
     table_overlay: `
-      <h1>What Our Show's Like</h1>
-      <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own.</p>
+      <h1>About the Show</h1>
+      <p>Ang Kundiman ng Kapre is a production that showcases Filipino culture in a way you've never seen before. It combines inspiration from various aspects of the Filipino experience from folklore, architecture, furniture, traditional wear, local materials, food and most of all, humor. Built by a team of creatives - artists, designers, costume & make up artists, propsmen, writers, actors and so on, it's a show made by young people for people of all ages who are hoping to inspire many more like it.</p>
     `,
     frames_overlay: {
       slideClasses: ['notooltip', 'notooltip'],
