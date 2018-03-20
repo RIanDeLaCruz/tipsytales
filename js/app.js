@@ -207,6 +207,25 @@ document.addEventListener('DOMContentLoaded', function() {
     shelf_overlay: `
       <h1>Welcome!</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis urna ac neque ornare scelerisque eget a risus. Mauris semper, neque vel gravida placerat, tellus tellus mollis magna, quis bibendum augue est luctus ligula. In ullamcorper feugiat massa ut pulvinar. Suspendisse at tristique dolor, pretium iaculis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis sem, et commodo urna. Quisque tincidunt leo eu purus lacinia pharetra.</p>
+      <p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
+
+      <div id="mc_embed_signup">
+      <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+
+      <div class="mc-field-group">
+      	<input type="email" value="" name="EMAIL" placeholder="Email Address" class="required email" id="mce-EMAIL">
+      </div>
+      	<div id="mce-responses" class="clear">
+      		<div class="response" id="mce-error-response" style="display:none"></div>
+      		<div class="response" id="mce-success-response" style="display:none"></div>
+      	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b8558e5be5ed389ffecd8b0a9_f3f9fd75e2" tabindex="-1" value=""></div>
+          <div class="clear" style="margin-left: calc(50% - 68px)"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+          </div>
+      </form>
+      </div>
+
       <p class="text-help text-align">Explore this room to read more about Tipsy Tales.</p>
     `,
     portrait_overlay: `
