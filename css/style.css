@@ -5,6 +5,40 @@ html, body {
   background-color: #000;
 }
 
+@font-face {
+  font-family: 'Belinda';
+  src: url('./fonts/belinda.otf');
+}
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+h1 {
+  color: rgba(47,11,5,1);
+  font-family: 'Belinda', sans-serif;
+  font-size: 3.5em;
+  text-align: center;
+}
+h2, h3, h4, h5, h6, p {
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  color: #333;
+  font-size: 1.2em;
+  line-height: 1.4em;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a, a:active, a:visited, a:focus, area, area:active, area:visited, area:focus {
+  outline: none;
+  border: none;
+}
+
 map {
   /*z-index: -1;*/
 }
@@ -250,39 +284,25 @@ img {
   cursor: pointer;
 }
 
-@font-face {
-  font-family: 'Belinda';
-  src: url('./fonts/belinda.otf');
-}
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
-h1 {
-  color: rgba(47,11,5,1);
-  font-family: 'Belinda', sans-serif;
-  font-size: 3.5em;
+.tt-logo {
+  width: 35%;
   text-align: center;
-}
-h2, h3, h4, h5, h6, p {
-  font-family: 'Lato', sans-serif;
+  margin-left: 32.5%;
 }
 
-p {
-  color: #333;
+#mc_embed_signup{
+  background:#fff;
+  clear:left;
+  font:0.8em 'Lato',Arial,sans-serif;
+}
+
+#mc_embed_signup .mc-field-group input {
+  height: 30px;
+  font-family: 'Lato',sans-serif;
   font-size: 1.2em;
-  line-height: 1.4em;
-  text-align: center;
-  margin-bottom: 2em;
 }
 
-a {
-  color: #fff;
-  text-decoration: none;
-}
 
-a, a:active, a:visited, a:focus, area, area:active, area:visited, area:focus {
-  outline: none;
-  border: none;
-}
 
 .text-center {
   text-align: center;
@@ -305,23 +325,3 @@ label {
   background-color: rgba(47,11,5,1);
   color: #fff;
 }
-
-.tt-logo {
-  width: 35%;
-  text-align: center;
-  margin-left: 32.5%;
-}
-
-#mc_embed_signup{
-  background:#fff;
-  clear:left;
-  font:0.8em 'Lato',Arial,sans-serif;
-}
-
-#mc_embed_signup .mc-field-group input {
-  height: 30px;
-  font-family: 'Lato',sans-serif;
-  font-size: 1.2em;
-}
-	/* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-	   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
