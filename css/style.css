@@ -141,8 +141,9 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
   pointer-events: none;
+  opacity: 0;
+  transition: all 0.6s;
   z-index: 1;
 }
 
@@ -181,7 +182,7 @@ img {
 #chair:hover ~ #chair_overlay,
 #frames:hover ~ #frames_overlay,
 #table:hover ~ #table_overlay {
-  display: block;
+  opacity: 1;
 }
 
 .hide {
