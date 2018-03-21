@@ -165,7 +165,7 @@ img {
 }
 
 #frames_overlay {
-  background: url('../images/032018 frames.png') top left;
+  background: url('../images/032018 frames-hover.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
