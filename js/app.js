@@ -36,7 +36,7 @@ let set_point_values = function(selector, x_ratio, y_ratio) {
 }
 
 let toggle_explore = function() {
-  document.querySelector('#explore-menu').classList.toggle('hidden')
+  document.querySelector('#explore-menu').classList.toggle('open')
 }
 
 class RoomOne {

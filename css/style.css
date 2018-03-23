@@ -95,10 +95,11 @@ nav a.subscribe:hover {
   background-color: #000;
   z-index: 19;
   transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: translateY(-102.5%);
 }
 
-#explore-menu.hidden {
-  transform: translateY(-102.5%);
+#explore-menu.open {
+  transform: translateY(0);
 }
 
 .explore-menu .explore-container {
