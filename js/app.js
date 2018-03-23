@@ -187,8 +187,13 @@ class Modal {
     modal_wrapper.appendChild(modal)
     return modal_wrapper
   }
-  modal_open(id) {
-    let content = document.querySelector(`#${ id }`).dataset.content
+  modal_open(id, skip = true) {
+    let content = ''
+    if(skip) {
+      content = document.querySelector(`#${ id }`).dataset.content
+    } else {
+      content = 'config'
+    }
     if(content === 'config') {
       this.modal.firstChild.nextElementSibling.innerHTML = this.config[id].message
       this.is_open = true
@@ -230,6 +235,9 @@ class Modal {
 document.addEventListener('DOMContentLoaded', function() {
   window.room_1 = new RoomOne()
   window.modal = new Modal({
+    box: {
+      message: 'hg'
+    },
     shelf_overlay: {
       message: `
         <h1>Welcome!</h1>
