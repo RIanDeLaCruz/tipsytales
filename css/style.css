@@ -79,7 +79,8 @@ nav a svg {
 }
 
 nav a svg:hover,
-nav a.subscribe:hover {
+nav a.subscribe:hover,
+#explore:hover {
   opacity: 0.8;
 }
 
@@ -105,8 +106,8 @@ nav a.subscribe:hover {
 .explore-menu .explore-container {
   display: flex;
   align-items: center;
-  width: 25%;
-  background-color: #000;
+  width: 20%;
+  background-color: #320b05;
   margin: 0;
 }
 
