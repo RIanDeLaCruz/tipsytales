@@ -129,6 +129,14 @@ class Modal {
     this.modal_content = ''
     this.modal = this._init_modal()
     this.is_open = false
+    this.default_modal = {}
+    this.open_modal = ''
+
+    for(let modal in this.config) {
+      if('default_modal' in this.config[modal] && this.config[modal].default_modal) {
+        this.default_modal = modal
+      }
+    }
 
     document.body.appendChild(this.modal)
 
@@ -147,6 +155,11 @@ class Modal {
         this.modal.classList.toggle('modal_open')
         for(let overlay of document.querySelectorAll('.overlay')) {
           overlay.classList.remove('hide')
+        }
+        if(this.open_modal == 'size_modal') {
+          this.open_welcome_modal()
+        } else {
+          this.open_modal = ''
         }
       }
     })
@@ -194,6 +207,7 @@ class Modal {
       this.is_open = true
       this.modal.classList.toggle('modal_open')
     }
+    this.open_modal = id
   }
   modal_note() {
     this.modal.firstChild.nextElementSibling.innerHTML = `
@@ -201,7 +215,15 @@ class Modal {
     <p>Please rotate your phone for the best experience.</p>
     `
     this.is_open = true
+    this.open_modal = 'size_modal'
     this.modal.classList.toggle('modal_open')
+
+  }
+  open_welcome_modal() {
+    this.modal.firstChild.nextElementSibling.innerHTML = this.config[this.default_modal].message
+    this.is_open = true
+    this.modal.classList.toggle('modal_open')
+    this.open_modal = this.default_modal
   }
 }
 
@@ -232,7 +254,8 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
 
         <p class="text-help text-align" style="color: #b0b0b0;">Explore this room to read more about Tipsy Tales</p>
-      `
+      `,
+      default_modal: true
     },
     portrait_overlay: {
       message: `
@@ -279,6 +302,8 @@ window.addEventListener('load', function() {
   document.querySelector('#preloader').classList.toggle('open_loader')
   if(window.innerWidth < window.innerHeight) {
     modal.modal_note()
+  } else {
+    modal.open_welcome_modal()
   }
   room_1.resize_clickables()
 })
