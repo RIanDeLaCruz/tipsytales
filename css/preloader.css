@@ -20,7 +20,7 @@
 }
 
 #preloader.open_loader {
-  visiblity: visible;
+  visibility: visible;
 }
 
 @keyframes pulsate {

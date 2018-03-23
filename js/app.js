@@ -87,7 +87,8 @@ class RoomOne {
       tippy(area, {
         followCursor: true,
         appendTo: this.map_object,
-        touchHold: true
+        placement: 'top-center',
+        distance: 10
       })
       area.addEventListener('click', function(evt) {
         evt.preventDefault()
