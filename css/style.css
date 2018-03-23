@@ -133,11 +133,15 @@ nav a.subscribe:hover,
 }
 
 @media(max-width: 768px) {
+  .explore-menu {
+    height: 150px;
+  }
   .explore-menu .explore-container {
     width: 100%;
   }
   .explore-menu img {
-    display: none;
+    width: 50px;
+    margin-left: calc(50% - 25px);
   }
 }
 
@@ -230,7 +234,7 @@ img {
 }
 
 #table_overlay {
-  background: url('../images/032018 Table.png') top left;
+  background: url('../images/032018 Table copy.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
