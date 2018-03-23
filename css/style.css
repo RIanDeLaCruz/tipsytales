@@ -93,7 +93,12 @@ nav a.subscribe:hover {
   height: 200px;
   width: 100vw;
   background-color: #000;
-  z-index: 20;
+  z-index: 19;
+  transition: transform 0.6s ease-in;
+}
+
+#explore-menu.hidden {
+  transform: translateY(-102.5%);
 }
 
 .explore-menu .explore-container {

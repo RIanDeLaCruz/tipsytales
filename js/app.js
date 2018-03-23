@@ -35,6 +35,10 @@ let set_point_values = function(selector, x_ratio, y_ratio) {
   document.querySelector(selector).setAttribute('coords', area_coordinates)
 }
 
+let toggle_explore = function() {
+  document.querySelector('#explore-menu').classList.toggle('hidden')
+}
+
 class RoomOne {
   constructor() {
     this.ClickMap = new Map()
