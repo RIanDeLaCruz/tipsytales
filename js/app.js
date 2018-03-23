@@ -177,7 +177,7 @@ class Modal {
   modal_open(id) {
     let content = document.querySelector(`#${ id }`).dataset.content
     if(content === 'config') {
-      this.modal.firstChild.nextElementSibling.innerHTML = this.config[id]
+      this.modal.firstChild.nextElementSibling.innerHTML = this.config[id].message
       this.is_open = true
       this.modal.classList.toggle('modal_open')
     } else if( content == 'gallery') {
@@ -208,43 +208,51 @@ class Modal {
 document.addEventListener('DOMContentLoaded', function() {
   window.room_1 = new RoomOne()
   window.modal = new Modal({
-    shelf_overlay: `
-      <h1>Welcome!</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis urna ac neque ornare scelerisque eget a risus. Mauris semper, neque vel gravida placerat, tellus tellus mollis magna, quis bibendum augue est luctus ligula. In ullamcorper feugiat massa ut pulvinar. Suspendisse at tristique dolor, pretium iaculis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis sem, et commodo urna. Quisque tincidunt leo eu purus lacinia pharetra.</p>
-      <p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
+    shelf_overlay: {
+      message: `
+        <h1>Welcome!</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis urna ac neque ornare scelerisque eget a risus. Mauris semper, neque vel gravida placerat, tellus tellus mollis magna, quis bibendum augue est luctus ligula. In ullamcorper feugiat massa ut pulvinar. Suspendisse at tristique dolor, pretium iaculis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis sem, et commodo urna. Quisque tincidunt leo eu purus lacinia pharetra.</p>
+        <p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
 
-      <div id="mc_embed_signup">
-      <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-          <div id="mc_embed_signup_scroll">
+        <div id="mc_embed_signup">
+        <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
 
-      <div class="mc-field-group">
-      	<input type="email" value="" name="EMAIL" placeholder="Email Address" class="required email" id="mce-EMAIL">
-      </div>
-      	<div id="mce-responses" class="clear">
-      		<div class="response" id="mce-error-response" style="display:none"></div>
-      		<div class="response" id="mce-success-response" style="display:none"></div>
-      	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b8558e5be5ed389ffecd8b0a9_f3f9fd75e2" tabindex="-1" value=""></div>
-          <div class="clear" style="margin-left: calc(50% - 68px)"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-          </div>
-      </form>
-      </div>
+        <div class="mc-field-group">
+          <input type="email" value="" name="EMAIL" placeholder="Email Address" class="required email" id="mce-EMAIL">
+        </div>
+          <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+          </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b8558e5be5ed389ffecd8b0a9_f3f9fd75e2" tabindex="-1" value=""></div>
+            <div class="clear" style="margin-left: calc(50% - 68px)"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            </div>
+        </form>
+        </div>
 
-      <p class="text-help text-align" style="color: #b0b0b0;">Explore this room to read more about Tipsy Tales</p>
-    `,
-    portrait_overlay: `
-      <h1>About Us</h1>
-      <img src="./images/tt-logo.png" class="text-center tt-logo"/>
-      <p>Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show.</p>
-    `,
-    chair_overlay:  `
-      <h1>History</h1>
-      <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
-    `,
-    table_overlay: `
-      <h1>About the Show</h1>
-      <p>Ang Kundiman ng Kapre is a production that showcases Filipino culture in a way you've never seen before. It combines inspiration from various aspects of the Filipino experience from folklore, architecture, furniture, traditional wear, local materials, food and most of all, humor. Built by a team of creatives - artists, designers, costume & make up artists, propsmen, writers, actors and so on, it's a show made by young people for people of all ages who are hoping to inspire many more like it.</p>
-    `,
+        <p class="text-help text-align" style="color: #b0b0b0;">Explore this room to read more about Tipsy Tales</p>
+      `
+    },
+    portrait_overlay: {
+      message: `
+        <h1>About Us</h1>
+        <img src="./images/tt-logo.png" class="text-center tt-logo"/>
+        <p>Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show.</p>
+      `
+    },
+    chair_overlay: {
+      message: `
+        <h1>History</h1>
+        <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
+      `
+    },
+    table_overlay: {
+      message: `
+        <h1>About the Show</h1>
+        <p>Ang Kundiman ng Kapre is a production that showcases Filipino culture in a way you've never seen before. It combines inspiration from various aspects of the Filipino experience from folklore, architecture, furniture, traditional wear, local materials, food and most of all, humor. Built by a team of creatives - artists, designers, costume & make up artists, propsmen, writers, actors and so on, it's a show made by young people for people of all ages who are hoping to inspire many more like it.</p>
+      `
+    },
     frames_overlay: {
       slideClasses: ['notooltip', 'notooltip'],
       links: [
