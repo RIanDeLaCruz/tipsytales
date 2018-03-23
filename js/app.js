@@ -325,7 +325,9 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 window.addEventListener('load', function() {
-  document.querySelector('#preloader').classList.toggle('open_loader')
+  setTimeout(function() {
+    document.querySelector('#preloader').classList.toggle('open_loader')
+  }, 2000)
   if(window.innerWidth < window.innerHeight) {
     modal.modal_note()
   } else {
