@@ -140,28 +140,11 @@ class Modal {
 
     document.body.appendChild(this.modal)
 
-    this.modal.addEventListener('click', function(evt) {
-      if(evt.target == this) {
-        this.is_open = !this.is_open
-        this.classList.toggle('modal_open')
-        for(let overlay of document.querySelectorAll('.overlay')) {
-          overlay.classList.remove('hide')
-        }
-      }
+    this.modal.addEventListener('click', (evt) => {
+        this.modal_close(evt)
     })
     document.addEventListener('keyup', (evt) => {
-      if(evt.keyCode == 27 && this.is_open) {
-        this.is_open = !this.is_open
-        this.modal.classList.toggle('modal_open')
-        for(let overlay of document.querySelectorAll('.overlay')) {
-          overlay.classList.remove('hide')
-        }
-        if(this.open_modal == 'size_modal') {
-          this.open_welcome_modal()
-        } else {
-          this.open_modal = ''
-        }
-      }
+      this.modal_close(evt, 'key')
     })
   }
   _init_modal() {
@@ -188,6 +171,9 @@ class Modal {
     return modal_wrapper
   }
   modal_open(id, skip = true) {
+    if(document.querySelector('#explore-menu').classList.contains('open')) {
+      document.querySelector('#explore-menu').classList.remove('open')
+    }
     let content = ''
     if(skip) {
       content = document.querySelector(`#${ id }`).dataset.content
@@ -213,6 +199,37 @@ class Modal {
       this.modal.classList.toggle('modal_open')
     }
     this.open_modal = id
+  }
+  modal_close(evt, handler) {
+    switch(handler) {
+      case 'key':
+        if(evt.keyCode == 27 && this.is_open) {
+          this.is_open = !this.is_open
+          this.modal.classList.toggle('modal_open')
+          for(let overlay of document.querySelectorAll('.overlay')) {
+            overlay.classList.remove('hide')
+          }
+          if(this.open_modal == 'size_modal') {
+            this.open_welcome_modal()
+          } else {
+            this.open_modal = ''
+          }
+        }
+        break
+      default:
+        if(evt.target === this.modal) {
+          this.is_open = !this.is_open
+          this.modal.classList.toggle('modal_open')
+          for(let overlay of document.querySelectorAll('.overlay')) {
+            overlay.classList.remove('hide')
+          }
+          if(this.open_modal == 'size_modal') {
+            this.open_welcome_modal()
+          } else {
+            this.open_modal = ''
+          }
+        }
+    }
   }
   modal_note() {
     this.modal.firstChild.nextElementSibling.innerHTML = `
