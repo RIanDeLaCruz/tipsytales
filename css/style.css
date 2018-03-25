@@ -132,6 +132,10 @@ nav a.subscribe:hover,
   margin-bottom: 20px;
 }
 
+.explore-menu img:hover {
+  opacity: 0.8;
+}
+
 @media(max-width: 768px) {
   .explore-menu {
     height: 150px;
