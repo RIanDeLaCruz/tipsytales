@@ -276,8 +276,8 @@ document.addEventListener('DOMContentLoaded', function() {
     shelf_overlay: {
       message: `
         <h1>Welcome!</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis urna ac neque ornare scelerisque eget a risus. Mauris semper, neque vel gravida placerat, tellus tellus mollis magna, quis bibendum augue est luctus ligula. In ullamcorper feugiat massa ut pulvinar. Suspendisse at tristique dolor, pretium iaculis neque. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut facilisis sem, et commodo urna. Quisque tincidunt leo eu purus lacinia pharetra.</p>
-        <p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
+        <p>Lola isn't home right now. We hear she's a busy bit entertaining other guests. Feel free to roam around her home to learn about us and the world we've uncovered for you. We promise that you'll find a few surprises.</p>
+        <p class="text-center" style="margin-bottom: 1em;">Be sure to leave your email so we can let you know when she's ready to entertain you!</p>
 
         <div id="mc_embed_signup">
         <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -304,35 +304,62 @@ document.addEventListener('DOMContentLoaded', function() {
       message: `
         <h1>About Us</h1>
         <img src="./images/tt-logo.png" class="text-center tt-logo"/>
-        <p>Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show.</p>
+        <p>We at Tipsy Tales are obsessed with bring new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
+        <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
+
       `
     },
     chair_overlay: {
       message: `
         <h1>History</h1>
-        <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
+        <p>After a tragic death in the family, Lola invites you to her home to keep her company. She reminisces about the past and the song she used to share with the forest, before falling into a deep sleep. A mischievous duende, called Kati, pulls you into a world of adventure-a world where stories are still yet to be uncovered: A story of wonder, a story of love, a story full of longing and loss.</p>
       `
     },
     table_overlay: {
       message: `
         <h1>About the Show</h1>
-        <p>Ang Kundiman ng Kapre is a production that showcases Filipino culture in a way you've never seen before. It combines inspiration from various aspects of the Filipino experience from folklore, architecture, furniture, traditional wear, local materials, food and most of all, humor. Built by a team of creatives - artists, designers, costume & make up artists, propsmen, writers, actors and so on, it's a show made by young people for people of all ages who are hoping to inspire many more like it.</p>
+        <p>Ang Kundiman is a production that showcases Filipino culture in a way you've never seen before. Deeply rooted in Filipino folklore, the story explores the adventure to save your Lola from the grasps of bizarre magical creatures residing in the heart of Manila.</p>
+        <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own. Journey with us and experience new sights and tastes but be careful, the way back home is never so clear and your ending is entirely up to you.</p>
       `
     },
     frames_overlay: {
       slideClasses: ['notooltip', 'notooltip'],
       links: [
         {
-            title: 'Image 1',
-            href: 'http://via.placeholder.com/1440x800',
+            title: 'Kati',
+            href: './images/gallery/Kati.png',
             type: 'image/jpeg',
-            thumbnail: 'http://via.placeholder.com/1440x800'
+            thumbnail: './images/gallery/Kati.png'
         },
         {
-            title: 'Image 2',
-            href: 'http://via.placeholder.com/1440x800',
+            title: 'Lola 1',
+            href: './images/gallery/Lola 1.png',
             type: 'image/jpeg',
-            thumbnail: 'http://via.placeholder.com/1440x800'
+            thumbnail: './images/gallery/Lola 1.png'
+        },
+        {
+            title: 'Lola 2',
+            href: './images/gallery/Lola 2.png',
+            type: 'image/jpeg',
+            thumbnail: './images/gallery/Lola 2.png'
+        },
+        {
+            title: 'Tikbalang 1',
+            href: './images/gallery/Tikbalang 1.png',
+            type: 'image/jpeg',
+            thumbnail: './images/gallery/Tikbalang 1.png'
+        },
+        {
+            title: 'Tikbalang 2',
+            href: './images/gallery/Tikbalang 2.png',
+            type: 'image/jpeg',
+            thumbnail: './images/gallery/Tikbalang 2.png'
+        },
+        {
+            title: 'Tikbalang 3',
+            href: './images/gallery/Tikbalang 3.png',
+            type: 'image/jpeg',
+            thumbnail: './images/gallery/Tikbalang 3.png'
         }
       ]
     },
