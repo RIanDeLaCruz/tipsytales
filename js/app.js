@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', function() {
     shelf_overlay: {
       message: `
         <h1>Welcome!</h1>
-        <p>Lola isn't home right now. We hear she's a busy bit entertaining other guests. Feel free to roam around her home to learn about us and the world we've uncovered for you. We promise that you'll find a few surprises.</p>
+        <p>Lola isn't home right now. We hear she's a bit busy entertaining other guests. Feel free to roam around her home to learn about us and the world we've uncovered for you. We promise that you'll find a few surprises.</p>
         <p class="text-center" style="margin-bottom: 1em;">Be sure to leave your email so we can let you know when she's ready to entertain you!</p>
 
         <div id="mc_embed_signup">
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', function() {
       message: `
         <h1>About Us</h1>
         <img src="./images/tt-logo.png" class="text-center tt-logo"/>
-        <p>We at Tipsy Tales are obsessed with bring new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
+        <p>We at Tipsy Tales are obsessed with bringing new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
         <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
 
       `
@@ -312,7 +312,7 @@ document.addEventListener('DOMContentLoaded', function() {
     chair_overlay: {
       message: `
         <h1>History</h1>
-        <p>After a tragic death in the family, Lola invites you to her home to keep her company. She reminisces about the past and the song she used to share with the forest, before falling into a deep sleep. A mischievous duende, called Kati, pulls you into a world of adventure-a world where stories are still yet to be uncovered: A story of wonder, a story of love, a story full of longing and loss.</p>
+        <p>After a tragic death in the family, Lola invites you to her home to keep her company. She reminisces about the past and the song she used to share with the forest, before falling into a deep sleep. A mischievous duende, called Kati, pulls you into a world of adventure - a world where stories are still yet to be uncovered: A story of wonder, a story of love, a story full of longing and loss.</p>
       `
     },
     table_overlay: {
