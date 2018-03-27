@@ -214,31 +214,31 @@ img {
 }
 
 #shelf_overlay {
-  background: url('../images/032718 bookshelf door-tipsytales book.png') top left;
+  background: url('http://www.tipsytales.ph/images/032718%20bookshelf%20door-tipsytales%20book.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #portrait_overlay {
-  background: url('../images/032018 Portrait.png') top left;
+  background: url('http://www.tipsytales.ph/images/032018%20Portrait.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #chair_overlay {
-  background: url('../images/032618 chair.png') top left;
+  background: url('http://www.tipsytales.ph/images/032618%20chair.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #frames_overlay {
-  background: url('../images/032618 frames-hover.png') top left;
+  background: url('http://www.tipsytales.ph/images/032618%20frames-hover.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #table_overlay {
-  background: url('../images/032618 Table 2.png') top left;
+  background: url('http://www.tipsytales.ph/images/032618%20Table%202.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }

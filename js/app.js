@@ -254,7 +254,7 @@ document.addEventListener('DOMContentLoaded', function() {
   window.room_1 = new RoomOne()
   window.modal = new Modal({
     subscribe: {
-      message: `<p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
+      message: `<div id="subscribe-modal-open"><p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
 
       <div id="mc_embed_signup">
       <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -271,10 +271,10 @@ document.addEventListener('DOMContentLoaded', function() {
           <div class="clear" style="margin-left: calc(50% - 68px)"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
           </div>
       </form>
-      </div>`
+      </div></div>`
     },
     shelf_overlay: {
-      message: `
+      message: `<div id="welcome-modal-open">
         <h1>Welcome!</h1>
         <p>Lola isn't home right now. We hear she's a bit busy entertaining other guests. Feel free to roam around her home to learn about us and the world we've uncovered for you. We promise that you'll find a few surprises.</p>
         <p class="text-center" style="margin-bottom: 1em;">Be sure to leave your email so we can let you know when she's ready to entertain you!</p>
@@ -296,67 +296,71 @@ document.addEventListener('DOMContentLoaded', function() {
         </form>
         </div>
 
-        <p class="text-help text-align" style="color: #b0b0b0;">Explore this room to read more about Tipsy Tales</p>
+        <p class="text-help text-align" style="color: #b0b0b0;">Explore this room to read more about Tipsy Tales</p></div>
       `,
       default_modal: true
     },
     portrait_overlay: {
-      message: `
+      message: `<div id="aboutus-modal-open">
         <h1>About Us</h1>
         <img src="./images/tt-logo.png" class="text-center tt-logo"/>
         <p>We at Tipsy Tales are obsessed with bringing new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
-        <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p>
+        <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p></div>
 
       `
     },
     chair_overlay: {
       message: `
+      <div id="history-modal-open">
         <h1>History</h1>
         <p>After a tragic death in the family, Lola invites you to her home to keep her company. She reminisces about the past and the song she used to share with the forest, before falling into a deep sleep. A mischievous duende, called Kati, pulls you into a world of adventure - a world where stories are still yet to be uncovered: A story of wonder, a story of love, a story full of longing and loss.</p>
+      </div>
       `
     },
     table_overlay: {
       message: `
+      <div id="abouttheshow-modal-open">
         <h1>About the Show</h1>
         <p>Ang Kundiman is a production that showcases Filipino culture in a way you've never seen before. Deeply rooted in Filipino folklore, the story explores the adventure to save your Lola from the grasps of bizarre magical creatures residing in the heart of Manila.</p>
         <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own. Journey with us and experience new sights and tastes but be careful, the way back home is never so clear and your ending is entirely up to you.</p>
+      </div>
       `
     },
     frames_overlay: {
       slideClasses: ['notooltip', 'notooltip'],
       links: [
         {
-            title: 'Kati',
+            title: '',
             href: './images/gallery/Kati.png',
             type: 'image/jpeg',
             thumbnail: './images/gallery/Kati.png'
         },
         {
-            title: 'Lola 1',
+            title: '',
             href: './images/gallery/Lola 1.png',
             type: 'image/jpeg',
             thumbnail: './images/gallery/Lola 1.png'
         },
         {
-            title: 'Lola 2',
+            title: '',
             href: './images/gallery/Lola 2.png',
             type: 'image/jpeg',
             thumbnail: './images/gallery/Lola 2.png'
         },
         {
-            title: 'Tikbalang 1',
+            title: '',
             href: './images/gallery/Tikbalang 1.png',
             type: 'image/jpeg',
             thumbnail: './images/gallery/Tikbalang 1.png'
         },
         {
-            title: 'Tikbalang 2',
+            title: '',
             href: './images/gallery/Tikbalang 2.png',
             type: 'image/jpeg',
             thumbnail: './images/gallery/Tikbalang 2.png'
         },
         {
-            title: 'Tikbalang 3',
+            title: '',
             href: './images/gallery/Tikbalang 3.png',
             type: 'image/jpeg',
             thumbnail: './images/gallery/Tikbalang 3.png'
