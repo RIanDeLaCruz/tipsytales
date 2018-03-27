@@ -226,13 +226,13 @@ img {
 }
 
 #chair_overlay {
-  background: url('../images/032018 Chair.png') top left;
+  background: url('../images/032618 chair.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #frames_overlay {
-  background: url('../images/032018 frames-hover.png') top left;
+  background: url('../images/032618 frames-hover.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
