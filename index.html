@@ -8,12 +8,14 @@
     <meta property="og:type"               content="article" />
     <meta property="og:title"              content="Tipsy Tales" />
     <meta property="og:description"        content="Tipsy Tales creates unique, immersive experiences through brilliant storytelling, production techniques and theatrical performances for an audience looking for a different kind of show." />
-    <meta property="og:image"              content="./images/03918 og image.jpg" />
+    <meta property="og:image"              content="http://www.tipsytales.ph/images/03918%20og%20image.jpg" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="https://cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
     <link href="./css/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/blueimp-gallery.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="./css/preloader.css" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
@@ -30,53 +32,77 @@
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
     j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-KT2M9ZJ');</script>
+    })(window,document,'script','dataLayer','GTM-PW5QPM3');</script>
     <!-- End Google Tag Manager -->
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT2M9ZJ"
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PW5QPM3"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+    <div id="preloader" class="open_loader">
+      <img src="./images/book-1.svg" alt="">
+    </div>
     <nav>
-      <span style="display: float; float: left;">Tipsy Tales</span>
-      <a href="https://www.facebook.com/tipsytales.ph" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://twitter.com/TipsyTalesPH" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="https://www.instagram.com/tipsytales.ph/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=tipsytalesph@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+      <a href="#" id="explore" onclick="toggle_explore()" class="text-help"
+        style="display: float; float: left; margin-top: 3px;">
+        Explore
+      </a>
+      <a href="#" class="subscribe" onclick="modal.modal_open('subscribe', false)">
+        Subscribe Now
+      </a>
+      <a href="https://www.facebook.com/tipsytales.ph" target="_blank">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="https://twitter.com/TipsyTalesPH" target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.instagram.com/tipsytales.ph/" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=tipsytalesph@gmail.com" target="_blank">
+        <i class="fas fa-envelope"></i>
+      </a>
     </nav>
+    <div id="explore-menu" class="explore-menu">
+        <div class="explore-container"><div class="explore-item"><a href="#" onclick="modal.modal_open('shelf_overlay', false)"><img src="./images/shelf 150px.png"/>Welcome</a></div></div>
+        <div class="explore-container"><div class="explore-item"><a href="#" onclick="modal.modal_open('portrait_overlay', false)"><img src="./images/portrait-full 150px.png"/>About Us</a></div></div>
+        <div class="explore-container"><div class="explore-item"><a href="#" onclick="modal.modal_open('chair_overlay', false)"><img src="./images/chair 150px.png"/>History</a></div></div>
+        <div class="explore-container"><div class="explore-item"><a href="#" onclick="modal.modal_open('table_overlay', false)"><img src="./images/table 150px.png"/>About the Show</a></div></div>
+        <div class="explore-container"><div class="explore-item"><a href="#" onclick="modal.modal_open('frames_overlay')"><img src="./images/frame 150px.png"/>Gallery</a></div></div>
+    </div>
     <div class="room" id="sala">
       <map name="room_1">
           <area shape="rect"
                 id="shelf"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="shelf"
                 title="Hey! Click me!"/>
           <area shape="rect"
                 id="portrait"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="portrait"
                 title="About Us"/>
           <area shape="poly"
                 id="chair"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="chair"
                 title="History"/>
           <area shape="poly"
                 id="frames"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="frames"
                 title="Gallery"/>
           <area shape="rect"
                 id="table"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="table"
-                title="What Our Show's Like"/>
+                title="About the Show"/>
           <span id="shelf_overlay" class="overlay" data-content="config"></span>
           <span id="portrait_overlay" class="overlay" data-content="config"></span>
           <span id="frames_overlay" class="overlay" data-content="gallery"></span>
@@ -158,11 +184,9 @@
       <a class="play-pause"></a>
       <ol class="indicator"></ol>
     </div>
-    <div id="preloader" class="open_loader">
-      <img src="./images/tipsylogo.png" alt="">
-    </div>
     <script src="https://unpkg.com/tippy.js@2.3.0/dist/tippy.all.min.js"></script>
     <script src="./js/blueimp-gallery.min.js"></script>
+    <script type='text/javascript' src='https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
     <script src="./js/app.js" type="text/javascript" charset="utf-8"></script>
   </body>
 </html>

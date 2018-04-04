@@ -9,18 +9,19 @@
   align-items: center;
   justify-content: center;
   visibility: hidden;
+  z-index: 20;
 }
 
 #preloader img {
   display; block;
-  width: 60vw;
+  width: 10vw;
   height: auto;
   transform-origin: 50%;
   animation: pulsate 2s infinite;
 }
 
 #preloader.open_loader {
-  visiblity: visible;
+  visibility: visible;
 }
 
 @keyframes pulsate {

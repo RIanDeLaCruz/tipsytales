@@ -2,6 +2,41 @@ html, body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  background-color: #000;
+}
+
+@font-face {
+  font-family: 'Belinda';
+  src: url('./fonts/belinda.otf');
+}
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+h1 {
+  color: rgba(47,11,5,1);
+  font-family: 'Belinda', sans-serif;
+  font-size: 3.5em;
+  text-align: center;
+}
+h2, h3, h4, h5, h6, p {
+  font-family: 'Lato', sans-serif;
+}
+
+p {
+  color: #333;
+  font-size: 1.05em;
+  line-height: 1.6em;
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a, a:active, a:visited, a:focus, area, area:active, area:visited, area:focus {
+  outline: none;
+  border: none;
 }
 
 map {
@@ -17,7 +52,7 @@ nav {
   text-align: right;
   height: 35px;
   width: 100%;
-  padding:8px 16px;
+  padding: 6px 16px;
   background: rgba(47,11,5,1);
   z-index: 20;
   -webkit-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.6);
@@ -25,8 +60,18 @@ nav {
   box-shadow:         1px 1px 5px 1px rgba(0,0,0,0.6);
 }
 
+nav a.subscribe {
+  color: #fff;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #fff;
+  padding: 3px 6px;
+}
+
 nav svg {
-  margin-left: 5px;
+  margin-left: 10px;
+  transform: translateY(2px);
 }
 
 nav a svg {
@@ -34,11 +79,77 @@ nav a svg {
 }
 
 nav a svg:hover,
-nav a svg:visited {
+nav a.subscribe:hover,
+#explore:hover {
   opacity: 0.8;
 }
 
-.room {
+.explore-menu {
+  display: flex;
+  align-items: stretch;
+  width: 200px;
+  position: fixed;
+  float: left;
+  top: 35px;
+  height: 200px;
+  width: 100vw;
+  background-color: #000;
+  z-index: 19;
+  transition: transform 0.6s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: translateY(-102.5%);
+}
+
+#explore-menu.open {
+  transform: translateY(0);
+}
+
+.explore-menu .explore-container {
+  display: flex;
+  align-items: center;
+  width: 20%;
+  background-color: #320b05;
+  margin: 0;
+}
+
+.explore-item {
+  /* display: flex; */
+  /* align-items: center; */
+  width: 100%;
+}
+
+.explore-menu a {
+  display: block;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  align-content: center;
+  text-align: center;
+}
+
+.explore-menu img {
+  display: block;
+  width: 96px;
+  margin-left: calc(50% - 48px);
+  margin-bottom: 20px;
+}
+
+.explore-menu img:hover {
+  opacity: 0.8;
+}
+
+@media(max-width: 768px) {
+  .explore-menu {
+    height: 150px;
+  }
+  .explore-menu .explore-container {
+    width: 100%;
+  }
+  .explore-menu img {
+    width: 50px;
+    margin-left: calc(50% - 25px);
+  }
+}
+
+#sala {
   background-color: black;
   display: flex;
   flex-direction: column;
@@ -96,31 +207,42 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
   pointer-events: none;
+  opacity: 0;
+  transition: all 0.6s;
   z-index: 1;
   background-size: contain !important;
   background-repeat: no-repeat !important;
 }
 
 #shelf_overlay {
-  background: url('../images/Room1/031618 Room 1 shelf.png') top left;
+  background: url('http://www.tipsytales.ph/images/040318%20bookshelf%20door-tipsytales%20book.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #portrait_overlay {
-  background: url('../images/Room1/031618 Room 1 portrait.png') top left;
+  background: url('http://www.tipsytales.ph/images/032018%20Portrait.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #chair_overlay {
-  background: url('../images/Room1/031618 Room 1chair.png') top left;
+  background: url('http://www.tipsytales.ph/images/032618%20chair.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #frames_overlay {
-  background: url('../images/Room1/031618 Room 1 frames.png') top left;
+  background: url('http://www.tipsytales.ph/images/032618%20frames-hover.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #table_overlay {
-  background: url('../images/Room1/031618 Room 1 table.png') top left;
+  background: url('http://www.tipsytales.ph/images/032618%20Table%202.png') top left;
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 #shelf:hover ~ #shelf_overlay,
@@ -128,7 +250,7 @@ img {
 #chair:hover ~ #chair_overlay,
 #frames:hover ~ #frames_overlay,
 #table:hover ~ #table_overlay {
-  display: block;
+  opacity: 1;
 }
 
 #burrow_overlay { background: url('../images/Room2/031618 Room 2 Burrow.png') top left; }
@@ -226,14 +348,15 @@ img {
   background-color: white;
   box-shadow: 1em 1em 2.4em black;
   border-radius: 0;
-  padding: 1em 2.4em 2em 2.4em;
+  padding: 2em 2.4em;
   overflow-x: hidden;
 }
 
 @media(max-width: 768px) {
   .modal_body {
     height: 80%;
-    width: 50%;
+    width: 70%;
+    margin-top: 6em;
     overflow-y: scroll;
   }
 }
@@ -251,52 +374,49 @@ img {
   font-size: 1.7em;
 }
 
+@media(max-width: 768px) {
+  .modal_close {
+    right: 10px;
+    top: 50px;
+  }
+}
+
 .modal_close:hover {
   cursor: pointer;
 }
 
-@font-face {
-  font-family: 'Belinda';
-  src: url('./fonts/belinda.otf');
-}
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
-h1 {
-  color: rgba(47,11,5,1);
-  font-family: 'Belinda', sans-serif;
-  font-size: 3.5em;
+.tt-logo {
+  width: 35%;
   text-align: center;
-}
-h2, h3, h4, h5, h6, p {
-  font-family: 'Lato', sans-serif;
+  margin-left: 32.5%;
 }
 
-p {
-  color: #333;
+#mc_embed_signup{
+  background:#fff;
+  clear:left;
+  font:0.8em 'Lato',Arial,sans-serif;
+}
+
+#mc_embed_signup .mc-field-group input {
+  height: 30px;
+  font-family: 'Lato',sans-serif;
   font-size: 1.2em;
-  line-height: 1.4em;
-  text-align: center;
-  margin-bottom: 2em;
 }
 
-a, a:active, a:visited, a:focus, area, area:active, area:visited, area:focus {
-  outline: none;
-  border: none;
-}
+
 
 .text-center {
   text-align: center;
 }
 
 .text-help {
-  color: #b0b0b0;
   font-size: 0.8em;
   text-transform: uppercase;
 }
 
 label {
   display: inline-block;
-  width: 5em;
+  /* width: 5em; */
 }
 
 .tippy-tooltip {
@@ -304,10 +424,4 @@ label {
   /* border: 1px solid rgba(47,11,5,1); */
   background-color: rgba(47,11,5,1);
   color: #fff;
-}
-
-.tt-logo {
-  width: 35%;
-  text-align: center;
-  margin-left: 32.5%;
 }
