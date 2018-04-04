@@ -69,34 +69,35 @@ class Room {
       })
       area.addEventListener('click', function(evt) {
         evt.preventDefault()
-        this.root.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
+        this.parentNode.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
         window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
       })
     }
-    //let area = document.querySelector('#shelf')
-    //area.addEventListener('click', (evt) => {
-      //evt.preventDefault()
+    let shelf = document.querySelector('#shelf')
+    shelf.addEventListener('click', (evt) => {
+      evt.preventDefault()
 
-      //document.querySelector('#bg').classList.toggle('up')
+      document.querySelector('#room1_bg').classList.toggle('up')
 
-      //if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
-        //document.querySelector('.black').classList.toggle('block')
-        //document.querySelector('#bg').classList.add('mask')
-        //document.querySelector('#bg').addEventListener('animationend', function() {
-          //document.querySelector('#bg').classList.add('final_mask')
-          //document.querySelector('.transition_1').classList.toggle('show')
-        //})
-      //} else {
-        //document.querySelector('.black').classList.toggle('animate')
-        //document.querySelector('.black').addEventListener('transitionend', function() {
-          //document.querySelector('.transition_1').classList.toggle('show')
-        //})
-      //}
-      //document.querySelector('.transition_1').addEventListener('transitionend', function() {
-        //document.querySelector('.transition_1').classList.toggle('show')
-        //document.querySelector('[name="room_2"]').scrollIntoView({behavior: 'smooth'})
-      //})
-    //})
+      if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
+        document.querySelector('.black').classList.toggle('block')
+        document.querySelector('#room1_bg').classList.add('mask')
+        document.querySelector('#room1_bg').addEventListener('animationend', function() {
+          document.querySelector('#room1_bg').classList.add('final_mask')
+          document.querySelector('.transition_1').classList.toggle('show')
+        })
+      } else {
+        document.querySelector('.black').classList.toggle('animate')
+        document.querySelector('.black').addEventListener('transitionend', function() {
+          document.querySelector('.transition_1').classList.toggle('show')
+          this.classList.toggle('animate')
+        }, { once: true })
+      }
+      document.querySelector('.transition_1').addEventListener('transitionend', function() {
+        document.querySelector('.transition_1').classList.toggle('show')
+        document.querySelector('[name="room_2"]').scrollIntoView(true,{behavior: 'smooth'})
+      }, { once: true })
+    })
   }
 
   resize_clickables() {
