@@ -149,16 +149,13 @@ nav a.subscribe:hover,
   }
 }
 
-#sala {
+.room {
+  position: relative;
   background-color: black;
   display: flex;
   flex-direction: column;
   height: 100vh;
   justify-content: center;
-}
-
-.room {
-  position: relative;
 }
 
 .black {

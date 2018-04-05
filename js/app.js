@@ -59,7 +59,7 @@ class Room {
     trigger.addEventListener('click', (evt) => {
       evt.preventDefault()
 
-      document.querySelector(roombg_selector).classList.toggle('up')
+      //document.querySelector(roombg_selector).classList.toggle('up')
 
       if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
         trigger.parentNode.parentNode.querySelector('.black').classList.toggle('block')
@@ -95,11 +95,13 @@ class Room {
         placement: 'top-center',
         distance: 10
       })
-      area.addEventListener('click', function(evt) {
-        evt.preventDefault()
-        this.parentNode.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
-        window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
-      })
+      if(!area.classList.contains('trigger')) {
+        area.addEventListener('click', function(evt) {
+          evt.preventDefault()
+          this.parentNode.querySelector(`#${evt.target.getAttribute('name')}_overlay`).classList.add('hide')
+          window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
+        })
+      }
     }
     this._attachTransitionListeners('#shelf', '#room1_bg', '#trans_1', '[name=room_2]')
     this._attachTransitionListeners('#burrow', '#room2_bg', '#trans_2', '[name=room_3]')
@@ -108,7 +110,7 @@ class Room {
   resize_clickables() {
     let overlays = this.root.querySelectorAll('.overlay')
     for(let overlay of overlays) {
-      overlay.style.top = (this.root.querySelector(`#${this.map_image_id}`).y+1)+'px'
+      //overlay.style.top = (this.root.querySelector(`#${this.map_image_id}`).y+1)+'px'
       overlay.style.height = this.root.querySelector(`#${this.map_image_id}`).height+'px'
     }
 
