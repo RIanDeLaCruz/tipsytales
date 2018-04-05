@@ -157,6 +157,10 @@ nav a.subscribe:hover,
   justify-content: center;
 }
 
+.room {
+  position: relative;
+}
+
 .black {
   background-color: #000;
   width: 100%;
@@ -216,31 +220,31 @@ img {
 }
 
 #shelf_overlay {
-  background: url('http://www.tipsytales.ph/images/040318%20bookshelf%20door-tipsytales%20book.png') top left;
+  background: url('../images/Room1/031618 Room 1 shelf.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #portrait_overlay {
-  background: url('http://www.tipsytales.ph/images/032018%20Portrait.png') top left;
+  background: url('../images/Room1/031618 Room 1 portrait.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #chair_overlay {
-  background: url('http://www.tipsytales.ph/images/032618%20chair.png') top left;
+  background: url('../images/Room1/031618 Room 1chair.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #frames_overlay {
-  background: url('http://www.tipsytales.ph/images/032618%20frames-hover.png') top left;
+  background: url('../images/Room1/031618 Room 1 frames.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #table_overlay {
-  background: url('http://www.tipsytales.ph/images/032618%20Table%202.png') top left;
+  background: url('../images/Room1/031618 Room 1 table.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -266,7 +270,7 @@ img {
 #shoe:hover ~ #shoe_overlay,
 #sign:hover ~ #sign_overlay,
 #tree:hover ~ #tree_overlay {
-  display: block;
+  opacity: 1;
 }
 
 #floorsign_overlay { background: url('../images/Room3/031318 Room 3 Sign.png') top left; }

@@ -54,6 +54,34 @@ class Room {
     this._attachListeners()
   }
 
+  _attachTransitionListeners(trigger_selector, roombg_selector, transition_selector, next_room) {
+    let trigger = document.querySelector(trigger_selector)
+    trigger.addEventListener('click', (evt) => {
+      evt.preventDefault()
+
+      document.querySelector(roombg_selector).classList.toggle('up')
+
+      if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
+        trigger.parentNode.parentNode.querySelector('.black').classList.toggle('block')
+        trigger.parentNode.parentNode.querySelector(roombg_selector).classList.add('mask')
+        document.querySelector(roombg_selector).addEventListener('animationend', function() {
+          document.querySelector(roombg_selector).classList.add('final_mask')
+          document.querySelector(transition_selector).classList.toggle('show')
+        })
+      } else {
+        trigger.parentNode.parentNode.querySelector('.black').classList.toggle('animate')
+        trigger.parentNode.parentNode.querySelector('.black').addEventListener('transitionend', function() {
+          document.querySelector(transition_selector).classList.toggle('show')
+          this.classList.toggle('animate')
+        }, { once: true })
+      }
+      document.querySelector(transition_selector).addEventListener('transitionend', function() {
+        document.querySelector(transition_selector).classList.toggle('show')
+        document.querySelector(next_room).scrollIntoView(true,{behavior: 'smooth'})
+      }, { once: true })
+    })
+  }
+
   _attachListeners() {
     if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
       this.root.querySelector('.black').classList.toggle('pinhole')
@@ -73,31 +101,8 @@ class Room {
         window.modal.modal_open(`${evt.target.getAttribute('name')}_overlay`)
       })
     }
-    let shelf = document.querySelector('#shelf')
-    shelf.addEventListener('click', (evt) => {
-      evt.preventDefault()
-
-      document.querySelector('#room1_bg').classList.toggle('up')
-
-      if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
-        document.querySelector('.black').classList.toggle('block')
-        document.querySelector('#room1_bg').classList.add('mask')
-        document.querySelector('#room1_bg').addEventListener('animationend', function() {
-          document.querySelector('#room1_bg').classList.add('final_mask')
-          document.querySelector('.transition_1').classList.toggle('show')
-        })
-      } else {
-        document.querySelector('.black').classList.toggle('animate')
-        document.querySelector('.black').addEventListener('transitionend', function() {
-          document.querySelector('.transition_1').classList.toggle('show')
-          this.classList.toggle('animate')
-        }, { once: true })
-      }
-      document.querySelector('.transition_1').addEventListener('transitionend', function() {
-        document.querySelector('.transition_1').classList.toggle('show')
-        document.querySelector('[name="room_2"]').scrollIntoView(true,{behavior: 'smooth'})
-      }, { once: true })
-    })
+    this._attachTransitionListeners('#shelf', '#room1_bg', '#trans_1', '[name=room_2]')
+    this._attachTransitionListeners('#burrow', '#room2_bg', '#trans_2', '[name=room_3]')
   }
 
   resize_clickables() {
