@@ -304,8 +304,26 @@ class HUD {
     })
   }
 
+  disable_buttons() {
+    let prev = document.querySelector('#prev')
+    let next = document.querySelector('#next')
+    switch(location.hash) {
+      case '#forest':
+        prev.removeAttribute('disabled')
+        next.removeAttribute('disabled')
+        break
+      case '#floor':
+        prev.removeAttribute('disabled')
+        next.setAttribute('disabled', true)
+        break
+      default:
+        prev.setAttribute('disabled', true)
+        next.removeAttribute('disabled')
+        break
+    }
+  }
+
   go_to(current_hash, target_hash, direction) {
-    console.log(this.config[current_hash][direction])
     if(this.config[current_hash][direction]) {
       if(direction == 'next') {
         window.room_1.go_to_next_room(
@@ -569,6 +587,7 @@ document.addEventListener('DOMContentLoaded', function() {
     ]
   })
 
+  hud.disable_buttons()
 })
 
 window.addEventListener('load', function() {
@@ -613,4 +632,5 @@ window.addEventListener('resize', function() {
 })
 
 window.addEventListener('hashchange', function() {
+  hud.disable_buttons()
 })

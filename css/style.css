@@ -457,3 +457,35 @@ label {
   background-color: rgba(47,11,5,1);
   color: #fff;
 }
+
+.hud {
+  width: 80px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+}
+
+.hud button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: solid 2px white;
+  cursor: pointer;
+  background-color: #320b05;
+  color: white;
+}
+
+.hud button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.hud button:hover:not([disabled]) {
+  background-color: #320b05;
+  box-shadow: 0px 0px 10px yellow;
+}
