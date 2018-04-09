@@ -583,6 +583,7 @@ window.addEventListener('load', function() {
   room_1.resize_clickables()
   room_2.resize_clickables()
   room_3.resize_clickables()
+
   switch(location.hash) {
     case '#forest':
       room_1.set_as_unviewable()
@@ -609,4 +610,7 @@ window.addEventListener('resize', function() {
   room_1.resize_clickables()
   room_2.resize_clickables()
   room_3.resize_clickables()
+})
+
+window.addEventListener('hashchange', function() {
 })
