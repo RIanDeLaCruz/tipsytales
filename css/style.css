@@ -150,12 +150,19 @@ nav a.subscribe:hover,
 }
 
 .room {
+  opacity: 0;
+  display: none;
   position: relative;
   background-color: black;
-  display: flex;
   flex-direction: column;
-  height: 100vh;
-  justify-content: center;
+  transition: opacity 1s;
+}
+
+@media (orientation: portrait), (max-width: 1234px) {
+  .room {
+    justify-content: center;
+    height: 100vh;
+  }
 }
 
 .black {
@@ -166,7 +173,7 @@ nav a.subscribe:hover,
   top: 0;
   left: 0;
   opacity: 0;
-  transition: all 1s ease-in-out 0.4s;
+  transition: all 2s ease-in-out 0.4s;
   visibility: hidden;
 }
 
@@ -201,6 +208,12 @@ area {
 img {
   width: 100%;
 }
+
+/*
+ *
+ * OVERLAYS
+ *
+ */
 
 .overlay {
   width: 100%;
@@ -278,6 +291,13 @@ img {
   display: block;
 }
 
+/*
+ *
+ * ANIMATIONS
+ *
+ *
+ */
+
 .hide {
   display: none !important;
 }
@@ -312,7 +332,7 @@ img {
   transform: translateY(-5%);
 }
 
-.transition_1{
+.transition {
   position: absolute;
   top: 0;
   left: 0;
@@ -321,12 +341,23 @@ img {
   z-index: -1;
 }
 
-.transition_1.show {
+.transition.show {
   visibility: visible;
   opacity: 1;
-  transition: opacity 1s ease-in-out;
+  transition: opacity 2s ease-in-out;
   z-index: 6;
 }
+
+.viewable {
+  display: flex;
+  opacity: 1;
+}
+
+/*
+ *
+ * MODALS
+ *
+ */
 
 .modal_wrapper {
   display: none;

@@ -71,112 +71,122 @@
         <div class="explore-container"><div class="explore-item"><a href="#" onclick="modal.modal_open('table_overlay', false)"><img src="./images/table 150px.png"/>About the Show</a></div></div>
         <div class="explore-container"><div class="explore-item"><a href="#" onclick="modal.modal_open('frames_overlay')"><img src="./images/frame 150px.png"/>Gallery</a></div></div>
     </div>
-    <div class="room" id="sala">
-      <map name="room_1">
+    <div class="view">
+      <div class="room viewable" id="sala">
+        <map name="room_1">
+            <area shape="rect"
+                  class="trigger"
+                  id="shelf"
+                  href="#"
+                  alt=""
+                  name="shelf"
+                  title="Hey! Click me!"/>
+            <area shape="rect"
+                  id="portrait"
+                  href="#"
+                  alt=""
+                  name="portrait"
+                  title="About Us"/>
+            <area shape="poly"
+                  id="chair"
+                  href="#"
+                  alt=""
+                  name="chair"
+                  title="History"/>
+            <area shape="poly"
+                  id="frames"
+                  href="#"
+                  alt=""
+                  name="frames"
+                  title="Gallery"/>
+            <area shape="rect"
+                  id="table"
+                  href="#"
+                  alt=""
+                  name="table"
+                  title="About the Show"/>
+            <span id="shelf_overlay" class="overlay" data-content="config"></span>
+            <span id="portrait_overlay" class="overlay" data-content="config"></span>
+            <span id="frames_overlay" class="overlay" data-content="gallery"></span>
+            <span id="chair_overlay" class="overlay" data-content="config"></span>
+            <span id="table_overlay" class="overlay" data-content="config"></span>
+        </map>
+        <div class="black"></div>
+        <img src="./images/Room1/031618 Room1 Colored.jpg" alt="" usemap="#room_1" id="room1_bg">
+        <img src="./images/022218 Transition 1.jpg" alt="" class="transition" id="trans_1">
+        <img src="./images/022218 Transition 1.jpg" alt="" class="transition next" id="trans_1_next">
+      </div>
+      <div class="room" id="forest">
+        <map name="room_2">
           <area shape="rect"
                 class="trigger"
-                id="shelf"
-                href="#"
+                id="burrow"
+                href="facebook.com"
                 alt=""
-                name="shelf"
-                title="Hey! Click me!"/>
-          <area shape="rect"
-                id="portrait"
-                href="#"
-                alt=""
-                name="portrait"
-                title="About Us"/>
+                name="burrow"/>
           <area shape="poly"
-                id="chair"
-                href="#"
+                id="flower"
+                href="facebook.com"
                 alt=""
-                name="chair"
-                title="History"/>
+                name="flower"/>
           <area shape="poly"
-                id="frames"
-                href="#"
+                id="note"
+                href="facebook.com"
                 alt=""
-                name="frames"
-                title="Gallery"/>
+                name="note"/>
           <area shape="rect"
-                id="table"
-                href="#"
+                id="shoe"
+                href="facebook.com"
                 alt=""
-                name="table"
-                title="About the Show"/>
-          <span id="shelf_overlay" class="overlay" data-content="config"></span>
-          <span id="portrait_overlay" class="overlay" data-content="config"></span>
-          <span id="frames_overlay" class="overlay" data-content="gallery"></span>
-          <span id="chair_overlay" class="overlay" data-content="config"></span>
-          <span id="table_overlay" class="overlay" data-content="config"></span>
-      </map>
-      <div class="black"></div>
-      <img src="./images/Room1/031618 Room1 Colored.jpg" alt="" usemap="#room_1" id="room1_bg">
-      <img src="./images/022218 Transition 1.jpg" alt="" class="transition_1" id="trans_1">
+                name="shoe"/>
+          <area shape="poly"
+                id="sign"
+                href="facebook.com"
+                alt=""
+                name="sign"/>
+          <area shape="poly"
+                id="tree"
+                href="facebook.com"
+                alt=""
+                name="tree"/>
+            <span id="burrow_overlay" class="overlay" data-content="NAME"></span>
+            <span id="flower_overlay" class="overlay" data-content="PORTRAIT"></span>
+            <span id="note_overlay" class="overlay" data-content="FRAMES"></span>
+            <span id="shoe_overlay" class="overlay" data-content="CHAIR"></span>
+            <span id="sign_overlay" class="overlay" data-content="CHAIR"></span>
+            <span id="tree_overlay" class="overlay" data-content="TABLE"></span>
+        </map>
+        <div class="black"></div>
+        <img src="./images/Room2/031618 Room 2.jpg" alt="" usemap="#room_2" id="room2_bg">
+        <img src="./images/022218 Transition 1.jpg" alt="" class="transition" id="trans_2">
+        <img src="./images/022218 Transition 1.jpg" alt="" class="transition prev" id="trans_2_prev">
+        <img src="./images/022218 Transition 1.jpg" alt="" class="transition next" id="trans_2_next">
+      </div>
+      <div class="room" id="floor">
+        <map name="room_3">
+          <area id="floorsign"
+                shape="poly"
+                coords=""
+                href="facebook.com"
+                alt=""
+                name="floorsign"/>
+          <area id="door"
+                shape="poly"
+                coords=""
+                href="facebook.com"
+                alt=""
+                name="door"/>
+            <span id="floorsign_overlay" class="overlay" data-content="SIGN"></span>
+            <span id="door_overlay" class="overlay" data-content="DOOR"></span>
+        </map>
+        <div class="black"></div>
+        <img src="./images/Room3/031318 Room 3.jpg" alt="" usemap="#room_3" id="room3_bg">
+        <img src="./images/022218 Transition 1.jpg" alt="" class="transition prev" id="trans_3_prev">
+      </div>
     </div>
-    <div class="room" id="forest">
-      <map name="room_2">
-        <area shape="rect"
-              class="trigger"
-              id="burrow"
-              href="facebook.com"
-              alt=""
-              name="burrow"/>
-        <area shape="poly"
-              id="flower"
-              href="facebook.com"
-              alt=""
-              name="flower"/>
-        <area shape="poly"
-              id="note"
-              href="facebook.com"
-              alt=""
-              name="note"/>
-        <area shape="rect"
-              id="shoe"
-              href="facebook.com"
-              alt=""
-              name="shoe"/>
-        <area shape="poly"
-              id="sign"
-              href="facebook.com"
-              alt=""
-              name="sign"/>
-        <area shape="poly"
-              id="tree"
-              href="facebook.com"
-              alt=""
-              name="tree"/>
-          <span id="burrow_overlay" class="overlay" data-content="NAME"></span>
-          <span id="flower_overlay" class="overlay" data-content="PORTRAIT"></span>
-          <span id="note_overlay" class="overlay" data-content="FRAMES"></span>
-          <span id="shoe_overlay" class="overlay" data-content="CHAIR"></span>
-          <span id="sign_overlay" class="overlay" data-content="CHAIR"></span>
-          <span id="tree_overlay" class="overlay" data-content="TABLE"></span>
-      </map>
-      <div class="black"></div>
-      <img src="./images/Room2/031618 Room 2.jpg" alt="" usemap="#room_2" id="room2_bg">
-      <img src="./images/022218 Transition 1.jpg" alt="" class="transition_1" id="trans_2">
-    </div>
-    <div class="room" id="floor">
-      <map name="room_3">
-        <area id="floorsign"
-              shape="poly"
-              coords=""
-              href="facebook.com"
-              alt=""
-              name="floorsign"/>
-        <area id="door"
-              shape="poly"
-              coords=""
-              href="facebook.com"
-              alt=""
-              name="door"/>
-          <span id="floorsign_overlay" class="overlay" data-content="SIGN"></span>
-          <span id="door_overlay" class="overlay" data-content="DOOR"></span>
-      </map>
-      <div class="black"></div>
-      <img src="./images/Room3/031318 Room 3.jpg" alt="" usemap="#room_3" id="room3_bg">
+    <div class="hud">
+      <button id="prev">Prev</button>
+      <button id="next">Next</button>
     </div>
     <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
       <div class="slides"></div>

@@ -54,38 +54,60 @@ class Room {
     this._attachListeners()
   }
 
-  _attachTransitionListeners(trigger_selector, roombg_selector, transition_selector, next_room) {
+  go_to_next_room(
+    root_selector=`#${this.config.wrapper_id}`,
+    transition_selector=`${this.config.transition_element}`,
+    next_room=`${this.config.next_room}`,
+    reverse=false
+  ) {
+    let root = document.querySelector(root_selector)
+    let image = root.querySelector('img')
+    let next_room_element = document.querySelector(next_room)
+    let transition = root.querySelector(transition_selector)
+
+    if(!reverse) {
+      let black = root.querySelector('.black')
+      black.classList.add('animate')
+      black.addEventListener('transitionend', function() {
+        //next_room_element.classList.toggle('show')
+        transition.classList.add('show')
+        this.classList.remove('animate')
+      }, { once: true })
+      transition.addEventListener('transitionend', function() {
+        this.classList.remove('show')
+        root.classList.remove('viewable')
+        next_room_element.classList.add('viewable')
+        window.location.hash = next_room
+      }, { once: true })
+    }
+
+    if(reverse) {
+      let black = root.querySelector('.black')
+      black.classList.add('animate')
+
+      black.addEventListener('transitionend', function() {
+        transition.classList.add('show')
+        this.classList.remove('animate')
+      }, { once: true })
+
+      transition.addEventListener('transitionend', function() {
+        transition.classList.remove('show')
+        root.classList.remove('viewable')
+        next_room_element.classList.add('viewable')
+        window.location.hash = next_room
+      })
+    }
+  }
+
+  _attachTransitionListeners(trigger_selector) {
     let trigger = document.querySelector(trigger_selector)
     trigger.addEventListener('click', (evt) => {
       evt.preventDefault()
-
-      //document.querySelector(roombg_selector).classList.toggle('up')
-
-      if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
-        trigger.parentNode.parentNode.querySelector('.black').classList.toggle('block')
-        trigger.parentNode.parentNode.querySelector(roombg_selector).classList.add('mask')
-        document.querySelector(roombg_selector).addEventListener('animationend', function() {
-          document.querySelector(roombg_selector).classList.add('final_mask')
-          document.querySelector(transition_selector).classList.toggle('show')
-        })
-      } else {
-        trigger.parentNode.parentNode.querySelector('.black').classList.toggle('animate')
-        trigger.parentNode.parentNode.querySelector('.black').addEventListener('transitionend', function() {
-          document.querySelector(transition_selector).classList.toggle('show')
-          this.classList.toggle('animate')
-        }, { once: true })
-      }
-      document.querySelector(transition_selector).addEventListener('transitionend', function() {
-        document.querySelector(transition_selector).classList.toggle('show')
-        document.querySelector(next_room).scrollIntoView(true,{behavior: 'smooth'})
-      }, { once: true })
+      this.go_to_next_room()
     })
   }
 
   _attachListeners() {
-    if(CSS.supports('mask: radial-gradient(rgba(0,0,0,1),rgba(0,0,0,0) 0%)')) {
-      this.root.querySelector('.black').classList.toggle('pinhole')
-    }
 
     let areas = this.root.querySelectorAll('area')
     for(let area of areas) {
@@ -103,15 +125,17 @@ class Room {
         })
       }
     }
-    this._attachTransitionListeners('#shelf', '#room1_bg', '#trans_1', '[name=room_2]')
-    this._attachTransitionListeners('#burrow', '#room2_bg', '#trans_2', '[name=room_3]')
+    if(this.config.has_transition) {
+      this._attachTransitionListeners(this.config.transition_trigger)
+    }
   }
 
   resize_clickables() {
     let overlays = this.root.querySelectorAll('.overlay')
     for(let overlay of overlays) {
-      //overlay.style.top = (this.root.querySelector(`#${this.map_image_id}`).y+1)+'px'
-      overlay.style.height = this.root.querySelector(`#${this.map_image_id}`).height+'px'
+      overlay.style.top = (this.root.querySelector(`#${this.map_image_id}`).y+1)+'px'
+      this.root.querySelector(`#${this.map_image_id}`).style.height = this.root.height+'px'
+      overlay.style.height = this.root.height+'px'
     }
 
     for(let area of this.config.areas) {
@@ -247,8 +271,80 @@ class Modal {
   }
 }
 
+class HUD {
+  constructor(config = {}) {
+    this.config = config
+    this._initialize_buttons(0)
+  }
+
+  _initialize_buttons() {
+    let prev = document.querySelector('#prev')
+    let next = document.querySelector('#next')
+
+    prev.addEventListener('click', (evt) => {
+      evt.preventDefault()
+      let current_hash = location.hash
+      if(location.hash == '') current_hash = '#sala'
+      this.go_to(current_hash, this.config[current_hash].prev.target, 'prev')
+    })
+
+    next.addEventListener('click', (evt) => {
+      evt.preventDefault()
+      let current_hash = location.hash
+      if(location.hash == '') current_hash = '#sala'
+      this.go_to(current_hash, this.config[current_hash].next.target, 'next')
+    })
+  }
+
+  go_to(current_hash, target_hash, direction) {
+    console.log(this.config[current_hash][direction])
+    if(this.config[current_hash][direction]) {
+      if(direction == 'next') {
+        window.room_1.go_to_next_room(
+          current_hash,
+          this.config[current_hash][direction].transition,
+          target_hash
+        )
+      } else {
+        window.room_1.go_to_next_room(
+          current_hash,
+          this.config[current_hash][direction].transition,
+          target_hash,
+          true
+        )
+      }
+    }
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
-  //window.room_1 = new RoomOne()
+  window.hud = new HUD({
+    '#sala': {
+      prev: null,
+      next: {
+        target: '#forest',
+        transition: '#trans_1_next'
+      }
+    },
+    '#forest': {
+      prev: {
+        target: '#sala',
+        transition: '#trans_2_prev'
+      },
+      next: {
+        target: '#floor',
+        transition: '#trans_2_next'
+      }
+    },
+    '#floor': {
+      prev: {
+        target: '#forest',
+        transition: '#trans_3_prev'
+      },
+      next: null
+    }
+  })
+
   window.modal = new Modal({
     subscribe: {
       message: `<div id="subscribe-modal-open"><p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
@@ -372,6 +468,10 @@ document.addEventListener('DOMContentLoaded', function() {
     name: 'room_1',
     wrapper_id: 'sala',
     map_image_id: 'room1_bg',
+    has_transition: true,
+    transition_trigger: '#shelf',
+    transition_element: '#trans_1',
+    next_room: '#forest',
     areas: [
       {
         name: 'shelf',
@@ -405,6 +505,10 @@ document.addEventListener('DOMContentLoaded', function() {
     name: 'room_2',
     wrapper_id: 'forest',
     map_image_id: 'room2_bg',
+    has_transition: true,
+    transition_trigger: '#burrow',
+    transition_element: '#trans_2',
+    next_room: '#floor',
     areas: [
       {
         name: 'burrow',
