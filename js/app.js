@@ -309,16 +309,16 @@ class HUD {
     let next = document.querySelector('#next')
     switch(location.hash) {
       case '#forest':
-        prev.removeAttribute('disabled')
-        next.removeAttribute('disabled')
+        prev.classList.remove('hidden')
+        next.classList.remove('hidden')
         break
       case '#floor':
-        prev.removeAttribute('disabled')
-        next.setAttribute('disabled', true)
+        prev.classList.remove('hidden')
+        next.classList.add('hidden')
         break
       default:
-        prev.setAttribute('disabled', true)
-        next.removeAttribute('disabled')
+        prev.classList.add('hidden')
+        next.classList.remove('hidden')
         break
     }
   }

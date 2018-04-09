@@ -230,31 +230,31 @@ img {
 }
 
 #shelf_overlay {
-  background: url('../images/Room1/031618 Room 1 shelf.png') top left;
+  background: url('../images/Room1/040318 bookshelf door-tipsytales book.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #portrait_overlay {
-  background: url('../images/Room1/031618 Room 1 portrait.png') top left;
+  background: url('../images/Room1/032018 Portrait.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #chair_overlay {
-  background: url('../images/Room1/031618 Room 1chair.png') top left;
+  background: url('../images/Room1/032618 chair.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #frames_overlay {
-  background: url('../images/Room1/031618 Room 1 frames.png') top left;
+  background: url('../images/Room1/032618 frames-hover.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
 #table_overlay {
-  background: url('../images/Room1/031618 Room 1 table.png') top left;
+  background: url('../images/Room1/032618 Table 2.png') top left;
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -478,6 +478,10 @@ label {
   cursor: pointer;
   background-color: #320b05;
   color: white;
+}
+
+.hud button.hidden {
+  visibility: hidden;
 }
 
 .hud button[disabled] {
