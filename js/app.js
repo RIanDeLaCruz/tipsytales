@@ -143,6 +143,14 @@ class Room {
       set_point_values(id, this.ClickMap.get(id).x, this.ClickMap.get(id).y)
     }
   }
+
+  set_as_unviewable() {
+    this.root.classList.remove('viewable')
+  }
+
+  set_as_viewable() {
+    this.root.classList.add('viewable')
+  }
 }
 
 class Modal {
@@ -575,6 +583,23 @@ window.addEventListener('load', function() {
   room_1.resize_clickables()
   room_2.resize_clickables()
   room_3.resize_clickables()
+  switch(location.hash) {
+    case '#forest':
+      room_1.set_as_unviewable()
+      room_2.set_as_viewable()
+      room_3.set_as_unviewable()
+      break
+    case '#floor':
+      room_1.set_as_unviewable()
+      room_2.set_as_unviewable()
+      room_3.set_as_viewable()
+      break
+    default:
+      room_1.set_as_viewable()
+      room_2.set_as_unviewable()
+      room_3.set_as_unviewable()
+      break
+  }
 })
 
 window.addEventListener('resize', function() {
