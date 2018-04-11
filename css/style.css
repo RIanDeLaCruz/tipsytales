@@ -344,13 +344,23 @@ img {
 .transition.show {
   visibility: visible;
   opacity: 1;
-  transition: opacity 2s ease-in-out;
+  transition: opacity 2s cubic-bezier(0,.67,.21,.99);
+  animation: slideUp 2s ease-out;
   z-index: 6;
 }
 
 .viewable {
   display: flex;
   opacity: 1;
+}
+
+@keyframes slideUp {
+  0% {
+    transform: translateY(25vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 /*
