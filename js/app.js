@@ -51,7 +51,21 @@ class Room {
       this.ClickMap.set(`#${area.name}`, {x: area_coordinates.x, y: area_coordinates.y})
     }
 
+    this._set_transition_mask()
     this._attachListeners()
+  }
+
+  _set_transition_mask() {
+    let trans_mask = this.root.querySelector('.transition_view')
+    let image = document.querySelector(`#${ this.map_image_id }`)
+    let ratio = image.naturalHeight/image.naturalWidth
+    let height = window.innerWidth*ratio
+
+    trans_mask.style.height = `${height}px`
+    trans_mask.style.width = '100%'
+    //trans_mask.style.top = `${image.y}px`
+    console.dir(image)
+    console.log(image.height)
   }
 
   go_to_next_room(
@@ -600,8 +614,11 @@ window.addEventListener('load', function() {
     modal.open_welcome_modal()
   }
   room_1.resize_clickables()
+  room_1._set_transition_mask()
   room_2.resize_clickables()
+  room_2._set_transition_mask()
   room_3.resize_clickables()
+  room_3._set_transition_mask()
 
   switch(location.hash) {
     case '#forest':
@@ -627,8 +644,11 @@ window.addEventListener('resize', function() {
     modal.modal_note()
   }
   room_1.resize_clickables()
+  room_1._set_transition_mask()
   room_2.resize_clickables()
+  room_2._set_transition_mask()
   room_3.resize_clickables()
+  room_3._set_transition_mask()
 })
 
 window.addEventListener('hashchange', function() {

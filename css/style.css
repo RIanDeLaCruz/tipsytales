@@ -332,6 +332,11 @@ img {
   transform: translateY(-5%);
 }
 
+.transition_view {
+  position: absolute;
+  overflow: hidden;
+}
+
 .transition {
   position: absolute;
   top: 0;
@@ -342,7 +347,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100%;
 }
 
 .transition.show {
@@ -368,17 +373,17 @@ img {
 
 @keyframes slideUp {
   0% {
-    transform: translateY(25vh);
+    transform: translateY(0);
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(-10%);
   }
 }
 
 
 @keyframes slideDown {
   0% {
-    transform: translateY(-25vh);
+    transform: translateY(-10%);
   }
   100% {
     transform: translateY(0);
