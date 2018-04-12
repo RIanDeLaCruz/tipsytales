@@ -339,6 +339,10 @@ img {
   visibility: none;
   opacity: 0;
   z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .transition.show {
@@ -346,6 +350,14 @@ img {
   opacity: 1;
   transition: opacity 2s cubic-bezier(0,.67,.21,.99);
   animation: slideUp 2s ease-out;
+  z-index: 6;
+}
+
+.transition.showdown {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 2s cubic-bezier(0,.67,.21,.99);
+  animation: slideDown 2s ease-out;
   z-index: 6;
 }
 
@@ -357,6 +369,16 @@ img {
 @keyframes slideUp {
   0% {
     transform: translateY(25vh);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-25vh);
   }
   100% {
     transform: translateY(0);

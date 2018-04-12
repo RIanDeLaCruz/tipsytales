@@ -71,9 +71,9 @@ class Room {
       black.addEventListener('transitionend', function() {
         //next_room_element.classList.toggle('show')
         transition.classList.add('show')
-        this.classList.remove('animate')
       }, { once: true })
       transition.addEventListener('transitionend', function() {
+        black.classList.remove('animate')
         this.classList.remove('show')
         root.classList.remove('viewable')
         next_room_element.classList.add('viewable')
@@ -86,12 +86,12 @@ class Room {
       black.classList.add('animate')
 
       black.addEventListener('transitionend', function() {
-        transition.classList.add('show')
-        this.classList.remove('animate')
+        transition.classList.add('showdown')
       }, { once: true })
 
       transition.addEventListener('transitionend', function() {
-        transition.classList.remove('show')
+        black.classList.remove('animate')
+        transition.classList.remove('showdown')
         root.classList.remove('viewable')
         next_room_element.classList.add('viewable')
         window.location.hash = next_room
