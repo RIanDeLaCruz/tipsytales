@@ -78,6 +78,9 @@ class Room {
     let image = root.querySelector('img')
     let next_room_element = document.querySelector(next_room)
     let transition = root.querySelector(transition_selector)
+    let transition_mask = root.querySelector('.transition_view')
+
+    transition_mask.classList.add('active_mask')
 
     if(!reverse) {
       let black = root.querySelector('.black')
@@ -91,6 +94,7 @@ class Room {
         this.classList.remove('show')
         root.classList.remove('viewable')
         next_room_element.classList.add('viewable')
+        transition_mask.classList.remove('active_mask')
         window.location.hash = next_room
       }, { once: true })
     }
@@ -108,6 +112,7 @@ class Room {
         transition.classList.remove('showdown')
         root.classList.remove('viewable')
         next_room_element.classList.add('viewable')
+        transition_mask.classList.remove('active_mask')
         window.location.hash = next_room
       })
     }
@@ -147,7 +152,7 @@ class Room {
   resize_clickables() {
     let overlays = this.root.querySelectorAll('.overlay')
     for(let overlay of overlays) {
-      overlay.style.top = (this.root.querySelector(`#${this.map_image_id}`).y+1)+'px'
+      //overlay.style.top = (this.root.querySelector(`#${this.map_image_id}`).y+1)+'px'
       this.root.querySelector(`#${this.map_image_id}`).style.height = this.root.height+'px'
       overlay.style.height = this.root.height+'px'
     }
@@ -614,11 +619,8 @@ window.addEventListener('load', function() {
     modal.open_welcome_modal()
   }
   room_1.resize_clickables()
-  room_1._set_transition_mask()
   room_2.resize_clickables()
-  room_2._set_transition_mask()
   room_3.resize_clickables()
-  room_3._set_transition_mask()
 
   switch(location.hash) {
     case '#forest':
