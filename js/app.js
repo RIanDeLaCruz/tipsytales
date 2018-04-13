@@ -505,6 +505,66 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ]
     },
+    flower_overlay: {
+      message: `
+      <div id="castandcrew-modal-open">
+        <h1>The Cast & Crew</h1>
+        <p>Lorem ipsum dolor sit amet</p>
+      </div>
+      `
+    },
+    note_overlay: {
+      message: `
+      <div id="producersnote-modal-open">
+        <h1>Producer's Note</h1>
+        <p>Enter a world that has always existed alongside ours, speak to beings that you have heard about but haven't met yet, be daring and dive into their stories as much as you build your own. Immerse yourself in the experience and let us take you into an adventure like no other.</p>
+        <p>For the brave, the curious and the adventurous, this story will come alive as much as you let it. Allow it to make you think, make you feel and most importantly, make you laugh. Once you've been permitted to see the other side, you are always welcome to come back. </p>
+      </div>
+      `
+    },
+    shoe_overlay: {
+      message: `
+      <div id="synopsis-modal-open">
+        <h1>Synopsis</h1>
+        <p>After a tragic death in the family, Lola invites you to her home to keep her company. She reminisces about the past and the song she used to share with the forest, before falling into a deep sleep. A mischievous duende, called Kati, pulls you into a world of adventure-a world where stories are still yet to be uncovered: A story of wonder, a story of love, a story full of longing and loss.</p>
+      </div>
+      `
+    },
+    tree_overlay: {
+      message: `
+      <div id="partners-modal-open">
+        <h1>Partners</h1>
+        <p>We stand on the shoulders of giants that have come before us. This world would not have come to life if not for the generosity of our partners who have contributed in many ways - time, skills, knowledge and monetary support.</p>
+        <p>Production Partners</p>
+        <p>Co-Presenter</p>
+        <p>Major Sponsor</p>
+        <p>Principal Sponsor</p>
+        <p>Participating Sponsor</p>
+        <p>Individual Sponsors</p>
+        <p>Creative Partners<br/>
+        Set Design: Likhain Productions<br/>
+        Web Design: Cocomilk Design Co</p>
+        <p>Cultural Partners</p>
+      </div>
+      `
+    },
+    floorsign_overlay: {
+      message: `
+      <div id="rulesregulations-modal-open">
+        <h1>Rules and Regulations</h1>
+        <p>Hi everyone! Welcome to Ang Kundiman.</p>
+        <p>Lola is requesting that you leave all your belongings in her flowerbed for safe keeping. She doesn't want you to be distracted, so she is requesting that you leave your phone behind on silent mode as well. Don't worry, she told me she'll allow you to take selfies later! As you will be meeting Lola and Kati's friends later, she wanted me to remind you all to respect them in the way that you would your own friends. You know, with respect for their feelings and personal space. Pay attention to their stories and answer their questions, you might be able to get a little treat out of it! We don't want you to get lost on our little adventure, so please be aware of the movement of the group. Kati is quite spritely so we need to be able to keep up with her. Lola has a bunch of antiques lying around and she has specifically demanded that you do not touch anything, unless Kati says that you can. Lola loves her visitors but she loves her antiquities more, they've been with her longer. If at any point you get a little too excited or start feeling ill - heaven knows I've felt that way in the company of Kati's friends! - please do not hesitate to inform us. Alright! This is your last chance to back out of the adventure! Once we enter Lola's house, there's no turning back! Is everybody ready?</p>
+      </div>
+      `
+    },
+    door_overlay: {
+      message: `
+      <div id="booknow-modal-open">
+        <h1>Book Now</h1>
+        <p>Lorem ipsum dolor sit amet</p>
+      </div>
+      `
+    },
   })
   // TO ADD HTML EMBED: add id and HTML content to the configuration object
   // IN the HTML, put 'config' in the data-content attribute
