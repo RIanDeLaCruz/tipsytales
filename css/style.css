@@ -268,11 +268,11 @@ img {
 }
 
 #burrow_overlay { background: url('../images/Room2/031618 Room 2 Burrow.png') top left; }
-#flower_overlay { background: url('../images/Room2/031618 Room 2 Flower.png') top left; }
-#note_overlay { background: url('../images/Room2/031618 Room 2 Note.png') top left; }
-#shoe_overlay { background: url('../images/Room2/031618 Room 2 Shoe.png') top left; }
-#sign_overlay { background: url('../images/Room2/031618 Room 2 Sign.png') top left; }
-#tree_overlay { background: url('../images/Room2/031618 Room 2 Tree.png') top left; }
+#flower_overlay { background: url('../images/Room2/041718 Room 2 Flower Hover.png') top left; }
+#note_overlay { background: url('../images/Room2/041718 Room 2 Note Hover.png') top left; }
+#shoe_overlay { background: url('../images/Room2/041718 Room 2 Shoe Hover.png') top left; }
+#sign_overlay { background: url('../images/Room2/041718 Room 2 Sign Hover.png') top left; }
+#tree_overlay { background: url('../images/Room2/041718 Room 2 Tree Hover.png') top left; }
 
 #burrow:hover ~ #burrow_overlay,
 #flower:hover ~ #flower_overlay,
@@ -283,12 +283,12 @@ img {
   opacity: 1;
 }
 
-#floorsign_overlay { background: url('../images/Room3/031318 Room 3 Sign.png') top left; }
-#door_overlay { background: url('../images/Room3/031318 Room 3 Kapre Door.png') top left; }
+#floorsign_overlay { background: url('../images/Room3/041718 Room 3 Sign Hover.png') top left; }
+#door_overlay { background: url('../images/Room3/041718 Room 3 Kapre Hover.png') top left; }
 
 #floorsign:hover ~ #floorsign_overlay,
 #door:hover ~ #door_overlay {
-  display: block;
+  opacity: 1;
 }
 
 /*
