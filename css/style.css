@@ -352,6 +352,7 @@ img {
   /*opacity: 0;*/
   /*z-index: -1;*/
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   width: 100vw;
@@ -371,6 +372,13 @@ img {
   transition: opacity 2s cubic-bezier(0,.67,.21,.99);
   animation: slideDown 2s ease-out;
   z-index: 6;
+}
+
+.girl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transformY(0);
 }
 
 .viewable {

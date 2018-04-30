@@ -53,6 +53,12 @@ class Room {
 
     this._set_transition_mask()
     this._attachListeners()
+    this.observer = null
+    this.observer_previous_threshold = 0
+    this.delta = 0
+    this.last_threshold = 0
+    this._set_parallax()
+    this.last_scroll_position = window.pageYOffset
   }
 
   _set_transition_mask() {
@@ -61,11 +67,52 @@ class Room {
     let ratio = image.naturalHeight/image.naturalWidth
     let height = window.innerWidth*ratio
 
-    trans_mask.style.height = `${height}px`
-    trans_mask.style.width = '100%'
+    //trans_mask.style.height = `${height}px`
+    if(trans_mask) {
+      trans_mask.style.width = '100%'
+    }
     //trans_mask.style.top = `${image.y}px`
-    console.dir(image)
-    console.log(image.height)
+  }
+
+  _get_threshold_list(numSteps=20) {
+    var thresholds = [];
+
+    for (var i=1.0; i<=numSteps; i++) {
+      var ratio = i/numSteps;
+      thresholds.push(ratio);
+    }
+    return thresholds.slice(5);
+  }
+
+  _set_parallax() {
+    this.observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        console.log(entry.intersectionRatio)
+        console.log(this.observer_previous_threshold)
+        if(window.pageYOffset > this.last_scroll_position) {
+          this.last_scroll_position = window.pageYOffset
+          var transform = 0
+          if(entry.intersectionRatio > this.observer_previous_threshold) {
+            transform = entry.intersectionRatio * 100 - 85
+          } else if(entry.intersectionRatio < this.observer_previous_threshold) {
+            this.last_threshold = (this.last_threshold == 0) ? entry.intersectionRatio : this.last_threshold
+            this.delta = this.last_threshold - entry.intersectionRatio
+            console.log(this.delta)
+            if(this.delta < 0.5) {
+                transform = (this.last_threshold + this.delta) * 100 - 85
+            }
+          }
+          document.querySelector('#trans_1').querySelector('.girl').style.transform = `translateY(${transform}%)`
+        } else {
+          this.last_scroll_position = window.pageYOffset
+          console.log('up')
+        }
+        this.observer_previous_threshold = entry.intersectionRatio
+      })
+    }, {
+      threshold: this._get_threshold_list()
+    })
+    this.observer.observe(document.querySelector('#trans_1'))
   }
 
   go_to_next_room(
