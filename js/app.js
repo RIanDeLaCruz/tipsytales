@@ -101,6 +101,96 @@ class Room {
     })
   }
 
+  scrollIt(destination, duration = 200, easing = 'linear', callback) {
+    const easings = {
+      linear(t) {
+        return t;
+      },
+      easeInQuad(t) {
+        return t * t;
+      },
+      easeOutQuad(t) {
+        return t * (2 - t);
+      },
+      easeInOutQuad(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      },
+      easeInCubic(t) {
+        return t * t * t;
+      },
+      easeOutCubic(t) {
+        return (--t) * t * t + 1;
+      },
+      easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      },
+      easeInQuart(t) {
+        return t * t * t * t;
+      },
+      easeOutQuart(t) {
+        return 1 - (--t) * t * t * t;
+      },
+      easeInOutQuart(t) {
+        return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t;
+      },
+      easeInQuint(t) {
+        return t * t * t * t * t;
+      },
+      easeOutQuint(t) {
+        return 1 + (--t) * t * t * t * t;
+      },
+      easeInOutQuint(t) {
+        return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t;
+      }
+    };
+
+    const start = window.pageYOffset;
+    const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+
+    const documentHeight = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.clientHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    const windowHeight = window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.getElementsByTagName('body')[0].clientHeight;
+    const destinationOffset = typeof destination === 'number' ? destination : destination.offsetTop;
+    const destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ?
+      documentHeight - windowHeight :
+      destinationOffset
+    );
+
+    if ('requestAnimationFrame' in window === false) {
+      window.scroll(0, destinationOffsetToScroll);
+      if (callback) {
+        callback();
+      }
+      return;
+    }
+
+    function scroll() {
+      const now = 'now' in window.performance ? performance.now() : new Date().getTime();
+      const time = Math.min(1, ((now - startTime) / duration));
+      const timeFunction = easings[easing](time);
+      window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
+
+      if (window.pageYOffset === destinationOffsetToScroll) {
+        if (callback) {
+          callback();
+        }
+        return;
+      }
+
+      requestAnimationFrame(scroll);
+    }
+
+    scroll();
+  }
+
+
   go_to_next_room(
     root_selector=`#${this.config.wrapper_id}`,
     transition_selector=`${this.config.transition_element}`,
@@ -111,48 +201,13 @@ class Room {
     let image = root.querySelector('img')
     let next_room_element = document.querySelector(next_room)
     let transition = root.querySelector(transition_selector)
-    let transition_mask = root.querySelector('.transition_view')
 
-    transition_mask.classList.add('active_mask')
-
-    if(!reverse) {
-      let black = root.querySelector('.black')
-      black.classList.add('animate')
-      black.addEventListener('transitionend', function() {
-        //next_room_element.classList.toggle('show')
-        transition.classList.add('show')
-      }, { once: true })
-      transition.addEventListener('transitionend', function() {
-        black.classList.remove('animate')
-        this.classList.remove('show')
-        root.classList.remove('viewable')
-        next_room_element.classList.add('viewable')
-        transition_mask.classList.remove('active_mask')
-        window.location.hash = next_room
-      }, { once: true })
-    }
-
-    if(reverse) {
-      let black = root.querySelector('.black')
-      black.classList.add('animate')
-
-      black.addEventListener('transitionend', function() {
-        transition.classList.add('showdown')
-      }, { once: true })
-
-      transition.addEventListener('transitionend', function() {
-        black.classList.remove('animate')
-        transition.classList.remove('showdown')
-        root.classList.remove('viewable')
-        next_room_element.classList.add('viewable')
-        transition_mask.classList.remove('active_mask')
-        window.location.hash = next_room
-      })
-    }
+    this.scrollIt(next_room_element, 2000, 'easeInQuad', () => { console.log('Next Room' )})
   }
 
   _attachTransitionListeners(trigger_selector) {
     let trigger = document.querySelector(trigger_selector)
+    console.log(trigger)
     trigger.addEventListener('click', (evt) => {
       evt.preventDefault()
       this.go_to_next_room()
@@ -160,7 +215,6 @@ class Room {
   }
 
   _attachListeners() {
-
     let areas = this.root.querySelectorAll('area')
     for(let area of areas) {
       tippy(area, {
