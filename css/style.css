@@ -378,7 +378,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  transform: translateY(50%);
+  transform: translateY(-50%);
 }
 
 .viewable {

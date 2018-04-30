@@ -54,6 +54,9 @@ class Room {
     this._set_transition_mask()
     this._attachListeners()
     this._set_parallax()
+    this.transition_1_offset = document.querySelector('#trans_1').offsetTop
+    this.room_1_height = document.querySelector('#sala').clientHeight
+    this.transition_2_offset = document.querySelector('#trans_2').offsetTop
   }
 
   _set_transition_mask() {
@@ -80,9 +83,21 @@ class Room {
   }
 
   _set_parallax() {
-    window.addEventListener('scroll', function() {
-        let transform = window.pageYOffset / document.querySelector('#trans_1').offsetTop
-        document.querySelector('#trans_1').querySelector('.girl').style.transform = `translateY(${transform*100-85}%)`
+    window.addEventListener('scroll', () => {
+        let trans_1_transform = window.pageYOffset / this.transition_1_offset
+        document
+        .querySelector('#trans_1')
+        .querySelector('.girl')
+        .style
+        .transform = `translateY(${trans_1_transform*100-85}%)`
+
+        let room_1_delta = window.pageYOffset - this.room_1_height
+        let trans_2_transform = room_1_delta / this.transition_2_offset
+        document
+        .querySelector('#trans_2')
+        .querySelector('.girl')
+        .style
+        .transform = `translateY(${trans_2_transform*100-85}%)`
     })
   }
 
