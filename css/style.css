@@ -284,7 +284,7 @@ img {
   opacity: 1;
 }
 
-#floorsign_overlay { background: url('../images/Room3/041718 Room 3 Sign Hover.png') top left; }
+#floorsign_overlay { background: url('../images/Room3/042418 Room 3 Sign Hover.png') top left; }
 #door_overlay { background: url('../images/Room3/041718 Room 3 Kapre Hover.png') top left; }
 
 #floorsign:hover ~ #floorsign_overlay,
