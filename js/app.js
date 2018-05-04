@@ -385,98 +385,7 @@ class Modal {
   }
 }
 
-class HUD {
-  constructor(config = {}) {
-    this.config = config
-    this._initialize_buttons(0)
-  }
-
-  _initialize_buttons() {
-    let prev = document.querySelector('#prev')
-    let next = document.querySelector('#next')
-
-    prev.addEventListener('click', (evt) => {
-      evt.preventDefault()
-      let current_hash = location.hash
-      if(location.hash == '') current_hash = '#sala'
-      this.go_to(current_hash, this.config[current_hash].prev.target, 'prev')
-    })
-
-    next.addEventListener('click', (evt) => {
-      evt.preventDefault()
-      let current_hash = location.hash
-      if(location.hash == '') current_hash = '#sala'
-      this.go_to(current_hash, this.config[current_hash].next.target, 'next')
-    })
-  }
-
-  disable_buttons() {
-    let prev = document.querySelector('#prev')
-    let next = document.querySelector('#next')
-    switch(location.hash) {
-      case '#forest':
-        prev.classList.remove('hidden')
-        next.classList.remove('hidden')
-        break
-      case '#floor':
-        prev.classList.remove('hidden')
-        next.classList.add('hidden')
-        break
-      default:
-        prev.classList.add('hidden')
-        next.classList.remove('hidden')
-        break
-    }
-  }
-
-  go_to(current_hash, target_hash, direction) {
-    if(this.config[current_hash][direction]) {
-      if(direction == 'next') {
-        window.room_1.go_to_next_room(
-          current_hash,
-          this.config[current_hash][direction].transition,
-          target_hash
-        )
-      } else {
-        window.room_1.go_to_next_room(
-          current_hash,
-          this.config[current_hash][direction].transition,
-          target_hash,
-          true
-        )
-      }
-    }
-  }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-  window.hud = new HUD({
-    '#sala': {
-      prev: null,
-      next: {
-        target: '#forest',
-        transition: '#trans_1_next'
-      }
-    },
-    '#forest': {
-      prev: {
-        target: '#sala',
-        transition: '#trans_2_prev'
-      },
-      next: {
-        target: '#floor',
-        transition: '#trans_2_next'
-      }
-    },
-    '#floor': {
-      prev: {
-        target: '#forest',
-        transition: '#trans_3_prev'
-      },
-      next: null
-    }
-  })
-
   window.modal = new Modal({
     subscribe: {
       message: `<div id="subscribe-modal-open"><p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
@@ -752,8 +661,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     ]
   })
-
-  hud.disable_buttons()
 })
 
 window.addEventListener('load', function() {
@@ -798,8 +705,4 @@ window.addEventListener('resize', function() {
   room_2._set_transition_mask()
   room_3.resize_clickables()
   room_3._set_transition_mask()
-})
-
-window.addEventListener('hashchange', function() {
-  hud.disable_buttons()
 })
