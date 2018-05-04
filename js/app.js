@@ -664,9 +664,12 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 window.addEventListener('load', function() {
-  setTimeout(function() {
+  Pace.on('start', function() {
     document.querySelector('#preloader').classList.toggle('open_loader')
-  }, 2000)
+  })
+  Pace.on('done', function() {
+    document.querySelector('#preloader').classList.toggle('open_loader')
+  })
   if(window.innerWidth < window.innerHeight) {
     modal.modal_note()
   } else {
