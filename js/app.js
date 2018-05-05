@@ -85,7 +85,6 @@ class Room {
   _set_parallax() {
     window.addEventListener('scroll', () => {
       let trans_1_transform = (window.pageYOffset / 1.65) / this.transition_1_offset
-        console.log(window.pageYOffset)
         document
         .querySelector('#trans_1')
         .querySelector('.girl')
@@ -94,7 +93,6 @@ class Room {
 
         let room_1_delta = window.pageYOffset - this.room_1_height
         let trans_2_transform = ( room_1_delta * 1.35 ) / this.transition_2_offset
-        console.log(trans_1_transform)
         document
         .querySelector('#trans_2')
         .querySelector('.girl')
