@@ -214,6 +214,18 @@ class Room {
     })
   }
 
+  custom_transition_listener(trigger_selector, next_room_params) {
+    let trigger = document.querySelector(trigger_selector)
+    trigger.addEventListener('click', (evt) => {
+      evt.preventDefault()
+      this.go_to_next_room(
+        next_room_params.root_selector,
+        next_room_params.transition_selector,
+        next_room_params.next_room
+      )
+    })
+  }
+
   _attachListeners() {
     let areas = this.root.querySelectorAll('area')
     for(let area of areas) {
@@ -661,6 +673,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     ]
   })
+
+  room_2.custom_transition_listener('#sign', {
+    root_selector: '#forest',
+    transition_selector: '#trans_2',
+    next_room: '#floor',
+  })
+
+
 })
 
 window.addEventListener('load', function() {
