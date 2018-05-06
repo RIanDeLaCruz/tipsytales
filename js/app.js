@@ -202,7 +202,7 @@ class Room {
     let next_room_element = document.querySelector(next_room)
     let transition = root.querySelector(transition_selector)
 
-    this.scrollIt(next_room_element, 2000, 'easeInQuad', () => { console.log('Next Room' )})
+    this.scrollIt(next_room_element, 4000, 'easeInQuad', () => { console.log('Next Room' )})
   }
 
   _attachTransitionListeners(trigger_selector) {
