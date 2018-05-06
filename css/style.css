@@ -460,11 +460,11 @@ img {
 }
 
 .modal_body {
-  width: 40%;
+  width: 55%;
   background-color: white;
   box-shadow: 1em 1em 2.4em black;
   border-radius: 0;
-  padding: 2em 2.4em;
+  padding: 2.5em 4.5em;
   overflow-x: hidden;
 }
 
@@ -502,9 +502,11 @@ img {
 }
 
 .tt-logo {
-  width: 35%;
-  text-align: center;
-  margin-left: 32.5%;
+  width: 25%;
+  display: inline-block;
+  float: left;
+  margin-right: 3.5em;
+  margin-bottom: 3em;
 }
 
 #mc_embed_signup{

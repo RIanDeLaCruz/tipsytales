@@ -449,9 +449,9 @@ document.addEventListener('DOMContentLoaded', function() {
     portrait_overlay: {
       message: `<div id="aboutus-modal-open">
         <h1>About Us</h1>
-        <img src="./images/tt-logo.png" class="text-center tt-logo"/>
-        <p>We at Tipsy Tales are obsessed with bringing new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
-        <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p></div>
+        <img src="./images/tt-logo.png" class="tt-logo"/>
+        <p style="text-align: left;">We at Tipsy Tales are obsessed with bringing new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
+        <p style="text-align: left;">Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p></div>
 
       `
     },
