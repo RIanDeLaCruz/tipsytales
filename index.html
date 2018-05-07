@@ -14,8 +14,10 @@
     <link href="https://cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
     <link href="./css/jquery-ui.css" rel="stylesheet">
     <link rel="stylesheet" href="./css/blueimp-gallery.min.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="./css/pace.css" type="text/css" media="all" />
     <link rel="stylesheet" href="./css/preloader.css" type="text/css" media="all" />
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Domine" rel="stylesheet">
     <link rel="stylesheet" href="./css/style.css" type="text/css" media="all" />
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script
@@ -57,68 +59,39 @@
       <img src="./images/book-1.svg" alt="">
     </div>
     <nav>
-      <a href="#" id="explore" onclick="toggle_explore()" class="text-help"
+      <!-- <a href="#" id="explore" onclick="toggle_explore()" class="text-help"
         style="display: float; float: left; margin-top: 3px;">
         Explore
+      </a> -->
+      <img src="./images/tipsytales-logo-nav.png"/>
+      <a href="#sala" id="explore" class="link">
+        Home
       </a>
-      <a href="#" class="subscribe" onclick="modal.modal_open('subscribe', false)">
-        Subscribe Now
+      <a href="#" id="explore" class="link"  onclick="modal.modal_open('table_overlay', false)">
+        About the Experience
       </a>
-      <a href="https://www.facebook.com/tipsytales.ph" target="_blank">
-        <i class="fab fa-facebook"></i>
+      <a href="#" id="explore" class="link">
+        FAQ
       </a>
-      <a href="https://twitter.com/TipsyTalesPH" target="_blank">
-        <i class="fab fa-twitter"></i>
-      </a>
-      <a href="https://www.instagram.com/tipsytales.ph/" target="_blank">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=tipsytalesph@gmail.com" target="_blank">
+      <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to=tipsytalesph@gmail.com" class="social" target="_blank">
         <i class="fas fa-envelope"></i>
       </a>
+      <a href="https://www.instagram.com/tipsytales.ph/" class="social" target="_blank">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://twitter.com/TipsyTalesPH" class="social" target="_blank">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="https://www.facebook.com/tipsytales.ph" class="social" target="_blank">
+        <i class="fab fa-facebook"></i>
+      </a>
+      <a href="#" class="cta" onclick="modal.modal_open('subscribe', false)">
+        Subscribe
+      </a>
+      <a href="#" class="cta" onclick="modal.modal_open('book', false)">
+        Book Now
+      </a>
     </nav>
-    <div id="explore-menu" class="explore-menu">
-        <div class="explore-container">
-          <div class="explore-item">
-            <a href="#" onclick="modal.modal_open('shelf_overlay', false)">
-              <img src="./images/shelf 150px.png"/>
-              Welcome
-            </a>
-          </div>
-        </div>
-        <div class="explore-container">
-          <div class="explore-item">
-            <a href="#" onclick="modal.modal_open('portrait_overlay', false)">
-              <img src="./images/portrait-full 150px.png"/>
-              About Us
-            </a>
-          </div>
-        </div>
-        <div class="explore-container">
-          <div class="explore-item">
-            <a href="#" onclick="modal.modal_open('chair_overlay', false)">
-              <img src="./images/chair 150px.png"/>
-              History
-            </a>
-          </div>
-        </div>
-        <div class="explore-container">
-          <div class="explore-item">
-            <a href="#" onclick="modal.modal_open('table_overlay', false)">
-              <img src="./images/table 150px.png"/>
-              About the Show
-            </a>
-          </div>
-        </div>
-        <div class="explore-container">
-          <div class="explore-item">
-            <a href="#" onclick="modal.modal_open('frames_overlay')">
-              <img src="./images/frame 150px.png"/>
-              Gallery
-            </a>
-          </div>
-        </div>
-    </div>
     <div class="view">
       <div class="room viewable" id="sala">
         <map name="room_1">
@@ -128,47 +101,44 @@
                   href="#"
                   alt=""
                   name="shelf"
-                  title="Hey! Click me!"/>
+                  title="Explore a secret world!"/>
             <area shape="rect"
                   id="portrait"
                   href="#"
                   alt=""
                   name="portrait"
-                  title="About Us"/>
+                  title="Gallery"/>
             <area shape="poly"
                   id="chair"
                   href="#"
                   alt=""
                   name="chair"
-                  title="History"/>
+                  title="FAQ"/>
             <area shape="poly"
                   id="frames"
                   href="#"
                   alt=""
                   name="frames"
-                  title="Gallery"/>
+                  title="Philippine Mythology"/>
             <area shape="rect"
                   id="table"
                   href="#"
                   alt=""
                   name="table"
-                  title="About the Show"/>
+                  title="About the experience"/>
             <span id="shelf_overlay" class="overlay" data-content="config"></span>
             <span id="portrait_overlay" class="overlay" data-content="config"></span>
             <span id="frames_overlay" class="overlay" data-content="gallery"></span>
             <span id="chair_overlay" class="overlay" data-content="config"></span>
             <span id="table_overlay" class="overlay" data-content="config"></span>
         </map>
-        <div class="black"></div>
         <img src="./images/Room1/032718 Room 1.jpg" alt="" usemap="#room_1" id="room1_bg">
-        <div class="transition_view">
-          <!--Both are the transition images for room 1-->
-          <div class="transition" id="trans_1">
-            <img src="./images/Room1/transition 1 BG cropped.jpg" alt="" >
-          </div>
-            <div class="transition next" id="trans_1_next">
-              <img src="./images/Room1/transition 1 BG cropped.jpg" alt="" >
-            </div>
+        <div class="tiles" id="floorboards"></div>
+      </div>
+      <div class="transition_view">
+        <div class="transition" id="trans_1">
+          <img src="./images/transitions/transition 1 BG.jpg" alt="" >
+          <img src="./images/transitions/031318 Transition 2 Girl.png" alt="" class="girl"/>
         </div>
       </div>
       <div class="room" id="forest">
@@ -176,40 +146,41 @@
           <area shape="rect"
                 class="trigger"
                 id="burrow"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="burrow"
-                title="Next Room"/>
+                title="Go deeper into the forest?"/>
           <area shape="poly"
                 id="flower"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="flower"
-                title="Flower"/>
+                title="Media"/>
           <area shape="poly"
                 id="note"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="note"
-                title="Note"/>
+                title="Partners"/>
           <area shape="rect"
                 id="shoe"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="shoe"
-                title="Shoe"/>
+                title="The cast & crew"/>
           <area shape="poly"
+                class="trigger"
                 id="sign"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="sign"
-                title="Sign"/>
+                title="Go deeper into the forest?"/>
           <area shape="poly"
                 id="tree"
-                href="facebook.com"
+                href="#"
                 alt=""
                 name="tree"
-                title="Tree"/>
+                title="The World"/>
             <span id="burrow_overlay" class="overlay" data-content="config"></span>
             <span id="flower_overlay" class="overlay" data-content="config"></span>
             <span id="note_overlay" class="overlay" data-content="config"></span>
@@ -217,21 +188,13 @@
             <span id="sign_overlay" class="overlay" data-content="config"></span>
             <span id="tree_overlay" class="overlay" data-content="config"></span>
         </map>
-        <div class="black"></div>
         <img src="./images/Room2/041718 Room 2.jpg" alt="" usemap="#room_2" id="room2_bg">
-        <div class="transition_view">
-          <!--Should be Transition image for room 2-->
-          <div class="transition" id="trans_2">
-            <img src="./images/Room2/041218 Transition 2 Cropped.jpg" alt="">
-          </div>
-          <!--Should be Transition image for room 1-->
-          <div class="transition prev" id="trans_2_prev">
-            <img src="./images/Room1/transition 1 BG cropped.jpg" alt="">
-          </div>
-          <!--Should be Transition image for room 2-->
-          <div class="transition next" id="trans_2_next">
-            <img src="./images/Room2/041218 Transition 2 Cropped.jpg" alt="">
-          </div>
+        <div class="tiles" id="roots"></div>
+      </div>
+      <div class="transition_view">
+        <div class="transition" id="trans_2">
+          <img src="./images/transitions/050318 Transition 2 cropped.jpg" alt="" >
+          <img src="./images/transitions/031318 Transition 2 Girl.png" alt="" class="girl"/>
         </div>
       </div>
       <div class="room" id="floor">
@@ -242,30 +205,20 @@
                 href="facebook.com"
                 alt=""
                 name="floorsign"
-                title="Sign"/>
+                title="Rules & Regulations"/>
           <area id="door"
                 shape="poly"
                 coords=""
                 href="facebook.com"
                 alt=""
                 name="door"
-                title="Kapre"/>
+                title="Let your adventure begin!"/>
             <span id="floorsign_overlay" class="overlay" data-content="config"></span>
             <span id="door_overlay" class="overlay" data-content="config"></span>
         </map>
         <div class="black"></div>
         <img src="./images/Room3/041718 Room 3.jpg" alt="" usemap="#room_3" id="room3_bg">
-        <!--Should be Transition image for room 2-->
-        <div class="transition_view">
-          <div class="transition prev" id="trans_3_prev">
-            <img src="./images/Room2/041218 Transition 2 Cropped.jpg" alt="">
-          </div>
-        </div>
       </div>
-    </div>
-    <div class="hud">
-      <button id="prev">Prev</button>
-      <button id="next">Next</button>
     </div>
     <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
       <div class="slides"></div>
@@ -276,6 +229,7 @@
       <a class="play-pause"></a>
       <ol class="indicator"></ol>
     </div>
+    <script src="./js/pace.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="https://unpkg.com/tippy.js@2.3.0/dist/tippy.all.min.js"></script>
     <script src="./js/blueimp-gallery.min.js"></script>
     <script

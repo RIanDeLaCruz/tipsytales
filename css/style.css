@@ -5,16 +5,10 @@ html, body {
   background-color: #000;
 }
 
-@font-face {
-  font-family: 'Belinda';
-  src: url('./fonts/belinda.otf');
-}
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
 h1 {
   color: rgba(47,11,5,1);
-  font-family: 'Belinda', sans-serif;
-  font-size: 3.5em;
+  font-family: 'Domine', sans-serif;
+  font-size: 3.2em;
   text-align: center;
 }
 h2, h3, h4, h5, h6, p {
@@ -50,9 +44,9 @@ nav {
   color: #fff;
   font-family: 'Lato', sans-serif;
   text-align: right;
-  height: 35px;
+  height: 55px;
   width: 100%;
-  padding: 6px 16px;
+  padding: 0 50px;
   background: rgba(47,11,5,1);
   z-index: 20;
   -webkit-box-shadow: 1px 1px 5px 1px rgba(0,0,0,0.6);
@@ -60,18 +54,50 @@ nav {
   box-shadow:         1px 1px 5px 1px rgba(0,0,0,0.6);
 }
 
-nav a.subscribe {
+nav img {
+  float: left;
+  height: 35px;
+  width: auto;
+  padding: 0.6em 20px;
+}
+
+nav a.link {
+  float: left;
+  font-size: 1.2em;
+  /* text-transform: uppercase; */
+  padding: 0.80em 20px;
+}
+
+nav a.link:hover {
+  background-color: rgb(81, 24, 13);
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.6);
+}
+
+nav a.link:first-child {
+  margin-left: 0;
+}
+
+nav a.cta {
+  display: inline-block;
+  float: right;
   color: #fff;
-  font-size: 0.7em;
+  font-size: 0.85em;
   text-transform: uppercase;
   text-decoration: none;
   border: 1px solid #fff;
-  padding: 3px 6px;
+  padding: 0.5em 0.8em;
+  margin: 0.8em 0.5em;
 }
 
 nav svg {
-  margin-left: 10px;
-  transform: translateY(2px);
+  display: inline-block;
+  float: right;
+  margin: 1em 0.5em;
+  /* transform: translateY(2px); */
+}
+
+nav a.social {
+  font-size: 1.2em;
 }
 
 nav a svg {
@@ -150,8 +176,9 @@ nav a.subscribe:hover,
 }
 
 .room {
-  opacity: 0;
-  display: none;
+  /*opacity: 0;*/
+  /*display: none;*/
+  display: flex;
   position: relative;
   background-color: black;
   flex-direction: column;
@@ -283,12 +310,25 @@ img {
   opacity: 1;
 }
 
-#floorsign_overlay { background: url('../images/Room3/041718 Room 3 Sign Hover.png') top left; }
+#floorsign_overlay { background: url('../images/Room3/042418 Room 3 Sign Hover.png') top left; }
 #door_overlay { background: url('../images/Room3/041718 Room 3 Kapre Hover.png') top left; }
 
 #floorsign:hover ~ #floorsign_overlay,
 #door:hover ~ #door_overlay {
   opacity: 1;
+}
+
+.tiles {
+  width: 100%;
+  height: 40px;
+}
+
+#floorboards {
+  background: url('../images/transitions/woodenplank-tile.png');
+}
+
+#roots {
+  background: url('../images/transitions/Roots.jpg');
 }
 
 /*
@@ -334,7 +374,8 @@ img {
 
 .transition_view {
   display: none;
-  position: absolute;
+  display: block;
+  /*position: absolute;*/
   overflow: hidden;
 }
 
@@ -343,13 +384,14 @@ img {
 }
 
 .transition {
-  position: absolute;
-  top: 0;
-  left: 0;
-  visibility: none;
-  opacity: 0;
-  z-index: -1;
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*left: 0;*/
+  /*visibility: none;*/
+  /*opacity: 0;*/
+  /*z-index: -1;*/
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   width: 100vw;
@@ -371,9 +413,16 @@ img {
   z-index: 6;
 }
 
+.girl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-50%);
+}
+
 .viewable {
-  display: flex;
-  opacity: 1;
+  /*display: flex;*/
+  /*opacity: 1;*/
 }
 
 @keyframes slideDown {
@@ -418,11 +467,11 @@ img {
 }
 
 .modal_body {
-  width: 40%;
+  width: 55%;
   background-color: white;
   box-shadow: 1em 1em 2.4em black;
   border-radius: 0;
-  padding: 2em 2.4em;
+  padding: 2.5em 4.5em;
   overflow-x: hidden;
 }
 
@@ -439,7 +488,7 @@ img {
   display: block;
   position: absolute;
   color: #fff;
-  top: 50px;
+  top: 90px;
   right: 50px;
   width: 50px;
   height: 50px;
@@ -460,9 +509,11 @@ img {
 }
 
 .tt-logo {
-  width: 35%;
-  text-align: center;
-  margin-left: 32.5%;
+  width: 25%;
+  display: inline-block;
+  float: left;
+  margin-right: 3.5em;
+  margin-bottom: 3em;
 }
 
 #mc_embed_signup{
@@ -498,40 +549,4 @@ label {
   /* border: 1px solid rgba(47,11,5,1); */
   background-color: rgba(47,11,5,1);
   color: #fff;
-}
-
-.hud {
-  width: 80px;
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  z-index: 100;
-}
-
-.hud button {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: solid 2px white;
-  cursor: pointer;
-  background-color: #320b05;
-  color: white;
-}
-
-.hud button.hidden {
-  visibility: hidden;
-}
-
-.hud button[disabled] {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.hud button:hover:not([disabled]) {
-  background-color: #320b05;
-  box-shadow: 0px 0px 10px yellow;
 }

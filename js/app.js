@@ -53,6 +53,10 @@ class Room {
 
     this._set_transition_mask()
     this._attachListeners()
+    this._set_parallax()
+    this.transition_1_offset = document.querySelector('#trans_1').offsetTop
+    this.room_1_height = document.querySelector('#sala').clientHeight
+    this.transition_2_offset = document.querySelector('#trans_2').offsetTop
   }
 
   _set_transition_mask() {
@@ -61,12 +65,131 @@ class Room {
     let ratio = image.naturalHeight/image.naturalWidth
     let height = window.innerWidth*ratio
 
-    trans_mask.style.height = `${height}px`
-    trans_mask.style.width = '100%'
+    //trans_mask.style.height = `${height}px`
+    if(trans_mask) {
+      trans_mask.style.width = '100%'
+    }
     //trans_mask.style.top = `${image.y}px`
-    console.dir(image)
-    console.log(image.height)
   }
+
+  _get_threshold_list(numSteps=20) {
+    var thresholds = [];
+
+    for (var i=1.0; i<=numSteps; i++) {
+      var ratio = i/numSteps;
+      thresholds.push(ratio);
+    }
+    return thresholds.slice(5);
+  }
+
+  _set_parallax() {
+    window.addEventListener('scroll', () => {
+      let trans_1_transform = (window.pageYOffset / 1.65) / this.transition_1_offset
+        document
+        .querySelector('#trans_1')
+        .querySelector('.girl')
+        .style
+        .transform = `translateY(${trans_1_transform*100-55}%)`
+
+        let room_1_delta = window.pageYOffset - this.room_1_height
+        let trans_2_transform = ( room_1_delta * 1.35 ) / this.transition_2_offset
+        document
+        .querySelector('#trans_2')
+        .querySelector('.girl')
+        .style
+        .transform = `translateY(${trans_2_transform*100-85}%)`
+    })
+  }
+
+  scrollIt(destination, duration = 200, easing = 'linear', callback) {
+    const easings = {
+      linear(t) {
+        return t;
+      },
+      easeInQuad(t) {
+        return t * t;
+      },
+      easeOutQuad(t) {
+        return t * (2 - t);
+      },
+      easeInOutQuad(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+      },
+      easeInCubic(t) {
+        return t * t * t;
+      },
+      easeOutCubic(t) {
+        return (--t) * t * t + 1;
+      },
+      easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+      },
+      easeInQuart(t) {
+        return t * t * t * t;
+      },
+      easeOutQuart(t) {
+        return 1 - (--t) * t * t * t;
+      },
+      easeInOutQuart(t) {
+        return t < 0.5 ? 8 * t * t * t * t : 1 - 8 * (--t) * t * t * t;
+      },
+      easeInQuint(t) {
+        return t * t * t * t * t;
+      },
+      easeOutQuint(t) {
+        return 1 + (--t) * t * t * t * t;
+      },
+      easeInOutQuint(t) {
+        return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * (--t) * t * t * t * t;
+      }
+    };
+
+    const start = window.pageYOffset;
+    const startTime = 'now' in window.performance ? performance.now() : new Date().getTime();
+
+    const documentHeight = Math.max(
+      document.body.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.clientHeight,
+      document.documentElement.scrollHeight,
+      document.documentElement.offsetHeight
+    );
+    const windowHeight = window.innerHeight ||
+      document.documentElement.clientHeight ||
+      document.getElementsByTagName('body')[0].clientHeight;
+    const destinationOffset = typeof destination === 'number' ? destination : destination.offsetTop;
+    const destinationOffsetToScroll = Math.round(documentHeight - destinationOffset < windowHeight ?
+      documentHeight - windowHeight :
+      destinationOffset
+    );
+
+    if ('requestAnimationFrame' in window === false) {
+      window.scroll(0, destinationOffsetToScroll);
+      if (callback) {
+        callback();
+      }
+      return;
+    }
+
+    function scroll() {
+      const now = 'now' in window.performance ? performance.now() : new Date().getTime();
+      const time = Math.min(1, ((now - startTime) / duration));
+      const timeFunction = easings[easing](time);
+      window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
+
+      if (window.pageYOffset === destinationOffsetToScroll) {
+        if (callback) {
+          callback();
+        }
+        return;
+      }
+
+      requestAnimationFrame(scroll);
+    }
+
+    scroll();
+  }
+
 
   go_to_next_room(
     root_selector=`#${this.config.wrapper_id}`,
@@ -78,56 +201,32 @@ class Room {
     let image = root.querySelector('img')
     let next_room_element = document.querySelector(next_room)
     let transition = root.querySelector(transition_selector)
-    let transition_mask = root.querySelector('.transition_view')
 
-    transition_mask.classList.add('active_mask')
-
-    if(!reverse) {
-      let black = root.querySelector('.black')
-      black.classList.add('animate')
-      black.addEventListener('transitionend', function() {
-        //next_room_element.classList.toggle('show')
-        transition.classList.add('show')
-      }, { once: true })
-      transition.addEventListener('transitionend', function() {
-        black.classList.remove('animate')
-        this.classList.remove('show')
-        root.classList.remove('viewable')
-        next_room_element.classList.add('viewable')
-        transition_mask.classList.remove('active_mask')
-        window.location.hash = next_room
-      }, { once: true })
-    }
-
-    if(reverse) {
-      let black = root.querySelector('.black')
-      black.classList.add('animate')
-
-      black.addEventListener('transitionend', function() {
-        transition.classList.add('showdown')
-      }, { once: true })
-
-      transition.addEventListener('transitionend', function() {
-        black.classList.remove('animate')
-        transition.classList.remove('showdown')
-        root.classList.remove('viewable')
-        next_room_element.classList.add('viewable')
-        transition_mask.classList.remove('active_mask')
-        window.location.hash = next_room
-      })
-    }
+    this.scrollIt(next_room_element, 4000, 'easeInQuad', () => { console.log('Next Room' )})
   }
 
   _attachTransitionListeners(trigger_selector) {
     let trigger = document.querySelector(trigger_selector)
+    console.log(trigger)
     trigger.addEventListener('click', (evt) => {
       evt.preventDefault()
       this.go_to_next_room()
     })
   }
 
-  _attachListeners() {
+  custom_transition_listener(trigger_selector, next_room_params) {
+    let trigger = document.querySelector(trigger_selector)
+    trigger.addEventListener('click', (evt) => {
+      evt.preventDefault()
+      this.go_to_next_room(
+        next_room_params.root_selector,
+        next_room_params.transition_selector,
+        next_room_params.next_room
+      )
+    })
+  }
 
+  _attachListeners() {
     let areas = this.root.querySelectorAll('area')
     for(let area of areas) {
       tippy(area, {
@@ -220,9 +319,6 @@ class Modal {
     return modal_wrapper
   }
   modal_open(id, skip = true) {
-    if(document.querySelector('#explore-menu').classList.contains('open')) {
-      document.querySelector('#explore-menu').classList.remove('open')
-    }
     let content = ''
     if(skip) {
       content = document.querySelector(`#${ id }`).dataset.content
@@ -298,98 +394,7 @@ class Modal {
   }
 }
 
-class HUD {
-  constructor(config = {}) {
-    this.config = config
-    this._initialize_buttons(0)
-  }
-
-  _initialize_buttons() {
-    let prev = document.querySelector('#prev')
-    let next = document.querySelector('#next')
-
-    prev.addEventListener('click', (evt) => {
-      evt.preventDefault()
-      let current_hash = location.hash
-      if(location.hash == '') current_hash = '#sala'
-      this.go_to(current_hash, this.config[current_hash].prev.target, 'prev')
-    })
-
-    next.addEventListener('click', (evt) => {
-      evt.preventDefault()
-      let current_hash = location.hash
-      if(location.hash == '') current_hash = '#sala'
-      this.go_to(current_hash, this.config[current_hash].next.target, 'next')
-    })
-  }
-
-  disable_buttons() {
-    let prev = document.querySelector('#prev')
-    let next = document.querySelector('#next')
-    switch(location.hash) {
-      case '#forest':
-        prev.classList.remove('hidden')
-        next.classList.remove('hidden')
-        break
-      case '#floor':
-        prev.classList.remove('hidden')
-        next.classList.add('hidden')
-        break
-      default:
-        prev.classList.add('hidden')
-        next.classList.remove('hidden')
-        break
-    }
-  }
-
-  go_to(current_hash, target_hash, direction) {
-    if(this.config[current_hash][direction]) {
-      if(direction == 'next') {
-        window.room_1.go_to_next_room(
-          current_hash,
-          this.config[current_hash][direction].transition,
-          target_hash
-        )
-      } else {
-        window.room_1.go_to_next_room(
-          current_hash,
-          this.config[current_hash][direction].transition,
-          target_hash,
-          true
-        )
-      }
-    }
-  }
-}
-
 document.addEventListener('DOMContentLoaded', function() {
-  window.hud = new HUD({
-    '#sala': {
-      prev: null,
-      next: {
-        target: '#forest',
-        transition: '#trans_1_next'
-      }
-    },
-    '#forest': {
-      prev: {
-        target: '#sala',
-        transition: '#trans_2_prev'
-      },
-      next: {
-        target: '#floor',
-        transition: '#trans_2_next'
-      }
-    },
-    '#floor': {
-      prev: {
-        target: '#forest',
-        transition: '#trans_3_prev'
-      },
-      next: null
-    }
-  })
-
   window.modal = new Modal({
     subscribe: {
       message: `<div id="subscribe-modal-open"><p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
@@ -434,16 +439,16 @@ document.addEventListener('DOMContentLoaded', function() {
         </form>
         </div>
 
-        <p class="text-help text-align" style="color: #b0b0b0;">Explore this room to read more about Tipsy Tales</p></div>
+        <p class="text-help text-align" style="color: #b0b0b0;">Explore a secret world by hovering over objects in the room</p></div>
       `,
       default_modal: true
     },
     portrait_overlay: {
       message: `<div id="aboutus-modal-open">
         <h1>About Us</h1>
-        <img src="./images/tt-logo.png" class="text-center tt-logo"/>
-        <p>We at Tipsy Tales are obsessed with bringing new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
-        <p>Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p></div>
+        <img src="./images/tt-logo.png" class="tt-logo"/>
+        <p style="text-align: left;">We at Tipsy Tales are obsessed with bringing new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
+        <p style="text-align: left;">Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p></div>
 
       `
     },
@@ -666,13 +671,22 @@ document.addEventListener('DOMContentLoaded', function() {
     ]
   })
 
-  hud.disable_buttons()
+  room_2.custom_transition_listener('#sign', {
+    root_selector: '#forest',
+    transition_selector: '#trans_2',
+    next_room: '#floor',
+  })
+
+
 })
 
 window.addEventListener('load', function() {
-  setTimeout(function() {
+  Pace.on('start', function() {
     document.querySelector('#preloader').classList.toggle('open_loader')
-  }, 2000)
+  })
+  Pace.on('done', function() {
+    document.querySelector('#preloader').classList.toggle('open_loader')
+  })
   if(window.innerWidth < window.innerHeight) {
     modal.modal_note()
   } else {
@@ -711,8 +725,4 @@ window.addEventListener('resize', function() {
   room_2._set_transition_mask()
   room_3.resize_clickables()
   room_3._set_transition_mask()
-})
-
-window.addEventListener('hashchange', function() {
-  hud.disable_buttons()
 })
