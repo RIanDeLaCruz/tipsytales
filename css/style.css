@@ -5,16 +5,10 @@ html, body {
   background-color: #000;
 }
 
-@font-face {
-  font-family: 'Belinda';
-  src: url('./fonts/belinda.otf');
-}
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
 h1 {
   color: rgba(47,11,5,1);
-  font-family: 'Belinda', sans-serif;
-  font-size: 3.5em;
+  font-family: 'Domine', sans-serif;
+  font-size: 3.2em;
   text-align: center;
 }
 h2, h3, h4, h5, h6, p {
