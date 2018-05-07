@@ -439,7 +439,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </form>
         </div>
 
-        <p class="text-help text-align" style="color: #b0b0b0;">Explore this room to read more about Tipsy Tales</p></div>
+        <p class="text-help text-align" style="color: #b0b0b0;">Explore a secret world by hovering over objects in the room</p></div>
       `,
       default_modal: true
     },
