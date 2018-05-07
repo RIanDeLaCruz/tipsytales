@@ -62,6 +62,7 @@ nav img {
 }
 
 nav a.link {
+  color: #f3cc99;
   float: left;
   font-size: 1.2em;
   /* text-transform: uppercase; */
@@ -80,13 +81,20 @@ nav a.link:first-child {
 nav a.cta {
   display: inline-block;
   float: right;
-  color: #fff;
+  color: #f3cc99;
   font-size: 0.85em;
   text-transform: uppercase;
   text-decoration: none;
-  border: 1px solid #fff;
+  border: 1px solid #f3cc99;
   padding: 0.5em 0.8em;
   margin: 0.8em 0.5em;
+  transition: all 0.2s ease-in 0.2s;
+}
+
+nav a.cta:hover {
+  color: rgba(47,11,5,1);
+  background-color: #fff;
+  transition: all 0.2s ease-in 0.2s;
 }
 
 nav svg {
@@ -101,7 +109,7 @@ nav a.social {
 }
 
 nav a svg {
-  color: #fff;
+  color: #f3cc99;
 }
 
 nav a svg:hover,
