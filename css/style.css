@@ -171,6 +171,7 @@ nav a.subscribe:hover,
 }
 
 @media(max-width: 768px) {
+
   .explore-menu {
     height: 150px;
   }
@@ -484,10 +485,35 @@ img {
 }
 
 @media(max-width: 768px) {
+
+  nav {
+    padding: 0 10px;
+    overflow-x: scroll;
+  }
+
+  nav a.link {
+    font-size: 0.85em;
+    padding: 1.5em 10px;
+  }
+
+  nav a.cta {
+    float: right;
+  }
+
+  nav a.social,
+  nav a.cta.subscribe {
+    display: none;
+    font-size: 1.2em;
+  }
+
+  nav a.cta.book-now {
+    display: inline-block;
+  }
+
   .modal_body {
-    height: 80%;
+    height: 35%;
     width: 70%;
-    margin-top: 6em;
+    margin-top: 55px;
     overflow-y: scroll;
   }
 }
