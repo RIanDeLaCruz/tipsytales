@@ -319,9 +319,6 @@ class Modal {
     return modal_wrapper
   }
   modal_open(id, skip = true) {
-    if(document.querySelector('#explore-menu').classList.contains('open')) {
-      document.querySelector('#explore-menu').classList.remove('open')
-    }
     let content = ''
     if(skip) {
       content = document.querySelector(`#${ id }`).dataset.content
