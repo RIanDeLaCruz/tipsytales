@@ -1,5 +1,9 @@
 'use strict';
 
+var room_1 = null
+var room_2 = null
+var room_3 = null
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -673,7 +677,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // TO ADD HTML EMBED: add id and HTML content to the configuration object
   // IN the HTML, put 'config' in the data-content attribute
   //
-  window.room_1 = new Room({
+  room_1 = new Room({
     name: 'room_1',
     wrapper_id: 'sala',
     map_image_id: 'room1_bg',
@@ -704,7 +708,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }]
   });
 
-  window.room_2 = new Room({
+  room_2 = new Room({
     name: 'room_2',
     wrapper_id: 'forest',
     map_image_id: 'room2_bg',
@@ -739,7 +743,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }]
   });
 
-  window.room_3 = new Room({
+  room_3 = new Room({
     name: 'room_3',
     wrapper_id: 'floor',
     map_image_id: 'room3_bg',
