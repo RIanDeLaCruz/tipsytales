@@ -1,5 +1,6 @@
 var prev_scroll = 0
 var tick = false
+var body = document.body
 var transition_1_offset = document.querySelector('#trans_1').offsetTop
 var transition_2_offset = document.querySelector('#trans_2').offsetTop
 var room_1_height = document.querySelector('#sala').clientHeight
@@ -664,7 +665,12 @@ document.addEventListener('DOMContentLoaded', function() {
 })
 
 function _tick() {
-  if(!tick) requestAnimationFrame(_parallax_animation)
+  if(!tick) {
+    requestAnimationFrame(_parallax_animation)
+    if(window.matchMedia('(pointer: coarse)').matches) {
+      body.classList.add('disable-hover')
+    }
+  }
   tick = true
 }
 
@@ -685,6 +691,11 @@ function _parallax_animation() {
   .querySelector('.girl')
   .style
   .transform = `translateY(${trans_2_transform*100-85}%)`
+  if(window.matchMedia('(pointer: coarse)').matches) {
+    setTimeout(function() {
+      body.classList.remove('disable-hover')
+    }, 300)
+  }
 }
 
 

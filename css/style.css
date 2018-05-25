@@ -5,6 +5,11 @@ html, body {
   background-color: #000;
 }
 
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important;
+}
+
 h1 {
   color: rgba(47,11,5,1);
   font-family: 'Domine', sans-serif;
