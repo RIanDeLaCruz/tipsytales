@@ -732,6 +732,11 @@ window.addEventListener('load', function() {
       room_3.set_as_unviewable()
       break
   }
+  document.querySelector('a[href="#sala"]').addEventListener('click', function(e) {
+    e.preventDefault()
+    room_2.scrollIt(document.querySelector('#sala'), 1000, 'easeInQuad',
+                    () => { console.log('Home' )})
+  })
 })
 
 window.addEventListener('resize', function() {
