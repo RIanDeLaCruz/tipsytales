@@ -5,6 +5,11 @@ html, body {
   background-color: #000;
 }
 
+.disable-hover,
+.disable-hover * {
+  pointer-events: none !important;
+}
+
 h1 {
   color: rgba(47,11,5,1);
   font-family: 'Domine', sans-serif;
@@ -464,6 +469,7 @@ img {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 19;
   height: 100%;
   width: 100%;
   background-color: rgba(0,0,0,0.75);
