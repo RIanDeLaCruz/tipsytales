@@ -1,3 +1,10 @@
+var prev_scroll = 0
+var tick = false
+var body = document.body
+var transition_1_offset = document.querySelector('#trans_1').offsetTop
+var transition_2_offset = document.querySelector('#trans_2').offsetTop
+var room_1_height = document.querySelector('#sala').clientHeight
+
 let get_ratio = function(values, axis) {
   let ratio = []
   let divisor = (axis == 'x' ) ?  1425 : 790
@@ -53,10 +60,6 @@ class Room {
 
     this._set_transition_mask()
     this._attachListeners()
-    this._set_parallax()
-    this.transition_1_offset = document.querySelector('#trans_1').offsetTop
-    this.room_1_height = document.querySelector('#sala').clientHeight
-    this.transition_2_offset = document.querySelector('#trans_2').offsetTop
   }
 
   _set_transition_mask() {
@@ -80,25 +83,6 @@ class Room {
       thresholds.push(ratio);
     }
     return thresholds.slice(5);
-  }
-
-  _set_parallax() {
-    window.addEventListener('scroll', () => {
-      let trans_1_transform = (window.pageYOffset / 1.65) / this.transition_1_offset
-        document
-        .querySelector('#trans_1')
-        .querySelector('.girl')
-        .style
-        .transform = `translateY(${trans_1_transform*100-55}%)`
-
-        let room_1_delta = window.pageYOffset - this.room_1_height
-        let trans_2_transform = ( room_1_delta * 1.35 ) / this.transition_2_offset
-        document
-        .querySelector('#trans_2')
-        .querySelector('.girl')
-        .style
-        .transform = `translateY(${trans_2_transform*100-85}%)`
-    })
   }
 
   scrollIt(destination, duration = 200, easing = 'linear', callback) {
@@ -799,6 +783,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 })
 
+function _tick() {
+  if(!tick) {
+    requestAnimationFrame(_parallax_animation)
+    if(window.matchMedia('(pointer: coarse)').matches) {
+      body.classList.add('disable-hover')
+    }
+  }
+  tick = true
+}
+
+function _parallax_animation() {
+  let page_offset = prev_scroll
+  tick = false
+  let trans_1_transform = (page_offset / 1.65) / transition_1_offset
+  document
+  .querySelector('#trans_1')
+  .querySelector('.girl')
+  .style
+  .transform = `translateY(${trans_1_transform*100-55}%)`
+
+  let room_1_delta = page_offset - room_1_height
+  let trans_2_transform = ( room_1_delta * 1.35 ) / transition_2_offset
+  document
+  .querySelector('#trans_2')
+  .querySelector('.girl')
+  .style
+  .transform = `translateY(${trans_2_transform*100-85}%)`
+  if(window.matchMedia('(pointer: coarse)').matches) {
+    setTimeout(function() {
+      body.classList.remove('disable-hover')
+    }, 300)
+  }
+}
+
+
 window.addEventListener('load', function() {
   Pace.on('start', function() {
     document.querySelector('#preloader').classList.toggle('open_loader')
@@ -832,6 +851,11 @@ window.addEventListener('load', function() {
       room_3.set_as_unviewable()
       break
   }
+  document.querySelector('a[href="#sala"]').addEventListener('click', function(e) {
+    e.preventDefault()
+    room_2.scrollIt(document.querySelector('#sala'), 1000, 'easeInQuad',
+                    () => { console.log('Home' )})
+  })
 })
 
 window.addEventListener('resize', function() {
@@ -844,4 +868,9 @@ window.addEventListener('resize', function() {
   room_2._set_transition_mask()
   room_3.resize_clickables()
   room_3._set_transition_mask()
+})
+
+window.addEventListener('scroll', () => {
+  prev_scroll = window.pageYOffset
+  _tick()
 })
