@@ -397,44 +397,110 @@ class Modal {
 document.addEventListener('DOMContentLoaded', function() {
   window.modal = new Modal({
     subscribe: {
-      message: `<div id="subscribe-modal-open"><p class="text-center" style="margin-bottom: 1em;">Subscribe to our mailing list to receive the latest updates!</p>
+      message: `<h1>Join our Mailing List</h1>
+      <div id="subscribe-modal-open"><p class="text-center" style="margin-bottom: 1em;">Be the first to know about our upcoming adventures!</p>
 
       <div id="mc_embed_signup">
       <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
           <div id="mc_embed_signup_scroll">
 
-      <div class="mc-field-group">
-        <input type="email" value="" name="EMAIL" placeholder="Email Address" class="required email" id="mce-EMAIL">
-      </div>
-        <div id="mce-responses" class="clear">
-          <div class="response" id="mce-error-response" style="display:none"></div>
-          <div class="response" id="mce-success-response" style="display:none"></div>
-        </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b8558e5be5ed389ffecd8b0a9_f3f9fd75e2" tabindex="-1" value=""></div>
-          <div class="clear" style="margin-left: calc(50% - 68px)"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+          <div id="mc_embed_signup">
+          <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll">
+
+          <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+          <div class="mc-field-group">
+            <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+          </label>
+            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
           </div>
-      </form>
-      </div></div>`
+          <div class="mc-field-group">
+            <label for="mce-FNAME">First Name </label>
+            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+          </div>
+          <div class="mc-field-group">
+            <label for="mce-LNAME">Last Name </label>
+            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+          </div>
+            <div id="mce-responses" class="clear">
+              <div class="response" id="mce-error-response" style="display:none"></div>
+              <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b8558e5be5ed389ffecd8b0a9_f3f9fd75e2" tabindex="-1" value=""></div>
+              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+              </div>
+          </form>
+          </div></div>`
+    },
+    book: {
+      message: `<h1>Whoops!</h1>
+      <div id="subscribe-modal-open"><p class="text-center" style="margin-bottom: 1em;">Unfortunately the world is still being created and we’re not ready to sell tickets yet.</p>
+      <p>Subscribe now and we’ll let you know when we’re about to launch. Trust us, you won’t want to miss a once in a lifetime  adventure like this.</p>
+
+      <div id="mc_embed_signup">
+      <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+
+          <div id="mc_embed_signup">
+          <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+              <div id="mc_embed_signup_scroll">
+
+          <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+          <div class="mc-field-group">
+            <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+          </label>
+            <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+          </div>
+          <div class="mc-field-group">
+            <label for="mce-FNAME">First Name </label>
+            <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+          </div>
+          <div class="mc-field-group">
+            <label for="mce-LNAME">Last Name </label>
+            <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+          </div>
+            <div id="mce-responses" class="clear">
+              <div class="response" id="mce-error-response" style="display:none"></div>
+              <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+              <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b8558e5be5ed389ffecd8b0a9_f3f9fd75e2" tabindex="-1" value=""></div>
+              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+              </div>
+          </form>
+          </div></div>`
     },
     shelf_overlay: {
       message: `<div id="welcome-modal-open">
-        <h1>Welcome!</h1>
-        <p>Lola isn't home right now. We hear she's a bit busy entertaining other guests. Feel free to roam around her home to learn about us and the world we've uncovered for you. We promise that you'll find a few surprises.</p>
-        <p class="text-center" style="margin-bottom: 1em;">Be sure to leave your email so we can let you know when she's ready to entertain you!</p>
+        <h1 style="margin-bottom:0; font-size: 1.8em">TIPSY TALES</h1>
+        <p style="margin-top:0; font-style: italic;">proudly presents</p>
+        <h1 style="margin-bottom:0;">Wonderland</h1>
+        <p style="margin-top:0;">A dark whimsical tale based on Filipino folklore</p>
+        <p class="text-center" style="margin-bottom: 1em;">Subscribe to Tipsy tales to be the first to know about our upcoming adventures!</p>
 
         <div id="mc_embed_signup">
         <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
             <div id="mc_embed_signup_scroll">
 
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
         <div class="mc-field-group">
-          <input type="email" value="" name="EMAIL" placeholder="Email Address" class="required email" id="mce-EMAIL">
+        	<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+        </label>
+        	<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
         </div>
-          <div id="mce-responses" class="clear">
-            <div class="response" id="mce-error-response" style="display:none"></div>
-            <div class="response" id="mce-success-response" style="display:none"></div>
-          </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div class="mc-field-group">
+        	<label for="mce-FNAME">First Name </label>
+        	<input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+        </div>
+        <div class="mc-field-group">
+        	<label for="mce-LNAME">Last Name </label>
+        	<input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+        </div>
+        	<div id="mce-responses" class="clear">
+        		<div class="response" id="mce-error-response" style="display:none"></div>
+        		<div class="response" id="mce-success-response" style="display:none"></div>
+        	</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b8558e5be5ed389ffecd8b0a9_f3f9fd75e2" tabindex="-1" value=""></div>
-            <div class="clear" style="margin-left: calc(50% - 68px)"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
             </div>
         </form>
         </div>
@@ -443,33 +509,68 @@ document.addEventListener('DOMContentLoaded', function() {
       `,
       default_modal: true
     },
-    portrait_overlay: {
+    frames_overlay: {
       message: `<div id="aboutus-modal-open">
-        <h1>About Us</h1>
-        <img src="./images/tt-logo.png" class="tt-logo"/>
-        <p style="text-align: left;">We at Tipsy Tales are obsessed with bringing new experiences to the Philippines! Our team of wacky creatives include a variety of artists, writers, actors, chefs and designers, but we're all united by the same need - to build our take on a new "Aha!" moment in the life of every Filipino.</p>
-        <p style="text-align: left;">Influenced by immersive theater, escape rooms, Japanese themed cafes and the London underground dining scene, the founders wanted to create a space wherein people of various artistic backgrounds can come together to create unique, immersive experiences that bring to light ideas worth sharing, conversations worth having and most importantly, joy.</p></div>
+        <h1>Every good rhyme starts with ‘Once upon a time’...</h1>
+        <p>Find out more about Filipino folklore</p>
 
+        <p style="text-align: left;"><b>Dwende</b><br/>
+        A mischievous little creature that lives in dark corners of the house and loves to play with little children. They are sometimes known to hide children or lead them astray.</p>
+
+        <p style="text-align: left;"><b>Nuno Sa Punso</b><br/>
+        A dwarf-like old man who lives in an ant mound. They are protective of their home and are known to curse those who disturb it. Their curses often cause swelling, high fevers, body pains and sores.</p>
+
+        <p style="text-align: left;"><b>Diwata</b><br/>
+        A spirit recognised as a guardian of nature. They are fair, beautiful and seemingly ageless. Many are worshipped by humans as they are believed to bring good harvest and fortune.</p>
+
+        <p style="text-align: left;"><b>Kapre</b><br/>
+        A big, black and hairy giant always seen smoking a cigar. They live in large balete trees and will turn vengeful if you disturb its home. Once attracted to a woman, it will faithfully keep her in his heart for the rest of its life.</p>
+
+        <p style="text-align: left;"><b>Aswang</b><br/>
+        A shape-shifting monster that is human by day and dog by night. They are menacing and terrifying. Aswangs can’t resist feeding on unborn fetuses and small children.</p>
+
+        <p style="text-align: left;"><b>Sirena</b><br/>
+        A mermaid-like creature who has been told in many tales to lure and drown fishermen she encounters. They are mesmerizingly beautiful with an enchanting voice.</p>
       `
     },
     chair_overlay: {
       message: `
       <div id="history-modal-open">
-        <h1>History</h1>
-        <p>After a tragic death in the family, Lola invites you to her home to keep her company. She reminisces about the past and the song she used to share with the forest, before falling into a deep sleep. A mischievous duende, called Kati, pulls you into a world of adventure - a world where stories are still yet to be uncovered: A story of wonder, a story of love, a story full of longing and loss.</p>
+        <h1>Frequently Asked Questions</h1>
+        <br/>
+        <p><b>What is it?</b><br/>
+        Wonderland is a dark whimsical immersive theatre production based on Filipino folklore. You enter our world. Immerse yourself in our tale. Escape from reality, and enjoy!</p>
+
+        <p><b>Where will it be?</b><br/>
+        That, I'm afraid, is a closely guarded secret! It will be revealed closer to the time, if you’ve been granted access to the show.</p>
+
+        <p><b>How long will it be?</b><br/>
+        Your adventure will take around 70 minutes but do allow some time at the end to enjoy our enchanted cafe. Do arrive 15 minutes early from your allotted time as you will not be able to join your group if you start late!</p>
+
+        <p><b>Will it be scary?</b><br/>
+        Adventuring is our priority, not fear! Every adventure however has its own risks...</p>
+
+        <p><b>Who can come?</b><br/>
+        Due to recent events, only those who have reached the age of 18 are allowed to enter the world. Children have not been known to come back..</p>
+
+        <p><b>Who created us?</b><br/>
+        Tipsy Tales, a group of imagineers  that tell remarkable stories through innovative multi-sensory experiences.</p>
       </div>
       `
     },
     table_overlay: {
       message: `
       <div id="abouttheshow-modal-open">
-        <h1>About the Show</h1>
-        <p>Ang Kundiman is a production that showcases Filipino culture in a way you've never seen before. Deeply rooted in Filipino folklore, the story explores the adventure to save your Lola from the grasps of bizarre magical creatures residing in the heart of Manila.</p>
-        <p>Adventurous souls book online for an hour of whimsical storytelling, close encounters with creatures of the unknown and taste a world away from their own. Journey with us and experience new sights and tastes but be careful, the way back home is never so clear and your ending is entirely up to you.</p>
+        <h1>A multi-sensory adventure<br/>like no other!</h1>
+        <p><b>Manila’s first fully immersive experience on Filipino folklore<b/></p>
+        <p>Unusual creatures from stories of old have come alive at the heart of Manila to bring you on a crazy adventure. Journey with us into the unknown, witness bizarre sights and taste brave new flavours. But be careful, the way back home is never so clear... and your ending is entirely up to you.</p>
+        <p>Tipsy Tales promises to take you on a once in a lifetime journey as you live out Wonderland: your own dark whimsical tale where nothing is quite as it seems. A beautiful set and an ambitious cast awaits you. We promise it will be an unimaginable experience that will surprise at every corner, but that’s all we’ll say. The rest, after all, is secret.</p>
+        <p>What are you waiting for?</p>
+        <p>[BOOK NOW BUTTON]</p>
       </div>
       `
     },
-    frames_overlay: {
+    portrait_overlay: {
       slideClasses: ['notooltip', 'notooltip'],
       links: [
         {
@@ -513,43 +614,32 @@ document.addEventListener('DOMContentLoaded', function() {
     flower_overlay: {
       message: `
       <div id="castandcrew-modal-open">
-        <h1>The Cast & Crew</h1>
-        <p>Lorem ipsum dolor sit amet</p>
+        <h1>Media</h1>
+        <p>Coming soon...</p>
       </div>
       `
     },
     note_overlay: {
       message: `
       <div id="producersnote-modal-open">
-        <h1>Producer's Note</h1>
-        <p>Enter a world that has always existed alongside ours, speak to beings that you have heard about but haven't met yet, be daring and dive into their stories as much as you build your own. Immerse yourself in the experience and let us take you into an adventure like no other.</p>
-        <p>For the brave, the curious and the adventurous, this story will come alive as much as you let it. Allow it to make you think, make you feel and most importantly, make you laugh. Once you've been permitted to see the other side, you are always welcome to come back. </p>
+        <h1>Our Partners</h1>
+        <p>We stand on the shoulders of higantes among us. We’d like to thank our partners who had helped bring out our show from the shadows into the spotlight. </p>
       </div>
       `
     },
     shoe_overlay: {
       message: `
       <div id="synopsis-modal-open">
-        <h1>Synopsis</h1>
-        <p>After a tragic death in the family, Lola invites you to her home to keep her company. She reminisces about the past and the song she used to share with the forest, before falling into a deep sleep. A mischievous duende, called Kati, pulls you into a world of adventure-a world where stories are still yet to be uncovered: A story of wonder, a story of love, a story full of longing and loss.</p>
+        <h1>The Cast and Crew</h1>
+        <p>Coming soon...</p>
       </div>
       `
     },
     tree_overlay: {
       message: `
       <div id="partners-modal-open">
-        <h1>Partners</h1>
-        <p>We stand on the shoulders of giants that have come before us. This world would not have come to life if not for the generosity of our partners who have contributed in many ways - time, skills, knowledge and monetary support.</p>
-        <p>Production Partners</p>
-        <p>Co-Presenter</p>
-        <p>Major Sponsor</p>
-        <p>Principal Sponsor</p>
-        <p>Participating Sponsor</p>
-        <p>Individual Sponsors</p>
-        <p>Creative Partners<br/>
-        Set Design: Likhain Productions<br/>
-        Web Design: Cocomilk Design Co</p>
-        <p>Cultural Partners</p>
+        <h1>The World</h1>
+        <p>Coming soon...</p>
       </div>
       `
     },
@@ -557,8 +647,7 @@ document.addEventListener('DOMContentLoaded', function() {
       message: `
       <div id="rulesregulations-modal-open">
         <h1>Rules and Regulations</h1>
-        <p>Hi everyone! Welcome to Ang Kundiman.</p>
-        <p>Lola is requesting that you leave all your belongings in her flowerbed for safe keeping. She doesn't want you to be distracted, so she is requesting that you leave your phone behind on silent mode as well. Don't worry, she told me she'll allow you to take selfies later! As you will be meeting Lola and Kati's friends later, she wanted me to remind you all to respect them in the way that you would your own friends. You know, with respect for their feelings and personal space. Pay attention to their stories and answer their questions, you might be able to get a little treat out of it! We don't want you to get lost on our little adventure, so please be aware of the movement of the group. Kati is quite spritely so we need to be able to keep up with her. Lola has a bunch of antiques lying around and she has specifically demanded that you do not touch anything, unless Kati says that you can. Lola loves her visitors but she loves her antiquities more, they've been with her longer. If at any point you get a little too excited or start feeling ill - heaven knows I've felt that way in the company of Kati's friends! - please do not hesitate to inform us. Alright! This is your last chance to back out of the adventure! Once we enter Lola's house, there's no turning back! Is everybody ready?</p>
+        <p>Coming soon...</p>
       </div>
       `
     },
@@ -566,7 +655,37 @@ document.addEventListener('DOMContentLoaded', function() {
       message: `
       <div id="booknow-modal-open">
         <h1>Book Now</h1>
-        <p>Lorem ipsum dolor sit amet</p>
+        <p>Unfortunately the world is still being created and we’re not ready to sell tickets yet.</p>
+        <p>Subscribe now and we’ll let you know when we’re about to launch. Trust us, you won’t want to miss a once in a lifetime  adventure like this!</p>
+
+        <div id="mc_embed_signup">
+        <form action="https://tipsytales.us12.list-manage.com/subscribe/post?u=b8558e5be5ed389ffecd8b0a9&amp;id=f3f9fd75e2" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+            <div id="mc_embed_signup_scroll">
+
+        <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
+        <div class="mc-field-group">
+          <label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+        </label>
+          <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+        </div>
+        <div class="mc-field-group">
+          <label for="mce-FNAME">First Name </label>
+          <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+        </div>
+        <div class="mc-field-group">
+          <label for="mce-LNAME">Last Name </label>
+          <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
+        </div>
+          <div id="mce-responses" class="clear">
+            <div class="response" id="mce-error-response" style="display:none"></div>
+            <div class="response" id="mce-success-response" style="display:none"></div>
+          </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b8558e5be5ed389ffecd8b0a9_f3f9fd75e2" tabindex="-1" value=""></div>
+            <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            </div>
+        </form>
+        </div>
+
       </div>
       `
     },
