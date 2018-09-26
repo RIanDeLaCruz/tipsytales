@@ -215,7 +215,6 @@ class Room {
     for(let area of areas) {
       tippy(area, {
         followCursor: true,
-        appendTo: this.map_object,
         placement: 'top-center',
         distance: 10
       })
