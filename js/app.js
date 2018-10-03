@@ -800,7 +800,7 @@ function _parallax_animation() {
   .querySelector('#trans_1')
   .querySelector('.girl')
   .style
-  .transform = `translateY(${trans_1_transform*100-55}%)`
+  .transform = `translateY(${(trans_1_transform*100)-55}%)`
 
   let room_1_delta = page_offset - room_1_height
   let trans_2_transform = ( room_1_delta * 1.35 ) / transition_2_offset
@@ -808,7 +808,7 @@ function _parallax_animation() {
   .querySelector('#trans_2')
   .querySelector('.girl')
   .style
-  .transform = `translateY(${trans_2_transform*100-85}%)`
+  .transform = `translateY(${(trans_2_transform*100)-85}%)`
   if(window.matchMedia('(pointer: coarse)').matches) {
     setTimeout(function() {
       body.classList.remove('disable-hover')
