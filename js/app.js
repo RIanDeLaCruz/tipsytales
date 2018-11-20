@@ -803,12 +803,12 @@ function _parallax_animation() {
   .transform = `translateY(${(trans_1_transform*100)-55}%)`
 
   let room_1_delta = page_offset - room_1_height
-  let trans_2_transform = ( room_1_delta * 1.35 ) / transition_2_offset
+  let trans_2_transform =  (1.15 * room_1_delta)/transition_2_offset
   document
   .querySelector('#trans_2')
   .querySelector('.girl')
   .style
-  .transform = `translateY(${(trans_2_transform*100)-85}%)`
+  .transform = `translateY(${(trans_2_transform*100)-75}%)`
   if(window.matchMedia('(pointer: coarse)').matches) {
     setTimeout(function() {
       body.classList.remove('disable-hover')
@@ -818,6 +818,9 @@ function _parallax_animation() {
 
 
 window.addEventListener('load', function() {
+  transition_1_offset = document.querySelector('#trans_1').offsetTop
+  transition_2_offset = document.querySelector('#trans_2').offsetTop
+  room_1_height = document.querySelector('#sala').clientHeight
   Pace.on('start', function() {
     document.querySelector('#preloader').classList.toggle('open_loader')
   })
